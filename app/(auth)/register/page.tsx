@@ -1,13 +1,12 @@
 import CustomInput from "@/components/CustomInput/CustomInput";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@radix-ui/react-label";
+
 import React from "react";
 
 const page = () => {
   return (
     <div className="container flex items-center h-screen w-screen justify-center ">
-      <div className="flex flex-col gap-6 w-full max-w-md">
+      <div className="flex flex-col gap-6 w-full max-w-sm">
         <h1 className="text-2xl font-semibold tracking-tight text-center">
           Create an account
         </h1>
