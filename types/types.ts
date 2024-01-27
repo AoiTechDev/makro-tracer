@@ -1,5 +1,4 @@
-export type FormFields = {
-    email: string;
-    password: string;
-    confirmPassword?: string;
-  };
+import { schema } from "@/schema/input";
+import { z } from "zod";
+
+export type FormFields = z.infer<typeof schema>
