@@ -1,4 +1,5 @@
 import CustomInput from "@/components/CustomInput/CustomInput";
+import Form from "@/components/Form/Form";
 import { Button } from "@/components/ui/button";
 
 import React from "react";
@@ -10,13 +11,7 @@ const page = () => {
         <h1 className="text-2xl font-semibold tracking-tight text-center">
           Create an account
         </h1>
-        <div className="flex flex-col gap-2">
-          <CustomInput text="Email" />
-          <CustomInput text="Password" />
-          <CustomInput text="Confirm Password" />
-        </div>
-
-        <Button>Register</Button>
+       <Form buttonText='Register'/>
       </div>
     </div>
   );

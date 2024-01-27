@@ -1,11 +1,15 @@
 import React from "react";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
+import {  UseFormRegister } from "react-hook-form";
+import { FormFields } from "@/types/types";
 
 type InputProps = {
   text: "Email" | "Password" | "Confirm Password";
+  name: string;
+  register: UseFormRegister<FormFields>;
 };
-const CustomInput = ({ text }: InputProps) => {
+const CustomInput = ({ text, name, register }: InputProps) => {
   return (
     <>
       {text === "Email" ? (
@@ -16,6 +20,8 @@ const CustomInput = ({ text }: InputProps) => {
       <Input
         placeholder={text === "Email" ? "name@example.com" : "********"}
         type={text === "Email" ? "email" : "password"}
+        {...register(name as "email" | "password" | "confirmPassword")}
+        name={name}
       />
     </>
   );
