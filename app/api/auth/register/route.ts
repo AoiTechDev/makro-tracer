@@ -19,9 +19,10 @@ export async function POST(request: Request){
         `;
 
         
+        
 
     }catch(err){
-        console.error(err)
+        console.error('register/route error', err)
     }
 
     return NextResponse.json({message: 'success'})

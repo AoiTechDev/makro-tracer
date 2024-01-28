@@ -2,7 +2,7 @@
 import React from "react";
 import CustomInput from "../CustomInput/CustomInput";
 import { Button } from "../ui/button";
-import { useForm } from "react-hook-form";
+import { UseFormRegister, useForm } from "react-hook-form";
 import { FormFields } from "@/types/types";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,11 +10,13 @@ import { schema } from "@/schema/input";
 
 type FormProps = {
   buttonText: "Login" | "Register";
+  register: UseFormRegister<FormFields>;
 };
 
-const Form = ({ buttonText }: FormProps) => {
+
+const Form = ({ buttonText, register }: FormProps) => {
   const {
-    register,
+   
 
     formState: { errors, isSubmitting },
   } = useForm<FormFields>({

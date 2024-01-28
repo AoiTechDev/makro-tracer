@@ -12,7 +12,7 @@ const page = async () => {
         <h1 className="text-2xl font-semibold tracking-tight text-center">
           Create an account
         </h1>
-    <RegisterForm />
+        <RegisterForm />
       </div>
     </div>
   );
