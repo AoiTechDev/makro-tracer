@@ -25,7 +25,7 @@ const Form = ({ buttonText, register }: FormProps) => {
 
   return (
     <>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-4">
         <CustomInput register={register} text="Email" name="email" />
         {errors.email && (
           <span className="text-red-500">{errors.email.message}</span>

@@ -27,7 +27,7 @@ const LoginForm = () => {
 
   const { handleSubmit, register } = useForm<FormFields>();
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
       <Form buttonText="Login" register={register}/>
     </form>
   );

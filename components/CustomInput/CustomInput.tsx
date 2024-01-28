@@ -11,7 +11,7 @@ type InputProps = {
 };
 const CustomInput = ({ text, name, register }: InputProps) => {
   return (
-    <>
+    <div className="flex flex-col gap-2">
       {text === "Email" ? (
         <Label htmlFor="email">{text}</Label>
       ) : (
@@ -23,7 +23,7 @@ const CustomInput = ({ text, name, register }: InputProps) => {
         {...register(name as "email" | "password" | "confirmPassword")}
         name={name}
       />
-    </>
+    </div>
   );
 };
 

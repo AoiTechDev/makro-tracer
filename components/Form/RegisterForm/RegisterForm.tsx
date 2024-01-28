@@ -23,8 +23,8 @@ const RegisterForm = () => {
     console.log(response);
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Form buttonText='Register' register={register}/>
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
+      <Form buttonText="Register" register={register} />
     </form>
   );
 };
