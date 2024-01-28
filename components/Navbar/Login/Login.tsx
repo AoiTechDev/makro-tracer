@@ -1,9 +1,12 @@
-import React from 'react'
-
+import Link from "next/link";
+import React from "react";
+import { Button } from "@/components/ui/button";
 const Login = () => {
   return (
-    <div>Login</div>
-  )
-}
+    <Link href="/login" className="">
+      <Button> Login</Button>
+    </Link>
+  );
+};
 
-export default Login
+export default Login;
