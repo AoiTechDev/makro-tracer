@@ -1,9 +1,6 @@
-import CustomInput from "@/components/CustomInput/CustomInput";
-import Form from "@/components/Form/Form";
+
 import RegisterForm from "@/components/Form/RegisterForm/RegisterForm";
-import { Button } from "@/components/ui/button";
 import { getServerSession } from "next-auth";
-import { getSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 
 import React from "react";
@@ -19,6 +16,14 @@ const page = async () => {
         Create an account
       </h1>
       <RegisterForm />
+      <div>
+        <p className="text-center">
+          Already have an account?{" "}
+          <a href="/login" className="text-blue-500 hover:underline">
+            Login
+          </a>
+        </p>
+      </div>
     </>
   );
 };
