@@ -14,6 +14,24 @@ Macro Tracker's seamless operation is supported by its connection to the Vercel 
 
 Macro Tracker, with its intuitive design, API integration, user account functionality, and database connectivity, stands as a versatile tool for individuals seeking a precise and personalized approach to tracking their daily nutritional intake.
 
+<h2 align="left">Tech stack</h2>
+
+###
+
+<div align="left">
+  <img src="https://skillicons.dev/icons?i=nextjs" height="40" alt="nextjs logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" alt="javascript logo"  />
+  <img width="12" />
+  <img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" height="40" alt="tailwindcss logo"  />
+  <img width="12" />
+  <img src="https://skillicons.dev/icons?i=html" height="40" alt="html5 logo"  />
+  <img width="12" />
+  <img src="https://skillicons.dev/icons?i=css" height="40" alt="css3 logo"  />
+   <img width="12" />
+ 
+</div>
+
 <h2 align="left">Implemented Features</h2>
 
 - [x] Registration
@@ -21,3 +39,4 @@ Macro Tracker, with its intuitive design, API integration, user account function
 - [x] Login/Logout Functionality:
 - [x] Page Protection
 - [x] Session Management
+- [x] Input Validation
