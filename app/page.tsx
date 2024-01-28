@@ -1,8 +1,8 @@
 
 export default function Home() {
   return (
-    <main className="">
-     
+    <main className=" flex justify-center items-center w-screen h-screen">
+     Home page
     </main>
   );
 }

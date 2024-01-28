@@ -1,5 +1,6 @@
 import CustomInput from "@/components/CustomInput/CustomInput";
 import Form from "@/components/Form/Form";
+import RegisterForm from "@/components/Form/RegisterForm/RegisterForm";
 import { Button } from "@/components/ui/button";
 
 import React from "react";
@@ -11,7 +12,7 @@ const page = async () => {
         <h1 className="text-2xl font-semibold tracking-tight text-center">
           Create an account
         </h1>
-       <Form buttonText='Register'/>
+    <RegisterForm />
       </div>
     </div>
   );
