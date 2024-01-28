@@ -6,8 +6,11 @@ import { signIn } from "next-auth/react";
 
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import Form from "../Form";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import CustomInput from "@/components/CustomInput/CustomInput";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { schema } from "@/schema/input";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -18,17 +21,38 @@ const LoginForm = () => {
       password: data.password,
       redirect: false,
     });
-    console.log(response)
+    console.log(response);
     if (!response?.error) {
       router.push("/");
       router.refresh();
     }
   };
 
-  const { handleSubmit, register } = useForm<FormFields>();
+  const {
+    handleSubmit,
+    register,
+    formState: { errors, isSubmitting },
+  } = useForm<FormFields>({
+    resolver: zodResolver(schema),
+  });
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
-      <Form buttonText="Login" register={register}/>
+      <div className="flex flex-col gap-4">
+        <div>
+          <CustomInput register={register} text="Email" name="email" />
+          {errors.email && (
+            <span className="text-red-500">{errors.email.message}</span>
+          )}
+        </div>
+        <div>
+          <CustomInput register={register} text="Password" name="password" />
+          {errors.password && (
+            <span className="text-red-500">{errors.password.message}</span>
+          )}
+        </div>
+      </div>
+
+      <Button disabled={isSubmitting}>Login</Button>
     </form>
   );
 };

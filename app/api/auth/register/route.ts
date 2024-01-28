@@ -5,8 +5,9 @@ import { v4 as uuidv4 } from 'uuid';
 export async function POST(request: Request){
     try{
         const {email,password, confirmPassword} = await request.json();
-        console.log(email,password, confirmPassword)
-
+        
+    
+          
         if(password !== confirmPassword){
             throw new Error('Password do not match')
         }
