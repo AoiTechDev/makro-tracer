@@ -9,7 +9,7 @@ const DashboardLayout = ({
   calendar: React.ReactNode;
 }>) => {
   return (
-    <div>
+    <div className="flex w-full h-screen justify-center items-center p-8 bg-[#f8f8ff] gap-6">
       {children}
       {calendar}
     </div>
