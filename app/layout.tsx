@@ -15,17 +15,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
- 
-  
-  //TODO 
+  //TODO
   //make a navbar and logout button client component
   return (
     <html lang="en">
       <body className="lg:flex">
-       
-      <Navbar />
-      <Sidebar />
-        {children}
+        <Navbar />
+        <Sidebar />
+       {children}
       </body>
     </html>
   );
