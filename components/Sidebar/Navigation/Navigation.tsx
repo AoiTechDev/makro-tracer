@@ -7,7 +7,7 @@ import { RiSettings4Fill } from "react-icons/ri";
 const Navigation = () => {
   const itemsStyles =
     "p-4 rounded-l-xl flex justify-start items-center gap-2 duration-300";
-  const [activeItem, setActiveItem] = useState("Dashboard");
+  const [activeItem, setActiveItem] = useState("");
 
   const sidebarList = [
     {
