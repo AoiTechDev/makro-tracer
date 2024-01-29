@@ -14,7 +14,7 @@ const page = async () => {
     <div className="bg-white w-3/4 h-full rounded-3xl grid grid-cols-2 p-12 gap-6">
       <div className="col-span-1 h-full flex flex-col gap-6">
         <Total />
-        <CreatedMealsAndIngredients />
+        <CreatedMealsAndIngredients type="half"/>
       </div>
       <Consumed />
     </div>

@@ -12,7 +12,7 @@ const Navbar = async () => {
   console.log(session);
 
   return (
-    <nav className="fixed flex  lg:hidden border w-full h-14 items-center justify-end px-6 lg:px-12">
+    <nav className="fixed flex  md:hidden border w-full h-14 items-center justify-end px-6 lg:px-12">
       {!!session && (
         <div className="flex gap-4">
         
