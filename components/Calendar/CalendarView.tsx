@@ -4,12 +4,13 @@ import { Calendar } from "@/components/ui/calendar";
 const CalendarView = () => {
   const [date, setDate] = useState<Date | undefined>(new Date());
   return (
-    <div className="w-full flex justify-center">
+    <div className="w-full flex justify-center mt-12">
       <Calendar
         mode="single"
         selected={date}
         onSelect={setDate}
         className="rounded-md "
+
       />
     </div>
   );
