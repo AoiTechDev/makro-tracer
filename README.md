@@ -1,4 +1,5 @@
 # Macro Tracker Project Overview
+(Under development, not deployed yet)
 
 ## Project Functionality
 Macro Tracker is a comprehensive application designed to empower users in tracking their daily meals and efficiently counting nutritional intake. The app offers a user-friendly interface that allows individuals to add their ingredients, complete with nutritional details. Users can seamlessly create meals by combining existing ingredients or incorporating new ones into their personalized database.
