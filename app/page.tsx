@@ -1,3 +1,4 @@
+import Dashboard from "@/components/Dashboard/Dashboard";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
@@ -8,7 +9,7 @@ export default async function Home() {
   }
   return (
     <main className=" flex justify-center items-center w-screen h-screen">
-      Home page
+      Welcome to Macro Tracker
     </main>
   );
 }
