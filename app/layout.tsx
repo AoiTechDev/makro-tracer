@@ -22,10 +22,12 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className="md:flex">
-        <Navbar />
-        <Sidebar />
-       {children}
+      <body>
+        <main className="md:flex">
+          <Navbar />
+          <Sidebar />
+          {children}
+        </main>
       </body>
     </html>
   );

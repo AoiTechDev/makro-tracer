@@ -9,8 +9,8 @@ const Sidebar = async () => {
   const session = await getServerSession();
 
   return (
-    <div className="hidden gradient md:flex w-[250px] h-screen flex-col justify-between  text-[#dacafb]">
-      <div className="flex flex-col gap-12 justify-center items-center mt-12">
+    <div className="hidden gradient md:flex w-[250px] flex-shrink-0 h-screen flex-col justify-between  text-[#dacafb]">
+      <div className="flex flex-col gap-12 justify-center items-center mt-12 w-full">
         <h1 className="text-2xl">Macro Tracker</h1>
         {!!session ? (
           <Navigation />

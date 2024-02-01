@@ -7,9 +7,9 @@ type IngredientsListProps = {
 
 const IngredientsList = ({nutrition}: IngredientsListProps) => {
   return (
-    <div className="flex flex-col w-3/4 gap-4 mt-12 justify-center items-center">
+    <div className="flex flex-col w-full gap-4 mt-12 justify-center items-center">
     {nutrition.map((item) => (
-      <div className="w-full rounded-xl  p-4 grid grid-cols-3 items-center bg-white ">
+      <div key={item.name} className="w-full rounded-xl  p-4 grid grid-cols-3 items-center bg-white ">
         <div className=" flex flex-col justify-center items-center">
           <h2 className="text-2xl">{item.name}</h2>
           <p className="text-muted-foreground">{item.serving_size_g}g</p>

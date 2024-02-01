@@ -26,5 +26,6 @@ export async function createCompletion(
     return res.json();
   });
 
+  
   return { success: res };
 }
