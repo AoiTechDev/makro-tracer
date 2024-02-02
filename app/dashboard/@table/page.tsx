@@ -1,8 +1,13 @@
+'use client'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { useCalendarStore } from "@/store/store";
 import React from "react";
 
 const page = () => {
+  const { date} = useCalendarStore();
+
+  console.log(date)
   return (
     <Card className="flex-1">
       <CardHeader>

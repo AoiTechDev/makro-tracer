@@ -21,7 +21,8 @@ const Page = () => {
           <CardHeader>
             <CardTitle>Select Date</CardTitle>
           </CardHeader>
-          <Calendar initialFocus mode="single" />
+          {/* <Calendar initialFocus mode="single" /> */}
+          <CalendarView/>
         </CardContent>
       </Card>
       <Card className="flex-1">
