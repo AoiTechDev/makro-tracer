@@ -9,7 +9,6 @@ const Navigation = () => {
   const itemsStyles =
     "p-4 rounded-l-xl flex justify-start items-center gap-2 duration-300";
     const path = usePathname();
-    console.log(path)
   const [activeItem, setActiveItem] = useState(path);
   useEffect(() => {
     setActiveItem(path);
