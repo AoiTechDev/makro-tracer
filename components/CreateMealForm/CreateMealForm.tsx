@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Session } from "next-auth";
+import { useCalendarStore } from "@/store/store";
 
 type AddMealsFormFields = {
   mealName: string;
@@ -27,6 +28,10 @@ const CreateMealForm = ({session}: CreateMealFormProps) => {
     formState: { errors, isSubmitting },
   } = useForm<AddMealsFormFields>();
 
+  const { date} = useCalendarStore();
+  const formattedDate = date?.toISOString().split('T')[0];
+  console.log(formattedDate)
+
   const onSubmit: SubmitHandler<AddMealsFormFields> = async (data) => {
     const response = await fetch("/api/createMeal", {
       method: "POST",
@@ -38,6 +43,7 @@ const CreateMealForm = ({session}: CreateMealFormProps) => {
         carbs: data.carbs,
         fat: data.fat,
         sugar: data.sugar,
+        date: formattedDate
       }),
     });
 

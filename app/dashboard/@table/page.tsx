@@ -5,9 +5,9 @@ import { useCalendarStore } from "@/store/store";
 import React from "react";
 
 const page = () => {
-  const { date} = useCalendarStore();
+  
 
-  console.log(date)
+  
   return (
     <Card className="flex-1">
       <CardHeader>
