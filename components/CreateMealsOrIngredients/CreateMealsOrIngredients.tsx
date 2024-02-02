@@ -34,7 +34,7 @@ const CreateMealsOrIngredients = () => {
     }
   });
   return (
-    <div className="h-full">
+    <div className="h-full mt-24 lg:mt-0">
       <div className=" p-4 rounded-3xl h-full bg-[#f8f8ff] flex flex-col justify-top items-center">
         <form onSubmit={onSubmit} className="flex gap-4">
           <Input {...register("prompt")} name="prompt" />

@@ -1,13 +1,15 @@
-import CalendarView from '@/components/Calendar/CalendarView'
-import React from 'react'
-
+import CalendarView from "@/components/Calendar/CalendarView";
+import { Card } from "@/components/ui/card";
+import React from "react";
 
 const Page = () => {
   return (
-    <div className="bg-white w-1/4 h-full rounded-3xl">
-      <CalendarView />
-    </div>
-  )
-}
+    <Card className="flex flex-1 ">
+      {/* <CalendarView /> */}
 
-export default Page
+      
+    </Card>
+  );
+};
+
+export default Page;

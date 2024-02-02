@@ -2,16 +2,20 @@ import React from "react";
 
 const DashboardLayout = ({
   children,
-
+  table,
   calendar,
 }: Readonly<{
   children: React.ReactNode;
   calendar: React.ReactNode;
+  table: React.ReactNode;
 }>) => {
   return (
-    <div className="flex w-full h-screen justify-center items-center p-8 bg-[#f8f8ff] gap-6">
-      {children}
-      {calendar}
+    <div className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-10">
+      <div className="flex flex-1 gap-6">
+        {calendar}
+        {children}
+      </div>
+      <div className="flex-1">{table}</div>
     </div>
   );
 };
