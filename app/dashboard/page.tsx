@@ -6,6 +6,8 @@ import Total from "@/components/Dashboard/Total/Total";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { TableCell, TableRow } from "@/components/ui/table";
+import { getMeals } from "@/lib/getMeals/getMeals";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import React from "react";
@@ -32,6 +34,7 @@ const page = async () => {
       <CardContent>
           <CreateMealForm session={session }/>
       </CardContent>
+      
     </Card>
   );
 };

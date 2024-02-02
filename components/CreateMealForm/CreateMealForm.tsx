@@ -6,6 +6,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Session } from "next-auth";
 import { useCalendarStore } from "@/store/store";
+import { revalidatePath } from "next/cache";
+import { useRouter } from "next/navigation";
 
 type AddMealsFormFields = {
   mealName: string;
@@ -18,20 +20,17 @@ type AddMealsFormFields = {
 };
 type CreateMealFormProps = {
   session: Session;
-}
+};
 
-
-const CreateMealForm = ({session}: CreateMealFormProps) => {
+const CreateMealForm = ({ session }: CreateMealFormProps) => {
   const {
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
   } = useForm<AddMealsFormFields>();
 
-  const { date} = useCalendarStore();
-  const formattedDate = date?.toISOString().split('T')[0];
-  console.log(formattedDate)
-
+  const { date } = useCalendarStore();
+  const router = useRouter();
   const onSubmit: SubmitHandler<AddMealsFormFields> = async (data) => {
     const response = await fetch("/api/createMeal", {
       method: "POST",
@@ -43,12 +42,16 @@ const CreateMealForm = ({session}: CreateMealFormProps) => {
         carbs: data.carbs,
         fat: data.fat,
         sugar: data.sugar,
-        date: formattedDate
+        date: date,
       }),
+      // next: { tags: ["meal"] },
+      // cache: "no-cache",
     });
 
-    console.log(response);
+    router.refresh()
   };
+  
+
   return (
     <form
       className="space-y-4 flex flex-col gap-6"
@@ -90,7 +93,7 @@ const CreateMealForm = ({session}: CreateMealFormProps) => {
           </div>
         </div>
       </div>
-      <Button className="w-full flex-1" type="submit">
+      <Button className="w-full flex-1" >
         Add Meal
       </Button>
     </form>

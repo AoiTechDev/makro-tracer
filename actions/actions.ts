@@ -28,3 +28,4 @@ export async function createCompletion(
 
   return { success: res };
 }
+

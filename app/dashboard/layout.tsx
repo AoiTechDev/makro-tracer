@@ -1,3 +1,4 @@
+import MealsTable from "@/components/MealsTable/MealsTable";
 import React from "react";
 
 const DashboardLayout = ({
@@ -15,7 +16,9 @@ const DashboardLayout = ({
         {calendar}
         {children}
       </div>
-      <div className="flex-1">{table}</div>
+      <div className="flex-1">
+       {table}
+      </div>
     </div>
   );
 };
