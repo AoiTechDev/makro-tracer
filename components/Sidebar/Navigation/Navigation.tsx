@@ -1,13 +1,19 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BiSolidDashboard } from "react-icons/bi";
 import { FaBowlFood } from "react-icons/fa6";
 import { RiSettings4Fill } from "react-icons/ri";
+import { usePathname } from 'next/navigation'
 const Navigation = () => {
   const itemsStyles =
     "p-4 rounded-l-xl flex justify-start items-center gap-2 duration-300";
-  const [activeItem, setActiveItem] = useState("");
+    const path = usePathname();
+    console.log(path)
+  const [activeItem, setActiveItem] = useState(path);
+  useEffect(() => {
+    setActiveItem(path);
+  },[path])
 
   const sidebarList = [
     {
@@ -37,7 +43,7 @@ const Navigation = () => {
         <Link href={item.link} key={item.title}>
           <li
             className={
-              activeItem === item.title
+              activeItem === item.link
                 ? `${itemsStyles} bg-[#f8f8ff] text-[#8a4af2]`
                 : `${itemsStyles} bg-transparent text-[#dacafb]`
             }
