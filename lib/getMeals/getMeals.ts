@@ -9,6 +9,7 @@ type GetMealsResponse = {
 };
 
 export async function getMeals(email: string): Promise<GetMealsResponse> {
+
   try {
     const url = `http://localhost:3000/api/getMeals?email=${email}`;
     const data = await fetch(url, {
