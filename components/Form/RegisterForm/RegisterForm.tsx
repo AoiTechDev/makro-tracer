@@ -6,6 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { schema } from "@/schema/input";
 import CustomInput from "@/components/CustomInput/CustomInput";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 const RegisterForm = () => {
   const {
@@ -15,6 +17,7 @@ const RegisterForm = () => {
   } = useForm<FormFields>({
     resolver: zodResolver(schema),
   });
+  const router = useRouter();
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     const response = await fetch("/api/auth/register", {
       method: "POST",
@@ -25,7 +28,18 @@ const RegisterForm = () => {
       }),
     });
 
-    console.log(response);
+
+    if (response.status === 200) {
+      const response = await signIn("credentials", {
+        email: data.email,
+        password: data.password,
+        redirect: false,
+      });
+      if (!response?.error) {
+        router.push("/");
+        router.refresh();
+      }
+    }
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
