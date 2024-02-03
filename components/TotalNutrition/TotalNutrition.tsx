@@ -71,7 +71,7 @@ const TotalNutrition = ({ result }: TotalNutritionProps) => {
   
       setTotalNutrition(total);
     }
-  }, [date]);
+  }, [result.success,date]);
 
   return (
     <CardContent>
