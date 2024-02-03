@@ -1,10 +1,18 @@
 import { QueryResult, QueryResultRow} from "@vercel/postgres";
 
 
-
+type Meal = {
+  name: string;
+  protein: number;
+  fat: number;
+  carbohydrates: number;
+  sugar: number;
+  calories: number;
+  date: Date;
+}
 export type GetMealsResponse = {
   error?: string;
-  success?: QueryResult<QueryResultRow>;
+  success?: QueryResult<Meal>;
 };
 
 export async function getMeals(email: string): Promise<GetMealsResponse> {

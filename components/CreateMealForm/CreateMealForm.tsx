@@ -33,7 +33,6 @@ const CreateMealForm = ({ session }: CreateMealFormProps) => {
 
   const formattedOriginalDate = `${date?.getFullYear()}-${String(date?.getMonth()! + 1).padStart(2, '0')}-${String(date?.getDate()).padStart(2, '0')}`;
   
-  console.log(formattedOriginalDate)
   const router = useRouter();
   const onSubmit: SubmitHandler<AddMealsFormFields> = async (data) => {
     const response = await fetch("/api/createMeal", {
