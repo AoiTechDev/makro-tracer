@@ -30,6 +30,10 @@ const CreateMealForm = ({ session }: CreateMealFormProps) => {
   } = useForm<AddMealsFormFields>();
 
   const { date } = useCalendarStore();
+
+  const formattedOriginalDate = `${date?.getFullYear()}-${String(date?.getMonth()! + 1).padStart(2, '0')}-${String(date?.getDate()).padStart(2, '0')}`;
+  
+  console.log(formattedOriginalDate)
   const router = useRouter();
   const onSubmit: SubmitHandler<AddMealsFormFields> = async (data) => {
     const response = await fetch("/api/createMeal", {
@@ -42,7 +46,7 @@ const CreateMealForm = ({ session }: CreateMealFormProps) => {
         carbs: data.carbs,
         fat: data.fat,
         sugar: data.sugar,
-        date: date,
+        date: formattedOriginalDate,
       }),
       // next: { tags: ["meal"] },
       // cache: "no-cache",

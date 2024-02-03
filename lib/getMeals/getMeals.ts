@@ -1,9 +1,8 @@
-import { QueryResult, QueryResultRow, sql } from "@vercel/postgres";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { QueryResult, QueryResultRow} from "@vercel/postgres";
 
 
 
-type GetMealsResponse = {
+export type GetMealsResponse = {
   error?: string;
   success?: QueryResult<QueryResultRow>;
 };
