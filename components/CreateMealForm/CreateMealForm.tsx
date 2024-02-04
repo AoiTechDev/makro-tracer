@@ -6,7 +6,6 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Session } from "next-auth";
 import { useCalendarStore } from "@/store/store";
-import { revalidatePath } from "next/cache";
 import { useRouter } from "next/navigation";
 
 type AddMealsFormFields = {
@@ -47,8 +46,7 @@ const CreateMealForm = ({ session }: CreateMealFormProps) => {
         sugar: data.sugar,
         date: formattedOriginalDate,
       }),
-      // next: { tags: ["meal"] },
-      // cache: "no-cache",
+
     });
 
     router.refresh()

@@ -1,4 +1,3 @@
-import Dashboard from "@/components/Dashboard/Dashboard";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 

@@ -6,7 +6,6 @@ import { useCalendarStore } from "@/store/store";
 
 
 const CalendarView = () => {
-  // const [date, setDate] = useState<Date | undefined>(new Date());
 
   const {setCurrentDate, date} = useCalendarStore();
 

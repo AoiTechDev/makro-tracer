@@ -57,7 +57,6 @@ const TotalNutrition = ({ result }: TotalNutritionProps) => {
         ).padStart(2, "0")}-${String(rowDate.getDate()).padStart(2, "0")}`;
 
         if(formattedOriginalDate === formattedRowDate){
-            console.log('ta sama data')
             total = {
                 calories: total.calories + Number(row.calories),
                 protein: total.protein + Number(row.protein),

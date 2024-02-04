@@ -24,7 +24,6 @@ const CreateMealsOrIngredients = () => {
   const onSubmit = handleSubmit(async ({ prompt }) => {
     await new Promise((resolve) => setTimeout(resolve, 3000));
 
-    // const r = await createCompletion(prompt as string);
     const result = await createCompletion(prompt as string);
 
     if (result?.error) {

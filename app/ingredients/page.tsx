@@ -11,12 +11,12 @@ const page = async () => {
     redirect("/login");
   }
   return (
-    // <ContainerLayout>
+   
       <div className="bg-white w-full h-screen rounded-3xl grid lg:grid-cols-2 lg:p-12 gap-6">
       <CreateMealsOrIngredients />
       <CreatedMealsAndIngredients type='full'/>
       </div>
-    // </ContainerLayout>
+
   );
 };
 
