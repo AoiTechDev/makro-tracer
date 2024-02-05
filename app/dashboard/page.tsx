@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import React from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const page = async () => {
   const session = await getServerSession();
@@ -15,9 +16,22 @@ const page = async () => {
       <CardHeader>
         <CardTitle>Add Meal</CardTitle>
       </CardHeader>
-      <CardContent>
-        <CreateMealForm session={session} />
-      </CardContent>
+      <Tabs defaultValue="Add meal">
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="Add meal">Add meal</TabsTrigger>
+          <TabsTrigger value="Search for meal">Search for meal</TabsTrigger>
+        </TabsList>
+      <TabsContent value="Add meal">
+        <CardContent>
+          <CreateMealForm session={session} />
+        </CardContent>
+      </TabsContent >
+      <TabsContent value="Search for meal">
+        <CardContent>
+          <div>Search for meal</div>
+        </CardContent>
+      </TabsContent>
+      </Tabs>
     </Card>
   );
 };
