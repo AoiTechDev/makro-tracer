@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
     
     return NextResponse.json({  success: response });
   } catch (err) {
-    console.error("create meal error", err);
+    console.error("get meals error", err);
     return NextResponse.json({  error: err });
   }
 }
