@@ -36,7 +36,7 @@ const SearchForMeal = ({session}: SearchForMealProps) => {
   });
 
   return (
-    <div>
+    <>
       {" "}
       <form onSubmit={onSubmit} className="flex gap-4 mt-6">
         {/* <Input {...register("mealName")} name="mealName" /> */}
@@ -54,7 +54,7 @@ const SearchForMeal = ({session}: SearchForMealProps) => {
       )}
 
       {nutrition.length > 0 ? <AddMealToThatDay nutrition={nutrition} session={session}/> : null}
-    </div>
+    </>
   );
 };
 

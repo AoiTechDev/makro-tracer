@@ -28,7 +28,7 @@ const page = async () => {
         </CardContent>
       </TabsContent >
       <TabsContent value="Search for meal">
-        <CardContent >
+        <CardContent className="max-w-[350px] overflow-y-auto">
          <SearchForMeal session={session}/>
         </CardContent>
       </TabsContent>

@@ -101,7 +101,7 @@ const AddMealToThatDay = ({ nutrition, session }: AddMealToThatDayProps) => {
     <form   onSubmit={handleSubmit(onSubmit)} className="flex gap-4">
       <Label className="flex justify-center items-center font-bold">Name: </Label>
       <Input {...register('mealName')}/>
-      <Button className="w-[100px]">Add</Button>
+      <Button className="w-[100px]" disabled={isSubmitting}>{isSubmitting ? 'Adding..' : 'Add'}</Button>
     </form>
   );
 };
