@@ -16,7 +16,7 @@ const page = async () => {
       <CardHeader>
         <CardTitle>Meals for Selected Day</CardTitle>
       </CardHeader>
-      <CardContent className="max-w-[350px] overflow-y-auto">
+      <CardContent className="max-w-[350px] md:max-w-full overflow-y-auto">
    
         <Table>
           <TableHeader>

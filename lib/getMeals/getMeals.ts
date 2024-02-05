@@ -18,7 +18,7 @@ export type GetMealsResponse = {
 export async function getMeals(email: string): Promise<GetMealsResponse> {
 
   try {
-    const url = `http://localhost:3000/api/getMeals?email=${email}`;
+    const url = `${process.env.NEXTAUTH_URL}api/getMeals?email=${email}`;
     const data = await fetch(url, {
       method: "GET",
     
