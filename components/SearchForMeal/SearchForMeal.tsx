@@ -39,15 +39,15 @@ const SearchForMeal = ({session}: SearchForMealProps) => {
   return (
     <div>
       {" "}
-      <form onSubmit={onSubmit} className="flex gap-4">
+      <form onSubmit={onSubmit} className="flex gap-4 mt-6">
         {/* <Input {...register("mealName")} name="mealName" /> */}
         <Input {...register("prompt")} name="prompt" />
-        <Button variant="outline" className="w-[100px]" type="submit">
+        <Button className="w-[100px]" type="submit">
           Check
         </Button>
       </form>
       {isSubmitting ? (
-        <div className="mt-12  w-full flex flex-col gap-4 justify-center items-center">
+        <div className=" w-full flex flex-col gap-4 justify-center items-center">
           <Skeleton className="h-[125px] w-full rounded-xl bg-slate-400" />
         </div>
       ) : (

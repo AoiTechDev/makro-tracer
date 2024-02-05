@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { GetMealsResponse } from "@/lib/getMeals/getMeals";
 import { useCalendarStore } from "@/store/store";
 import { Nutrition } from "@/types/types";
@@ -98,8 +99,9 @@ const AddMealToThatDay = ({ nutrition, session }: AddMealToThatDayProps) => {
 
   return (
     <form   onSubmit={handleSubmit(onSubmit)} className="flex gap-4">
+      <Label className="flex justify-center items-center font-bold">Name: </Label>
       <Input {...register('mealName')}/>
-      <Button >Add</Button>
+      <Button className="w-[100px]">Add</Button>
     </form>
   );
 };

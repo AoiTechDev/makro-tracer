@@ -12,11 +12,12 @@ const page = async () => {
 
   
   return (
-    <Card className="flex-1  ">
+    <Card className="flex-1">
       <CardHeader>
         <CardTitle>Meals for Selected Day</CardTitle>
       </CardHeader>
-      <CardContent className="">
+      <CardContent className="max-w-[350px] overflow-y-auto">
+   
         <Table>
           <TableHeader>
             <TableRow>
@@ -30,6 +31,7 @@ const page = async () => {
           </TableHeader>
           <MealsTableBody session={session}/>
         </Table>
+       
       </CardContent>
     </Card>
   );
