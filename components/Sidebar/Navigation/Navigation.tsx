@@ -14,6 +14,7 @@ const Navigation = () => {
     setActiveItem(path);
   },[path])
 
+  console.log(activeItem)
   const sidebarList = [
     {
       icon: <BiSolidDashboard className="text-3xl" />,
@@ -42,7 +43,7 @@ const Navigation = () => {
         <Link href={item.link} key={item.title}>
           <li
             className={
-              activeItem === item.link
+              activeItem === item.link || activeItem === item.title
                 ? `${itemsStyles} bg-[#f8f8ff] text-[#8a4af2]`
                 : `${itemsStyles} bg-transparent text-[#dacafb]`
             }
