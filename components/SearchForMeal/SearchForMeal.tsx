@@ -25,7 +25,6 @@ const SearchForMeal = ({session}: SearchForMealProps) => {
   } = useForm<FormData>();
 
   const onSubmit = handleSubmit(async ({ prompt }) => {
-    await new Promise((resolve) => setTimeout(resolve, 3000));
 
     const result = await createCompletion(prompt as string);
 
