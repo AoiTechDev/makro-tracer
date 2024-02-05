@@ -38,7 +38,7 @@ const Navigation = () => {
     },
   ];
   return (
-    <ul className="flex flex-col gap-2 [&>li]:cursor-pointer w-full justify-center pl-4  ">
+    <ul className="flex flex-col gap-2 [&>li]:cursor-pointer w-full justify-center pl-4  max-[1600px]:pl-0">
       {sidebarList.map((item) => (
         <Link href={item.link} key={item.title}>
           <li
@@ -50,7 +50,7 @@ const Navigation = () => {
             onClick={() => setActiveItem(item.title)}
           >
             {item.icon}
-            <span className="font-bold">{item.title}</span>
+            <span className="font-bold max-[1600px]:hidden group-hover:max-[1600px]:block">{item.title}</span>
           </li>
         </Link>
       ))}
