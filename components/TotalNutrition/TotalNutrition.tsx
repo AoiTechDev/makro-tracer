@@ -12,11 +12,12 @@ import {
 import { useCalendarStore, useTotalNutritionStore } from "@/store/store";
 import { GetMealsResponse } from "@/lib/getMeals/getMeals";
 
+//TODO refactor this code to be reusable
 type TotalNutritionProps = {
   result: GetMealsResponse;
 };
 
-type TotalNutrition = {
+type TotalNutritionData = {
   calories: number;
   protein: number;
   carbohydrates: number;
@@ -26,7 +27,7 @@ type TotalNutrition = {
 const TotalNutrition = ({ result }: TotalNutritionProps) => {
 
 
-  const [totalNutrition, setTotalNutrition] = useState<TotalNutrition>({
+  const [totalNutrition, setTotalNutrition] = useState<TotalNutritionData>({
     calories: 0,
     protein: 0,
     carbohydrates: 0,

@@ -1,3 +1,11 @@
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { Nutrition } from "@/types/types";
 import React from "react";
 
@@ -6,9 +14,9 @@ type IngredientsListProps = {
 };
 
 const IngredientsList = ({ nutrition }: IngredientsListProps) => {
-  return (
+  return nutrition.length > 0 ? (
     <div className="flex flex-col w-full gap-4 mt-12 justify-center items-center">
-      {nutrition.map((item) => (
+      {/* {nutrition.map((item) => (
         <div
           key={item.name}
           className="w-full rounded-xl p-2 lg:p-4 lg:grid grid-cols-2 items-center bg-white flex flex-col gap-4"
@@ -31,9 +39,34 @@ const IngredientsList = ({ nutrition }: IngredientsListProps) => {
             <span>S: {item.sugar_g}g</span>
           </div>
         </div>
-      ))}
+      ))} */}
+
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Meal</TableHead>
+            <TableHead>Calories</TableHead>
+            <TableHead>Protein (g)</TableHead>
+            <TableHead>Carbohydrates (g)</TableHead>
+            <TableHead>Fat (g)</TableHead>
+            <TableHead>Sugar (g)</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {nutrition.map((item) => (
+            <TableRow key={item.name}>
+              <TableCell className="font-medium">{item.name}</TableCell>
+              <TableCell>{item.calories}</TableCell>
+              <TableCell>{item.protein_g}</TableCell>
+              <TableCell>{item.carbohydrates_total_g}</TableCell>
+              <TableCell>{item.fat_total_g}</TableCell>
+              <TableCell>{item.sugar_g}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </div>
-  );
+  ) : null;
 };
 
 export default IngredientsList;

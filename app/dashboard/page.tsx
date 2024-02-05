@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import SearchForMeal from "@/components/SearchForMeal/SearchForMeal";
 
 const page = async () => {
   const session = await getServerSession();
@@ -28,7 +29,7 @@ const page = async () => {
       </TabsContent >
       <TabsContent value="Search for meal">
         <CardContent>
-          <div>Search for meal</div>
+         <SearchForMeal session={session}/>
         </CardContent>
       </TabsContent>
       </Tabs>
