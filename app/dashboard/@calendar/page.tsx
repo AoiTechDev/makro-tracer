@@ -12,7 +12,7 @@ const Page = async () => {
   const result = await getMeals(session?.user?.email ?? "");
   
   return (
-    <Card className="flex  flex-1 border-0 gap-6">
+    <Card className="flex  flex-col md:flex-row flex-1 border-0 gap-6 mt-14 md:mt-0">
       <Card className="flex-1">
         {" "}
         <CardContent>
