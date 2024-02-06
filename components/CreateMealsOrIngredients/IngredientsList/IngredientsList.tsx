@@ -15,7 +15,6 @@ type IngredientsListProps = {
 
 const IngredientsList = ({ nutrition }: IngredientsListProps) => {
   return nutrition.length > 0 ? (
-    // <div className="flex flex-col w-full gap-4 mt-12 lg:mb-6 lg:mt-6 justify-center items-center">
      
 
       <Table  className="max-w-[330px] overflow-y-auto my-12">
