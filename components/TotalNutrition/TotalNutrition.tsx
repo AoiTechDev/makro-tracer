@@ -63,6 +63,7 @@ const TotalNutrition = ({ result }: TotalNutritionProps) => {
     }
   }, [result.success, date]);
 
+  console.log(typeof date)
   return (
     <CardContent>
       <CardHeader>
@@ -74,7 +75,8 @@ const TotalNutrition = ({ result }: TotalNutritionProps) => {
               variant={"outline"}
               className={cn("w-[240px] pl-3 text-left font-normal")}
             >
-              <span>{formattedOriginalDate}</span>
+             
+              <span> {typeof date === 'undefined' ? "Select Date"  : formattedOriginalDate}</span>
               <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
             </Button>
           </PopoverTrigger>
