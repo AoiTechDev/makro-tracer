@@ -74,7 +74,7 @@ const TotalNutrition = ({ result }: TotalNutritionProps) => {
               variant={"outline"}
               className={cn("w-[240px] pl-3 text-left font-normal")}
             >
-              <span>Pick a date</span>
+              <span>{formattedOriginalDate}</span>
               <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
             </Button>
           </PopoverTrigger>
