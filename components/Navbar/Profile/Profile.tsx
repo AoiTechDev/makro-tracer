@@ -21,6 +21,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Logout from "../Logout/Logout";
+import Link from "next/link";
 
 type ProfileProps = {
   session: Session;
@@ -42,14 +43,23 @@ const Profile = ({ session }: ProfileProps) => {
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup className="p-2 flex flex-col gap-2">
-          <DropdownMenuItem className="cursor-pointer p-2">Day Overview </DropdownMenuItem>
-          <DropdownMenuItem className="cursor-pointer p-2">Ingredients </DropdownMenuItem>
-          <DropdownMenuItem className="cursor-pointer p-2">Meals</DropdownMenuItem>
+          <Link href="/dashboard">
+            <DropdownMenuItem className="cursor-pointer p-2">
+              Dashboard
+            </DropdownMenuItem>
+          </Link>
+
+          <DropdownMenuItem className="cursor-pointer p-2">
+            Settings{" "}
+          </DropdownMenuItem>
+          {/* <DropdownMenuItem className="cursor-pointer p-2">Meals</DropdownMenuItem> */}
         </DropdownMenuGroup>
 
         <DropdownMenuSeparator />
 
-        <DropdownMenuItem className="p-2 border-none" ><Logout/></DropdownMenuItem>
+        <DropdownMenuItem className="p-2 border-none">
+          <Logout />
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

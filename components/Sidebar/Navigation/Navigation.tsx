@@ -20,16 +20,16 @@ const Navigation = () => {
       title: "Dashboard",
       link: "/dashboard",
     },
-    {
-      icon: <FaBowlFood className="text-3xl" />,
-      title: "Ingredients",
-      link: "/ingredients",
-    },
-    {
-      icon: <FaBowlFood className="text-3xl" />,
-      title: "Meals",
-      link: "/meals",
-    },
+    // {
+    //   icon: <FaBowlFood className="text-3xl" />,
+    //   title: "Ingredients",
+    //   link: "/ingredients",
+    // },
+    // {
+    //   icon: <FaBowlFood className="text-3xl" />,
+    //   title: "Meals",
+    //   link: "/meals",
+    // },
     {
       icon: <RiSettings4Fill className="text-3xl" />,
       title: "Settings",

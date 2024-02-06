@@ -19,15 +19,15 @@ const page = async () => {
       <CardHeader>
         <CardTitle>Meals for Selected Day</CardTitle>
       </CardHeader>
-      <CardContent className="max-w-[350px] md:max-w-full overflow-y-auto">
+      <CardContent className="max-w-[380px] md:max-w-full overflow-y-auto">
         <Table>
           <TableHeader>
             <TableRow>
               <TableHead>Meal</TableHead>
-              <TableHead>Protein (g)</TableHead>
-              <TableHead>Carbohydrates (g)</TableHead>
-              <TableHead>Fat (g)</TableHead>
               <TableHead>Calories</TableHead>
+              <TableHead>Protein (g)</TableHead>
+              <TableHead>Carbs (g)</TableHead>
+              <TableHead>Fat (g)</TableHead>
               <TableHead>Sugar (g)</TableHead>
             </TableRow>
           </TableHeader>
