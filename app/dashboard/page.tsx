@@ -1,5 +1,5 @@
 import CreateMealForm from "@/components/CreateMealForm/CreateMealForm";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent} from "@/components/ui/card";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import React from "react";
@@ -14,9 +14,7 @@ const page = async () => {
 
   return (
     <Card className="flex-1 p-4">
-      {/* <CardHeader>
-        <CardTitle>Add Meal</CardTitle>
-      </CardHeader> */}
+
       <Tabs defaultValue="Add meal">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="Add meal">Add meal</TabsTrigger>

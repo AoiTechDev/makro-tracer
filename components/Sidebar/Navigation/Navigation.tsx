@@ -4,17 +4,16 @@ import React, { useEffect, useState } from "react";
 import { BiSolidDashboard } from "react-icons/bi";
 import { FaBowlFood } from "react-icons/fa6";
 import { RiSettings4Fill } from "react-icons/ri";
-import { usePathname } from 'next/navigation'
+import { usePathname } from "next/navigation";
 const Navigation = () => {
   const itemsStyles =
     "p-4 rounded-l-xl flex justify-start items-center gap-2 duration-300";
-    const path = usePathname();
+  const path = usePathname();
   const [activeItem, setActiveItem] = useState(path);
   useEffect(() => {
     setActiveItem(path);
-  },[path])
+  }, [path]);
 
-  console.log(activeItem)
   const sidebarList = [
     {
       icon: <BiSolidDashboard className="text-3xl" />,
@@ -50,7 +49,9 @@ const Navigation = () => {
             onClick={() => setActiveItem(item.title)}
           >
             {item.icon}
-            <span className="font-bold max-[1600px]:hidden group-hover:max-[1600px]:block">{item.title}</span>
+            <span className="font-bold max-[1600px]:hidden group-hover:max-[1600px]:block">
+              {item.title}
+            </span>
           </li>
         </Link>
       ))}

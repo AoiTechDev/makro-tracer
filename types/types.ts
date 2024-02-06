@@ -14,3 +14,20 @@ export type Nutrition = {
   serving_size_g: number;
 };
 
+export type AddMealsFormFields = {
+  mealName: string;
+  email: string;
+  calories: number;
+  protein: number;
+  carbs: number;
+  fat: number;
+  sugar: number;
+};
+
+export type TotalNutritionData = {
+  calories: number;
+  protein: number;
+  carbohydrates: number;
+  fat: number;
+  sugar: number;
+};

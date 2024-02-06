@@ -11,19 +11,15 @@ import {
 } from "@/components/ui/table";
 import { useCalendarStore, useTotalNutritionStore } from "@/store/store";
 import { GetMealsResponse } from "@/lib/getMeals/getMeals";
+import { TotalNutritionData } from "@/types/types";
+import { formattedDate } from "@/lib/utils";
 
 //TODO refactor this code to be reusable
 type TotalNutritionProps = {
   result: GetMealsResponse;
 };
 
-type TotalNutritionData = {
-  calories: number;
-  protein: number;
-  carbohydrates: number;
-  fat: number;
-  sugar: number;
-};
+
 const TotalNutrition = ({ result }: TotalNutritionProps) => {
 
 
@@ -36,10 +32,7 @@ const TotalNutrition = ({ result }: TotalNutritionProps) => {
   });
 
   const { date } = useCalendarStore();
-  const formattedOriginalDate = `${date?.getFullYear()}-${String(
-    date?.getMonth()! + 1
-  ).padStart(2, "0")}-${String(date?.getDate()).padStart(2, "0")}`;
-
+  const formattedOriginalDate = formattedDate(date)
 
   useEffect(() => {
     if (result.success) {
@@ -53,9 +46,7 @@ const TotalNutrition = ({ result }: TotalNutritionProps) => {
   
       result.success.rows.forEach((row) => {
         const rowDate = new Date(row.date);
-        const formattedRowDate = `${rowDate.getFullYear()}-${String(
-          rowDate.getMonth() + 1
-        ).padStart(2, "0")}-${String(rowDate.getDate()).padStart(2, "0")}`;
+        const formattedRowDate = formattedDate(rowDate)
 
         if(formattedOriginalDate === formattedRowDate){
             total = {
