@@ -55,9 +55,9 @@ const LoginForm = () => {
             <span className="text-red-500">{errors.password.message}</span>
           )}
         </div>
-      </div>
       {signInError ? <span className="text-red-500">{signInError}</span> : null}
-      <Button disabled={isSubmitting}>Login</Button>
+      </div>
+      <Button disabled={isSubmitting}>{isSubmitting ? "Logging in..." : 'Login'}</Button>
     </form>
   );
 };

@@ -18,29 +18,43 @@ const RegisterForm = () => {
     resolver: zodResolver(schema),
   });
   const router = useRouter();
+  const [error, setError] = React.useState<string | null>(null);
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    const response = await fetch("/api/auth/register", {
-      method: "POST",
-      body: JSON.stringify({
-        email: data.email,
-        password: data.password,
-        confirmPassword: data.confirmPassword,
-      }),
-    });
-
-
-    if (response.status === 200) {
-      const response = await signIn("credentials", {
-        email: data.email,
-        password: data.password,
-        redirect: false,
+    try {
+      const response = await fetch("/api/auth/register", {
+        method: "POST",
+        body: JSON.stringify({
+          email: data.email,
+          password: data.password,
+          confirmPassword: data.confirmPassword,
+        }),
       });
-      if (!response?.error) {
-        router.push("/");
-        router.refresh();
+
+      if (response.status === 200) {
+        const response = await signIn("credentials", {
+          email: data.email,
+          password: data.password,
+          redirect: false,
+        });
+
+        if (!response?.error) {
+          router.push("/");
+          router.refresh();
+        }
+      } else if (response.status === 400) {
+        const errorData = await response.json();
+        console.error("Bad request:", errorData.error);
+      } else if (response.status === 401) {
+        const errorData = await response.json();
+        console.log(errorData);
+        setError(errorData.error);
       }
+    } catch (error) {
+      // Handle network errors or other exceptions
+      console.error(error);
     }
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
       <div className="flex flex-col gap-4">
@@ -68,6 +82,7 @@ const RegisterForm = () => {
               {errors.confirmPassword.message}
             </span>
           )}
+          {error && <span className="text-red-500">{error}</span>}
         </div>
       </div>
 
