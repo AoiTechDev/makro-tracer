@@ -19,7 +19,7 @@ const DashboardLayout = ({
       </div>
       <div className="lg:flex-1">{table}</div> */}
       <div className="w-3/4 flex flex-col gap-4 ">
-        <div className="flex gap-4">
+        <div className="flex gap-4 min-h-[400px]">
           {children}
           <Card className="flex-1 bg-red-200 flex justify-center items-center">Existing meals(comming soon)</Card>
         </div>
