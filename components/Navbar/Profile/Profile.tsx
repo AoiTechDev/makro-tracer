@@ -39,8 +39,18 @@ const Profile = ({ session }: ProfileProps) => {
           <AvatarFallback>{avatarFallback}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56">
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+
+      <DropdownMenuContent className="w-64">
+        {/* <DropdownMenuLabel>My Account</DropdownMenuLabel> */}
+        <DropdownMenuGroup className="p-4 flex items-center justify-start gap-2">
+          <Avatar>
+            <AvatarFallback>{avatarFallback}</AvatarFallback>
+          </Avatar>
+          <DropdownMenuLabel>
+            {session?.user?.email}
+          </DropdownMenuLabel>
+        </DropdownMenuGroup>
+
         <DropdownMenuSeparator />
         <DropdownMenuGroup className="p-2 flex flex-col gap-2">
           <Link href="/dashboard">
@@ -49,9 +59,9 @@ const Profile = ({ session }: ProfileProps) => {
             </DropdownMenuItem>
           </Link>
 
-          <DropdownMenuItem className="cursor-pointer p-2">
+          {/* <DropdownMenuItem className="cursor-pointer p-2">
             Settings{" "}
-          </DropdownMenuItem>
+          </DropdownMenuItem> */}
           {/* <DropdownMenuItem className="cursor-pointer p-2">Meals</DropdownMenuItem> */}
         </DropdownMenuGroup>
 
