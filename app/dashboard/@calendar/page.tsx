@@ -12,11 +12,11 @@ const Page = async () => {
   const result = await getMeals(session?.user?.email ?? "");
 
   return (
-    <div className="flex justify-center w-full flex-col  gap-6 mt-6 md:mt-0">
-      <Card className=" max-[1400px]:hidden">
+    <div className="flex flex-col  gap-6 mt-6 md:mt-0 w-full lg:w-1/4 order-1 lg:order-2">
+      <Card className=" w-full ">
         {" "}
-        <CardContent>
-          <CardHeader>
+        <CardContent className="max-[1200px]:hidden">
+          <CardHeader >
             <CardTitle>Select Date</CardTitle>
           </CardHeader>
 

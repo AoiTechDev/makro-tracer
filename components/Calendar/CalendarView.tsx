@@ -16,7 +16,7 @@ const CalendarView = () => {
         mode="single"
         selected={date}
         onSelect={(date: Date | undefined) => setCurrentDate(date)}
-        className="rounded-md "
+        className="rounded-md  "
       />
     </div>
   );

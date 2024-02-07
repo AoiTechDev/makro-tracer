@@ -65,11 +65,13 @@ const TotalNutrition = ({ result }: TotalNutritionProps) => {
 
   console.log(typeof date)
   return (
-    <CardContent>
+    <CardContent className="flex flex-col items-center justify-start gap-4">
       <CardHeader>
         <CardTitle>Total Nutrition</CardTitle>
 
-        <Popover >
+       
+      </CardHeader>
+      <Popover >
           <PopoverTrigger asChild className="max-[1400px]:flex hidden">
             <Button
               variant={"outline"}
@@ -90,8 +92,6 @@ const TotalNutrition = ({ result }: TotalNutritionProps) => {
             />
           </PopoverContent>
         </Popover>
-      </CardHeader>
-      
         <Table>
           <TableHeader>
             <TableRow>
