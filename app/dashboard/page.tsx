@@ -6,6 +6,9 @@ import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import SearchForMeal from "@/components/SearchForMeal/SearchForMeal";
 
+
+
+
 const page = async () => {
   const session = await getServerSession();
   if (!session) {
@@ -26,7 +29,7 @@ const page = async () => {
         </CardContent>
       </TabsContent >
       <TabsContent value="Search for meal">
-        <CardContent className="max-w-[350px] overflow-y-auto">
+        <CardContent className="">
          <SearchForMeal session={session}/>
         </CardContent>
       </TabsContent>

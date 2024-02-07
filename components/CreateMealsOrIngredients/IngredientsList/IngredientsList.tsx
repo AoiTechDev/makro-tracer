@@ -17,10 +17,11 @@ const IngredientsList = ({ nutrition }: IngredientsListProps) => {
   return nutrition.length > 0 ? (
      
 
-      <Table  className="max-w-[330px] overflow-y-auto my-12">
+      <Table  className=" my-12">
         <TableHeader>
-          <TableRow className="max-w-[350px] md:max-w-full ">
+          <TableRow className="">
             <TableHead>Meal</TableHead>
+            <TableHead>Serving Size (g) </TableHead>
             <TableHead>Calories</TableHead>
             <TableHead>Protein (g)</TableHead>
             <TableHead>Carbohydrates (g)</TableHead>
@@ -28,10 +29,11 @@ const IngredientsList = ({ nutrition }: IngredientsListProps) => {
             <TableHead>Sugar (g)</TableHead>
           </TableRow>
         </TableHeader>
-        <TableBody className="max-w-[350px] md:max-w-full ">
+        <TableBody className="">
           {nutrition.map((item) => (
             <TableRow key={item.name}>
               <TableCell className="font-medium">{item.name}</TableCell>
+              <TableCell>{item.serving_size_g}</TableCell>
               <TableCell>{item.calories}</TableCell>
               <TableCell>{item.protein_g}</TableCell>
               <TableCell>{item.carbohydrates_total_g}</TableCell>
