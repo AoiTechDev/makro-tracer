@@ -34,6 +34,7 @@ I became interested in understanding my daily nutritional intake when I returned
 - Zod for input validation
 - React-Hook-Form to control form and inputs
 - Shadcn for fast and decent UI
+- Zustand for state management
 
 <h2 align="left">Implemented Features</h2>
 
