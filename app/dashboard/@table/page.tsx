@@ -15,7 +15,7 @@ const page = async () => {
   const session = await getServerSession();
 
   return (
-    <Card className="flex-1">
+    <Card className="w-full">
       <CardHeader>
         <CardTitle>Meals for Selected Day</CardTitle>
       </CardHeader>

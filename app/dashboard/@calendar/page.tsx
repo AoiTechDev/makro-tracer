@@ -12,8 +12,8 @@ const Page = async () => {
   const result = await getMeals(session?.user?.email ?? "");
 
   return (
-    <div className="flex  flex-col md:flex-row flex-1 gap-6 mt-6 md:mt-0">
-      <Card className="flex-1 max-[1400px]:hidden">
+    <div className="flex justify-center w-full flex-col  gap-6 mt-6 md:mt-0">
+      <Card className=" max-[1400px]:hidden">
         {" "}
         <CardContent>
           <CardHeader>
@@ -22,10 +22,11 @@ const Page = async () => {
 
           <CalendarView />
         </CardContent>
+        <TotalNutrition result={result} />    
       </Card>
-      <Card className="flex-1">
-        <TotalNutrition result={result} />
-      </Card>
+      {/* <Card className="flex-1">
+   
+      </Card> */}
     </div>
   );
 };

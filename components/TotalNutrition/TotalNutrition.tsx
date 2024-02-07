@@ -91,7 +91,7 @@ const TotalNutrition = ({ result }: TotalNutritionProps) => {
           </PopoverContent>
         </Popover>
       </CardHeader>
-      <CardContent>
+      
         <Table>
           <TableHeader>
             <TableRow>
@@ -132,7 +132,7 @@ const TotalNutrition = ({ result }: TotalNutritionProps) => {
             </TableRow>
           </TableBody>
         </Table>
-      </CardContent>
+      
     </CardContent>
   );
 };

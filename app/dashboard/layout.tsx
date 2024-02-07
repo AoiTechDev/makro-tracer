@@ -1,4 +1,5 @@
 import MealsTable from "@/components/MealsTable/MealsTable";
+import { Card } from "@/components/ui/card";
 import React from "react";
 
 const DashboardLayout = ({
@@ -11,12 +12,21 @@ const DashboardLayout = ({
   table: React.ReactNode;
 }>) => {
   return (
-    <div className="flex flex-1 mt-12 flex-col gap-4 p-4 md:gap-8 md:p-10 flex-wrap">
-      <div className="flex lg:flex-1 gap-6 flex-col lg:flex-row">
+    <div className="flex flex-row gap-4 justify-around w-full p-2 md:p-4">
+      {/* <div className="flex lg:flex-1 gap-6 flex-col lg:flex-row">
         {calendar}
         {children}
       </div>
-      <div className="lg:flex-1">{table}</div>
+      <div className="lg:flex-1">{table}</div> */}
+      <div className="w-3/4 flex flex-col gap-4 ">
+        <div className="flex gap-4">
+          {children}
+          <Card className="flex-1 bg-red-200 flex justify-center items-center">Existing meals(comming soon)</Card>
+        </div>
+        {table}
+      </div>
+
+      <div className="w-1/4">{calendar}</div>
     </div>
   );
 };

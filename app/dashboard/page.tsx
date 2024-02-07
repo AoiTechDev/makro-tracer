@@ -1,13 +1,10 @@
 import CreateMealForm from "@/components/CreateMealForm/CreateMealForm";
-import { Card, CardContent} from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import SearchForMeal from "@/components/SearchForMeal/SearchForMeal";
-
-
-
 
 const page = async () => {
   const session = await getServerSession();
@@ -16,8 +13,7 @@ const page = async () => {
   }
 
   return (
-    <Card className="flex-1 p-4">
-
+    <Card className=" flex-1 p-4 ">
       <Tabs defaultValue="Add meal">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="Add meal">Add meal</TabsTrigger>
@@ -34,6 +30,7 @@ const page = async () => {
         </CardContent>
       </TabsContent>
       </Tabs>
+ 
     </Card>
   );
 };
