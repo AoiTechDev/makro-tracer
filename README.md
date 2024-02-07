@@ -42,6 +42,7 @@ I became interested in understanding my daily nutritional intake when I returned
 - [x] Login/Logout Functionality
 - [x] Page Protection
 - [x] Database Management
+- [x] Hashin passwords before put them into db 
 - [x] Session Management
 - [x] Input Validation
 - [x] Create your own meal and add to db
