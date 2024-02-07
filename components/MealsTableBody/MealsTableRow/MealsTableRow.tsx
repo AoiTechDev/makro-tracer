@@ -14,7 +14,7 @@ const MealsTableRow = ({ result }: MealsTableRowProps) => {
 
   const formattedOriginalDate = formattedDate(date)
   {
-    return result.success
+    return result?.success
       ? result.success.rows.map((row) => {
           const rowDate = new Date(row.date);
           const formattedRowDate = formattedDate(rowDate)

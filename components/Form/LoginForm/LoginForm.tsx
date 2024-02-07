@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 
 import { FormFields } from "@/types/types";
 import { signIn } from "next-auth/react";
@@ -14,14 +14,19 @@ import { schema } from "@/schema/input";
 
 const LoginForm = () => {
   const router = useRouter();
-
+  const [signInError, setSignInError] = useState<string | null>(null);
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     const response = await signIn("credentials", {
       email: data.email,
       password: data.password,
       redirect: false,
     });
-    if (!response?.error) {
+
+    if (response?.error) {
+      if (response.status === 401) {
+        setSignInError("Invalid credentials. Please try again." );
+      }
+    } else {
       router.push("/");
       router.refresh();
     }
@@ -34,6 +39,7 @@ const LoginForm = () => {
   } = useForm<FormFields>({
     resolver: zodResolver(schema),
   });
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
       <div className="flex flex-col gap-4">
@@ -50,7 +56,7 @@ const LoginForm = () => {
           )}
         </div>
       </div>
-
+      {signInError ? <span className="text-red-500">{signInError}</span> : null}
       <Button disabled={isSubmitting}>Login</Button>
     </form>
   );

@@ -21,12 +21,12 @@ const handler = NextAuth({
         `;
         const user = response.rows[0];
 
+        
         const passwordCorrect = await compare(
           credentials?.password || "",
           user?.password
         );
 
-        
         if (passwordCorrect) {
           return {
             id: user.id,
