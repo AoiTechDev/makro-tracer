@@ -1,19 +1,16 @@
-# Macro Tracker Project Overview
-(Under development, not deployed yet)
+# Macro Tracker
+(Under development)
 
-## Project Functionality
-Macro Tracker is a comprehensive application designed to empower users in tracking their daily meals and efficiently counting nutritional intake. The app offers a user-friendly interface that allows individuals to add their ingredients, complete with nutritional details. Users can seamlessly create meals by combining existing ingredients or incorporating new ones into their personalized database.
+https://makro-tracker.vercel.app/
 
-## API Connection
-The app is intelligently connected to an external API containing vital nutritional information. This API integration ensures the accuracy and reliability of the nutritional data associated with each ingredient. Users can simply input the amount of a specific food item, and the app fetches precise nutrition information, enhancing the overall tracking experience.
 
-## User Account Functionality
-To provide a tailored experience, Macro Tracker incorporates a robust login/register functionality. This feature allows users to create accounts, log in, and uniquely track their daily meals. By having individual user accounts, Macro Tracker ensures that users can personalize their meal tracking journey, fostering a sense of ownership and consistency in their nutritional goals.
+## Project Overview
+With this application, you can effortlessly monitor the nutritional composition of your meals on a daily basis. Moreover, it seamlessly integrates with an external API to provide you with detailed nutritional information for specific foods. Additionally, you have the option to customize your own ingredients and meals, making them reusable for future reference and sparing you the need to recreate and input meal information on a daily basis.
 
-## Database Connection
-Macro Tracker's seamless operation is supported by its connection to the Vercel PostgresSQL database. This integration serves as the backbone for storing all user-related information, including ingredient details, created meals, and user-specific nutrition logs. The Vercel PostgresSQL database guarantees data persistence, security, and efficient retrieval, contributing to a reliable and dynamic user experience.
+## Motivation - Why am I creating this app?
+I became interested in understanding my daily nutritional intake when I returned to the gym. I wanted to monitor my meals to gauge the amount of protein and calories I was consuming. Additionally, some of my family members and friends expressed interest in using an app like this, but they couldn't find a free and satisfactory option. This motivated me to develop my own app that would cater to our specific requirements.
 
-Macro Tracker, with its intuitive design, API integration, user account functionality, and database connectivity, stands as a versatile tool for individuals seeking a precise and personalized approach to tracking their daily nutritional intake.
+
 
 <h2 align="left">Tech stack</h2>
 
@@ -26,18 +23,27 @@ Macro Tracker, with its intuitive design, API integration, user account function
   <img width="12" />
   <img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" height="40" alt="tailwindcss logo"  />
   <img width="12" />
-  <img src="https://skillicons.dev/icons?i=html" height="40" alt="html5 logo"  />
-  <img width="12" />
   <img src="https://skillicons.dev/icons?i=css" height="40" alt="css3 logo"  />
-   <img width="12" />
- 
+  <img width="12" /> 
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" height="40" alt="postgresql logo"  />
+
 </div>
+
+### Other libraries
+- Next-auth for Authentication and Session
+- Zod for input validation
+- React-Hook-Form to control form and inputs
+- Shadcn for fast and decent UI
 
 <h2 align="left">Implemented Features</h2>
 
 - [x] Registration
-- [x] Database Management
-- [x] Login/Logout Functionality:
+- [x] Login/Logout Functionality
 - [x] Page Protection
+- [x] Database Management
 - [x] Session Management
 - [x] Input Validation
+- [x] Create your own meal and add to db
+- [x] Display all meals eatten on specific day
+- [x] Count total Nutrition eatten on specific day
+- [x] Get Nutrition details of given food and add it to db for specific day   
