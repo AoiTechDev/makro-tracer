@@ -14,9 +14,9 @@ type FormData = {
   prompt: string;
 };
 type SearchForMealProps = {
-    session: Session;
+  session: Session;
 };
-const SearchForMeal = ({session}: SearchForMealProps) => {
+const SearchForMeal = ({ session }: SearchForMealProps) => {
   const [nutrition, setNutrition] = useState<Nutrition[]>([]);
   const {
     handleSubmit,
@@ -27,7 +27,7 @@ const SearchForMeal = ({session}: SearchForMealProps) => {
   const onSubmit = handleSubmit(async ({ prompt }) => {
 
     const result = await createCompletion(prompt as string);
-
+    setNutrition([])
     if (result?.error) {
       console.log(result.error);
     } else if (result?.success) {
@@ -35,6 +35,7 @@ const SearchForMeal = ({session}: SearchForMealProps) => {
     }
   });
 
+  console.log(nutrition)
   return (
     <>
       {" "}
@@ -46,14 +47,17 @@ const SearchForMeal = ({session}: SearchForMealProps) => {
         </Button>
       </form>
       {isSubmitting ? (
-        <div className=" w-full flex flex-col gap-4 justify-center items-center">
-          <Skeleton className="h-[125px] w-full rounded-xl bg-slate-400" />
+        <div className=" w-full my-12 flex flex-col gap-4 justify-center items-center">
+          <Skeleton className="h-[40px] w-full rounded-xl bg-slate-200" />
+          <Skeleton className="h-[40px] w-full rounded-xl bg-slate-200" />
         </div>
       ) : (
-        <IngredientsList nutrition={nutrition} />
+        <>
+          <IngredientsList nutrition={nutrition} />
+        </>
       )}
 
-      {nutrition.length > 0 ? <AddMealToThatDay nutrition={nutrition} session={session}/> : null}
+      {(nutrition.length > 0 && !isSubmitting) ? <AddMealToThatDay nutrition={nutrition} session={session} /> : null}
     </>
   );
 };
