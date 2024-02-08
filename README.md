@@ -1,7 +1,7 @@
-# Macro Tracker
+# MealFulness
 (Under development)
 
-https://makro-tracker.vercel.app/
+https://mealfulness.vercel.app/
 
 
 ## Project Overview
