@@ -13,18 +13,14 @@ export default async function Home() {
   // }
   return (
     <div className="h-screen m-auto w-full  ">
-      <div className="grid grid-cols-2 px-24 max-[1300px]:grid-cols-1 items-center">
-        <div className="relative w-full flex justify-center items-start gap-8 flex-col">
-          {/* <Image
-          alt="landpage img"
-          fill
-          src={spiral}
-        /> */}
-          <h1 className="text-7xl">
+      <div className="grid grid-cols-2 max-[900px]:grid-cols-1 items-center lg:pl-12 max-[900px]:mt-24 lg:mt-0">
+        <div className="relative w-full flex justify-center items-start max-[900px]:items-center  gap-8 flex-col p-4  max-[900px]:text-center">
+       
+          <h1 className=" [font-size:_clamp(2rem,5vw,5rem)] text-balance ">
             <span className="text-[#4176F4]">Nourish</span> Your Body, Delight
             Your <span className="text-[#4176F4]">Palate</span>
           </h1>
-          <p className="text-xl text-balance">
+          <p className="text text-balance">
             Empower Yourself with Comprehensive Meal Tracking: Easily Create,
             Add and Search for Meals to Stay On Track.
           </p>
@@ -34,20 +30,19 @@ export default async function Home() {
             </Button>
           </Link>
         </div>
-        <div className=" aspect-square relative w-full max-[1300px]:hidden  ">
+        <div className=" aspect-square relative w-full   ">
           <Image alt="landpage img" fill src={landpageImg} className="" />
         </div>
       </div>
 
-      <div className="h-screen  mt-32  bg-slate-300 box-border">
-        {/* <Image src={wave} alt=''  /> */}
+      {/* <div className="h-screen  mt-32  bg-slate-300 box-border">
         <h1>What Mealfulness will give you?</h1>
         <div className="grid grid-cols-3">
           <div></div>
           <div></div>
           <div></div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
