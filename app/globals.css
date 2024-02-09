@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,11 +10,13 @@
         --muted-foreground: 215.4 16.3% 46.9%;
     }
 }
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Poppins', sans-serif;
     /* border: 1px solid red */
 }
 body {

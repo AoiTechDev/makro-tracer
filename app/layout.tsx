@@ -19,7 +19,7 @@ export default async function RootLayout({
       <body>
         <Navbar />
         {/* <Sidebar /> */}
-        <main className="pt-16">{children}</main>
+        <main className="pt-16 m-auto w-full">{children}</main>
       </body>
     </html>
   );

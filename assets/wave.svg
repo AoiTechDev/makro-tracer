@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2017"
+    height="919" preserveAspectRatio="xMidYMid" viewBox="0 0 2017 919"
+    style="z-index:1;margin-right:-2px;display:block;background-color:rgb(241, 242, 243);animation-play-state:paused">
+    <g transform="translate(1008.5,459.5) scale(1,1) translate(-1008.5,-459.5)"
+        style="transform:matrix(1, 0, 0, 1, 0, 0);animation-play-state:paused">
+        <linearGradient id="lg-0.5284121951708749" x1="0" x2="1" y1="0" y2="0"
+            style="animation-play-state:paused">
+            <stop stop-color="#f87f54" offset="0" style="animation-play-state:paused"></stop>
+
+
+            <stop stop-color="#4f52ff" offset="1" style="animation-play-state:paused"></stop>
+        </linearGradient>
+        <path
+            d="M 0 0 L 0 894.221 Q 201.7 764.834 403.4 728.053 T 806.8 719.998 T 1210.2 642.296 T 1613.6 433.86 T 2017 507.671 L 2017 0 Z"
+            fill="url(#lg-0.5284121951708749)" opacity="0.4"
+            style="opacity:0.4;animation-play-state:paused"></path>
+        <path
+            d="M 0 0 L 0 864.041 Q 201.7 824.929 403.4 809.288 T 806.8 680.309 T 1210.2 593.288 T 1613.6 504.448 T 2017 476.281 L 2017 0 Z"
+            fill="url(#lg-0.5284121951708749)" opacity="0.4"
+            style="opacity:0.4;animation-play-state:paused"></path>
+        <path
+            d="M 0 0 L 0 801.927 Q 201.7 733.478 403.4 697.709 T 806.8 634.753 T 1210.2 550.921 T 1613.6 524.253 T 2017 365.904 L 2017 0 Z"
+            fill="url(#lg-0.5284121951708749)" opacity="0.4"
+            style="opacity:0.4;animation-play-state:paused"></path>
+        <path
+            d="M 0 0 L 0 770.968 Q 201.7 818.515 403.4 788.687 T 806.8 732.763 T 1210.2 544.332 T 1613.6 492.142 T 2017 433.7 L 2017 0 Z"
+            fill="url(#lg-0.5284121951708749)" opacity="0.4"
+            style="opacity:0.4;animation-play-state:paused"></path>
+        <path
+            d="M 0 0 L 0 838.102 Q 201.7 801.551 403.4 772.79 T 806.8 672.072 T 1210.2 511.399 T 1613.6 493.512 T 2017 435.805 L 2017 0 Z"
+            fill="url(#lg-0.5284121951708749)" opacity="0.4"
+            style="opacity:0.4;animation-play-state:paused"></path>
+    </g>
+</svg>
