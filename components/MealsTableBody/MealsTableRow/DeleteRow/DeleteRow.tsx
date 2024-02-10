@@ -1,13 +1,13 @@
 import { Session } from "next-auth";
 import { useRouter } from "next/navigation";
 import React from "react";
-
+import { MdDelete } from "react-icons/md";
 type DeleteRowProps = {
   mealid: number;
   session: Session | null;
 };
 const DeleteRow = ({ mealid, session }: DeleteRowProps) => {
-    const router = useRouter();
+  const router = useRouter();
   const deleteMeal = async () => {
     try {
       const response = await fetch("/api/deleteMeal", {
@@ -23,13 +23,13 @@ const DeleteRow = ({ mealid, session }: DeleteRowProps) => {
       console.error("delete meal error", err);
     }
 
-    router.refresh()
+    router.refresh();
   };
   return (
-    <div
-      className="absolute w-5 h-5 bg-red-400 right-2 top-[50%] -translate-y-[50%] group-hover:block hidden"
+    <MdDelete
+      className="absolute text-2xl text-red-600 right-0 md:right-2 top-[50%] -translate-y-[50%] group-hover:block hidden cursor-pointer "
       onClick={deleteMeal}
-    ></div>
+    />
   );
 };
 
