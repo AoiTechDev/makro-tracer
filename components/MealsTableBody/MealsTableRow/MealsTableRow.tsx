@@ -3,13 +3,15 @@ import { TableCell, TableRow } from "@/components/ui/table";
 import { GetMealsResponse } from "@/lib/getMeals/getMeals";
 import { formattedDate } from "@/lib/utils";
 import { useCalendarStore, useTotalNutritionStore } from "@/store/store";
+import { Session } from "next-auth";
 import React, { useEffect } from "react";
 
 type MealsTableRowProps = {
   result: GetMealsResponse;
+  session: Session | null;
 };
 
-const MealsTableRow = ({ result }: MealsTableRowProps) => {
+const MealsTableRow = ({ result,session }: MealsTableRowProps) => {
   const { date } = useCalendarStore();
 
   const formattedOriginalDate = formattedDate(date)

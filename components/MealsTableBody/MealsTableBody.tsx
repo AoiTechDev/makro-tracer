@@ -16,7 +16,7 @@ const MealsTableBody = async ({ session }: MealsTableBodyProps) => {
     
   return (
     <TableBody>
-      <MealsTableRow result={result} />
+      <MealsTableRow result={result} session={session}/>
     </TableBody>
   );
 };
