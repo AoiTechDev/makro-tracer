@@ -5,13 +5,14 @@ import { formattedDate } from "@/lib/utils";
 import { useCalendarStore, useTotalNutritionStore } from "@/store/store";
 import { Session } from "next-auth";
 import React, { useEffect } from "react";
+import DeleteRow from "./DeleteRow/DeleteRow";
 
 type MealsTableRowProps = {
   result: GetMealsResponse;
   session: Session | null;
 };
 
-const MealsTableRow = ({ result,session }: MealsTableRowProps) => {
+const MealsTableRow = ({ result, session }: MealsTableRowProps) => {
   const { date } = useCalendarStore();
 
   const formattedOriginalDate = formattedDate(date)
@@ -20,15 +21,17 @@ const MealsTableRow = ({ result,session }: MealsTableRowProps) => {
       ? result.success.rows.map((row) => {
           const rowDate = new Date(row.date);
           const formattedRowDate = formattedDate(rowDate)
+         
           return (
             formattedOriginalDate === formattedRowDate && (
-              <TableRow className=" ">
+              <TableRow  key={row.mealid} className="relative group ">
                 <TableCell className="font-medium">{row.name}</TableCell>
                 <TableCell>{row.calories}</TableCell>
                 <TableCell>{row.protein}</TableCell>
                 <TableCell>{row.carbohydrates}</TableCell>
                 <TableCell>{row.fat}</TableCell>
                 <TableCell>{row.sugar}</TableCell>
+                <DeleteRow mealid={row.mealid} session={session}/>
               </TableRow>
             )
           );

@@ -9,6 +9,7 @@ type Meal = {
   sugar: number;
   calories: number;
   date: Date;
+  mealid: number
 }
 export type GetMealsResponse = {
   error?: string;
