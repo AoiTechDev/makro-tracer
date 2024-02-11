@@ -17,6 +17,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Button } from "../ui/button";
 import { CalendarIcon } from "lucide-react";
 import { Calendar } from "../ui/calendar";
+
+
 //TODO refactor this code to be reusable
 type TotalNutritionProps = {
   result: GetMealsResponse;
@@ -63,7 +65,6 @@ const TotalNutrition = ({ result }: TotalNutritionProps) => {
     }
   }, [result.success, date]);
 
-  console.log(typeof date)
   return (
     <CardContent className="flex flex-col items-center justify-start gap-4">
       <CardHeader>

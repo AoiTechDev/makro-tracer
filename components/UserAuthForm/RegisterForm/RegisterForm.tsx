@@ -4,7 +4,7 @@ import { FormFields } from "@/types/types";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { schema } from "@/schema/input";
-import CustomInput from "@/components/CustomInput/CustomInput";
+import CustomInput from "@/components/reusable/CustomInput";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";

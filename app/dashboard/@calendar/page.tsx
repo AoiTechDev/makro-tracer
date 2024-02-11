@@ -1,4 +1,4 @@
-import CalendarView from "@/components/Calendar/CalendarView";
+import CalendarView from "@/components/Dashboard/CalendarView";
 import TotalNutrition from "@/components/TotalNutrition/TotalNutrition";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

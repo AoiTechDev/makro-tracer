@@ -7,7 +7,7 @@ import { Nutrition } from "@/types/types";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useFormStatus } from "react-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
-import IngredientsList from "../CreateMealsOrIngredients/IngredientsList/IngredientsList";
+import IngredientsList from "../Dashboard/IngredientsList/IngredientsList";
 import AddMealToThatDay from "./AddMealToThatDay/AddMealToThatDay";
 import { Session } from "next-auth";
 type FormData = {
