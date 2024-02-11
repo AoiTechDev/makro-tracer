@@ -8,7 +8,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { Session } from "next-auth";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import IngredientsList from "../IngredientsList/IngredientsList";
+import IngredientsList from "./IngredientsList/IngredientsList";
 import AddMealToThatDay from "./AddMealToThatDay/AddMealToThatDay";
 type FormData = {
   prompt: string;
@@ -35,12 +35,10 @@ const SearchForMeal = ({ session }: SearchForMealProps) => {
     }
   });
 
-  console.log(nutrition)
   return (
     <>
       {" "}
       <form onSubmit={onSubmit} className="flex gap-4 mt-6">
-        {/* <Input {...register("mealName")} name="mealName" /> */}
         <Input {...register("prompt")} name="prompt" />
         <Button className="w-[100px]" type="submit">
           Check

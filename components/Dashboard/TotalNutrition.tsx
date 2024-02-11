@@ -65,6 +65,30 @@ const TotalNutrition = ({ result }: TotalNutritionProps) => {
     }
   }, [result.success, date]);
 
+
+  const tableRow = [
+    {
+      nutrition: "Calories",
+      amount: totalNutrition.calories.toFixed(1),
+    },
+    {
+      nutrition: "Protein",
+      amount: totalNutrition.protein.toFixed(1),
+    },
+    {
+      nutrition: "Carbohydrates",
+      amount: totalNutrition.carbohydrates.toFixed(1),
+    },
+    {
+      nutrition: "Fat",
+      amount: totalNutrition.fat.toFixed(1),
+    },
+    {
+      nutrition: "Sugar",
+      amount: totalNutrition.sugar.toFixed(1),
+    }
+  ]
+
   return (
     <CardContent className="flex flex-col items-center justify-start gap-4">
       <CardHeader>
@@ -101,36 +125,13 @@ const TotalNutrition = ({ result }: TotalNutritionProps) => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow>
-              <TableCell className="font-medium">Calories</TableCell>
-              <TableCell className="font-medium">
-                {totalNutrition.calories.toFixed(1)}
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className="font-medium">Protein</TableCell>
-              <TableCell className="font-medium">
-                {totalNutrition.protein.toFixed(1)}
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className="font-medium">Carbohydrates</TableCell>
-              <TableCell className="font-medium">
-                {totalNutrition.carbohydrates.toFixed(1)}
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className="font-medium">Fat</TableCell>
-              <TableCell className="font-medium">
-                {totalNutrition.fat.toFixed(1)}
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className="font-medium">Sugar</TableCell>
-              <TableCell className="font-medium">
-                {totalNutrition.sugar.toFixed(1)}
-              </TableCell>
-            </TableRow>
+            {tableRow.map((row, index) => (
+              <TableRow key={index}>
+                <TableCell className="font-medium">{row.nutrition}</TableCell>
+                <TableCell className="font-medium">{row.amount}</TableCell>
+              </TableRow>
+            ))}
+     
           </TableBody>
         </Table>
       

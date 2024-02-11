@@ -1,4 +1,4 @@
-import CreateMealForm from "@/components/Dashboard/CreateMealForm/CreateMealForm";
+import CreateMealForm from "@/components/Dashboard/CreateMealForm";
 import { Card, CardContent } from "@/components/ui/card";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";

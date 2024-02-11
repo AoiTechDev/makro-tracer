@@ -5,7 +5,7 @@ import { formattedDate } from "@/lib/utils";
 import { useCalendarStore, useTotalNutritionStore } from "@/store/store";
 import { Session } from "next-auth";
 import React, { useEffect } from "react";
-import DeleteRow from "./DeleteRow/DeleteRow";
+import DeleteRow from "./DeleteRow";
 
 type MealsTableRowProps = {
   result: GetMealsResponse;
