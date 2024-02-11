@@ -1,15 +1,15 @@
 "use client";
 import React, { Suspense, useState } from "react";
-import { Input } from "../ui/input";
 import { createCompletion } from "@/actions/actions";
-import { Button } from "../ui/button";
 import { Nutrition } from "@/types/types";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useFormStatus } from "react-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
-import IngredientsList from "../Dashboard/IngredientsList/IngredientsList";
-import AddMealToThatDay from "./AddMealToThatDay/AddMealToThatDay";
 import { Session } from "next-auth";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import IngredientsList from "../IngredientsList/IngredientsList";
+import AddMealToThatDay from "./AddMealToThatDay/AddMealToThatDay";
 type FormData = {
   prompt: string;
 };

@@ -1,4 +1,5 @@
-import MealsTableBody from "@/components/MealsTableBody/MealsTableBody";
+
+import MealsTableBody from "@/components/Dashboard/MealsTable/MealsTableBody/MealsTableBody";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Table,

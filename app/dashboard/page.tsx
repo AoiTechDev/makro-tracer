@@ -4,7 +4,7 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import SearchForMeal from "@/components/SearchForMeal/SearchForMeal";
+import SearchForMeal from "@/components/Dashboard/SearchForMeal/SearchForMeal";
 
 const page = async () => {
   const session = await getServerSession();

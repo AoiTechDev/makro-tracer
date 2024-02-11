@@ -30,8 +30,10 @@ const CreateMealForm = ({ session }: CreateMealFormProps) => {
 
   const { date } = useCalendarStore();
 
-  const formattedOriginalDate = `${date?.getFullYear()}-${String(date?.getMonth()! + 1).padStart(2, '0')}-${String(date?.getDate()).padStart(2, '0')}`;
-  
+  const formattedOriginalDate = `${date?.getFullYear()}-${String(
+    date?.getMonth()! + 1
+  ).padStart(2, "0")}-${String(date?.getDate()).padStart(2, "0")}`;
+
   const router = useRouter();
   const onSubmit: SubmitHandler<AddMealsFormFields> = async (data) => {
     const response = await fetch("/api/createMeal", {
@@ -46,57 +48,77 @@ const CreateMealForm = ({ session }: CreateMealFormProps) => {
         sugar: data.sugar,
         date: formattedOriginalDate,
       }),
-
     });
 
-    router.refresh()
+    router.refresh();
   };
-  
 
+  const inputData = [
+    {
+      html: "meal-name",
+      label: "Meal Name",
+      id: "meal-name",
+      register: "mealName",
+    },
+    {
+      html: "calories",
+      label: "Calories",
+      id: "calories",
+      register: "calories",
+    },
+    {
+      html: "protein",
+      label: "Protein (g)",
+      id: "protein",
+      register: "protein",
+    },
+    {
+      html: "sugar",
+      label: "Sugar (g)",
+      id: "sugar",
+      register: "sugar",
+    },
+    {
+      html: "carbs",
+      label: "Carbohydrates (g)",
+      id: "carbs",
+      register: "carbs",
+    },
+    {
+      html: "fat",
+      label: "Fat (g)",
+      id: "fat",
+      register: "fat",
+    },
+  ];
   return (
     <form
       className="space-y-4 flex flex-col gap-6"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="flex flex-1 gap-6">
-        <div className="gap-4 flex-1">
-          <div className="space-y-2">
-            <Label htmlFor="meal-name">Meal Name</Label>
-            <Input id="meal-name" required {...register("mealName")} />
-          </div>
-          <div className="space-y-2  ">
-            <Label htmlFor="calories">Calories</Label>
-            <Input id="calories" required {...register("calories")} />
-          </div>
-          <div className="space-y-2 ">
-            <Label htmlFor="protein">Protein (g)</Label>
+      <div className="grid grid-cols-2 flex-1 gap-2">
+        {inputData.map((input) => (
+          <div key={input.html} className="space-y-2">
+            <Label htmlFor={input.html}>{input.label}</Label>
             <Input
-              id="protein"
+              id={input.id}
               required
-              type="number"
-              {...register("protein")}
+              {...register(
+                input.register as
+                  | "mealName"
+                  | "email"
+                  | "calories"
+                  | "protein"
+                  | "carbs"
+                  | "fat"
+                  | "sugar"
+              )}
             />
           </div>
-        </div>
-
-        <div className=" gap-4 flex-1">
-          <div className="space-y-2">
-            <Label htmlFor="sugar">Sugar (g)</Label>
-            <Input id="sugar" required type="number" {...register("sugar")} />
-          </div>
-          <div className="space-y-2 ">
-            <Label htmlFor="carbs">Carbohydrates (g)</Label>
-            <Input id="carbs" required type="number" {...register("carbs")} />
-          </div>
-          <div className="space-y-2 ">
-            <Label htmlFor="fat">Fat (g)</Label>
-            <Input id="fat" required type="number" {...register("fat")} />
-          </div>
-        </div>
+        ))}
       </div>
-      <Button className="w-full flex-1" >
-        Add Meal
-      </Button>
+
+      <Button className="w-full flex-1">Add Meal</Button>
     </form>
   );
 };
