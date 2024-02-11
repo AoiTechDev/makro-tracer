@@ -43,7 +43,6 @@ const IngredientsList = ({ nutrition }: IngredientsListProps) => {
           ))}
         </TableBody>
       </Table>
-    // </div>
   ) : null;
 };
 

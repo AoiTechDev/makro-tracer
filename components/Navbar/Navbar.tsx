@@ -1,7 +1,6 @@
 import { getServerSession } from "next-auth";
 import React from "react";
-import Logout from "./Logout/Logout";
-import Link from "next/link";
+
 import Login from "./Login/Login";
 import Register from "./Register/Register";
 

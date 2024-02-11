@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
-import Sidebar from "@/components/Sidebar/Sidebar";
 
 export const metadata: Metadata = {
   title: "MealFulness",
@@ -18,7 +17,6 @@ export default async function RootLayout({
     <html lang="en">
       <body>
         <Navbar />
-        {/* <Sidebar /> */}
         <main className="pt-16 m-auto w-full">{children}</main>
       </body>
     </html>

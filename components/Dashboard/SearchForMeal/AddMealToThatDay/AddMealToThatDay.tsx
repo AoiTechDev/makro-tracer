@@ -2,13 +2,12 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { GetMealsResponse } from "@/lib/getMeals/getMeals";
 import { formattedDate } from "@/lib/utils";
 import { useCalendarStore } from "@/store/store";
 import { Nutrition } from "@/types/types";
 import { Session } from "next-auth";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 type AddMealToThatDayProps = {

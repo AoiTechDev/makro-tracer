@@ -24,9 +24,7 @@ const Page = async () => {
         </CardContent>
         <TotalNutrition result={result} />    
       </Card>
-      {/* <Card className="flex-1">
-   
-      </Card> */}
+
     </div>
   );
 };

@@ -1,10 +1,9 @@
 "use client";
-import React, { Suspense, useState } from "react";
+import React, { useState } from "react";
 import { createCompletion } from "@/actions/actions";
 import { Nutrition } from "@/types/types";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useFormStatus } from "react-dom";
-import { SubmitHandler, useForm } from "react-hook-form";
+import {  useForm } from "react-hook-form";
 import { Session } from "next-auth";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";

@@ -1,16 +1,11 @@
 import { getServerSession } from "next-auth";
 import Image from "next/image";
-import { redirect } from "next/navigation";
 import landpageImg from "@/assets/landing-page.png";
-import spiral from "@/assets/spiral.png";
 import { Button } from "@/components/ui/button";
-import wave from "@/assets/wave.svg";
 import Link from "next/link";
 export default async function Home() {
   const session = await getServerSession();
-  // if (!session) {
-  //   redirect("/login");
-  // }
+
   return (
     <div className="h-screen m-auto w-full  ">
       <div className="grid grid-cols-2 max-[900px]:grid-cols-1 items-center lg:pl-12 max-[900px]:mt-24 lg:mt-0">
@@ -35,14 +30,7 @@ export default async function Home() {
         </div>
       </div>
 
-      {/* <div className="h-screen  mt-32  bg-slate-300 box-border">
-        <h1>What Mealfulness will give you?</h1>
-        <div className="grid grid-cols-3">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </div> */}
+     
     </div>
   );
 }

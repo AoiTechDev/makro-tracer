@@ -9,7 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useCalendarStore, useTotalNutritionStore } from "@/store/store";
+import { useCalendarStore } from "@/store/store";
 import { GetMealsResponse } from "@/lib/getMeals/getMeals";
 import { TotalNutritionData } from "@/types/types";
 import { cn, formattedDate } from "@/lib/utils";

@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { sql } from "@vercel/postgres";
-import { revalidatePath, revalidateTag } from "next/cache";
 
 export async function POST(request: Request) {
   try {
