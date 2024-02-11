@@ -1,5 +1,5 @@
-import CalendarView from "@/components/Calendar/CalendarView";
-import TotalNutrition from "@/components/TotalNutrition/TotalNutrition";
+import CalendarView from "@/components/Dashboard/CalendarView";
+import TotalNutrition from "@/components/Dashboard/TotalNutrition";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -24,9 +24,7 @@ const Page = async () => {
         </CardContent>
         <TotalNutrition result={result} />    
       </Card>
-      {/* <Card className="flex-1">
-   
-      </Card> */}
+
     </div>
   );
 };

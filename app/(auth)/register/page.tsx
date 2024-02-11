@@ -1,7 +1,6 @@
 
-import RegisterForm from "@/components/Form/RegisterForm/RegisterForm";
+import RegisterForm from "@/components/UserAuthForm/RegisterForm/RegisterForm";
 import { getServerSession } from "next-auth";
-import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 import { redirect } from "next/navigation";
 
 import React from "react";

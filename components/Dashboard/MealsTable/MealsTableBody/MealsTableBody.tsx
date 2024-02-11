@@ -11,7 +11,6 @@ type MealsTableBodyProps = {
 const MealsTableBody = async ({ session }: MealsTableBodyProps) => {
   const result = await getMeals(session?.user?.email ?? "");
 
-    // if (result.error) throw new Error("Failed to load meal data.");
 
     
   return (

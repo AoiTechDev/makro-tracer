@@ -1,15 +1,14 @@
 "use client";
-import React, { Suspense, useState } from "react";
-import { Input } from "../ui/input";
+import React, { useState } from "react";
 import { createCompletion } from "@/actions/actions";
-import { Button } from "../ui/button";
 import { Nutrition } from "@/types/types";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useFormStatus } from "react-dom";
-import { SubmitHandler, useForm } from "react-hook-form";
-import IngredientsList from "../CreateMealsOrIngredients/IngredientsList/IngredientsList";
-import AddMealToThatDay from "./AddMealToThatDay/AddMealToThatDay";
+import {  useForm } from "react-hook-form";
 import { Session } from "next-auth";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import IngredientsList from "./IngredientsList/IngredientsList";
+import AddMealToThatDay from "./AddMealToThatDay/AddMealToThatDay";
 type FormData = {
   prompt: string;
 };
@@ -35,12 +34,10 @@ const SearchForMeal = ({ session }: SearchForMealProps) => {
     }
   });
 
-  console.log(nutrition)
   return (
     <>
       {" "}
       <form onSubmit={onSubmit} className="flex gap-4 mt-6">
-        {/* <Input {...register("mealName")} name="mealName" /> */}
         <Input {...register("prompt")} name="prompt" />
         <Button className="w-[100px]" type="submit">
           Check

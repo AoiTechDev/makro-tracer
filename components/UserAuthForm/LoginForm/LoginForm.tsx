@@ -8,7 +8,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import CustomInput from "@/components/CustomInput/CustomInput";
+import CustomInput from "@/components/reusable/CustomInput";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { schema } from "@/schema/input";
 

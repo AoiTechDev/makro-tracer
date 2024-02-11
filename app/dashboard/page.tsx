@@ -1,10 +1,10 @@
-import CreateMealForm from "@/components/CreateMealForm/CreateMealForm";
+import CreateMealForm from "@/components/Dashboard/CreateMealForm";
 import { Card, CardContent } from "@/components/ui/card";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import SearchForMeal from "@/components/SearchForMeal/SearchForMeal";
+import SearchForMeal from "@/components/Dashboard/SearchForMeal/SearchForMeal";
 
 const page = async () => {
   const session = await getServerSession();
