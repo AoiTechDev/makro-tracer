@@ -48,4 +48,5 @@ I became interested in understanding my daily nutritional intake when I returned
 - [x] Create your own meal and add to db
 - [x] Display all meals eatten on specific day
 - [x] Count total Nutrition eatten on specific day
-- [x] Get Nutrition details of given food and add it to db for specific day   
+- [x] Get Nutrition details of given food and add it to db for specific day
+- [x] Delete meal from specific day 
