@@ -1,7 +1,7 @@
 "use client";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import React from "react";
+import React, { useState } from "react";
 type FormInputsProps = {
   html: string;
   label: string;
@@ -9,6 +9,8 @@ type FormInputsProps = {
   register: string;
 };
 const FormInputs = ({ html, label, id, register }: FormInputsProps) => {
+    const [error, setError] = useState<Record<string, string>>({});
+    console.log(error)
   return (
     <div key={html} className="space-y-2">
       <Label htmlFor={html}>{label}</Label>
@@ -25,7 +27,20 @@ const FormInputs = ({ html, label, id, register }: FormInputsProps) => {
             | "fat"
             | "sugar"
         }
+        onChange={(e) => {
+          const value = e.target.value;
+          const name = e.target.name;
+
+          if (name !== "mealName" && isNaN(Number(value))) {
+            setError({ ...error, [name]: "This input should be a number" });
+          } else if (name === "mealName" && /\d/.test(value)) {
+            setError({ ...error, [name]: "This input should be a string" });
+          } else {
+            setError({ ...error, [name]: "" });
+          }
+        }}
       />
+      {error[register] ? <p className="text-red-500">{error[register]}</p> : null}
     </div>
   );
 };
