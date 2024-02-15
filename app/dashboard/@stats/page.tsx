@@ -9,11 +9,7 @@ import {
   Tooltip,
   CartesianGrid,
   Legend,
-  Brush,
-  AreaChart,
-  Area,
-  Label,
-  LabelList,
+
   ResponsiveContainer,
 } from "recharts";
 const page = () => {
@@ -28,7 +24,7 @@ const page = () => {
     },
     {
       name: "Wednesday",
-      calories: 9800,
+      calories: 3800,
     },
     {
       name: "Thursday",
