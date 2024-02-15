@@ -34,6 +34,7 @@ const SearchForMeal = ({ session }: SearchForMealProps) => {
     }
   });
 
+  
   return (
     <>
       {" "}
@@ -45,8 +46,9 @@ const SearchForMeal = ({ session }: SearchForMealProps) => {
       </form>
       {isSubmitting ? (
         <div className=" w-full my-12 flex flex-col gap-4 justify-center items-center">
-          <Skeleton className="h-[40px] w-full rounded-xl bg-slate-200" />
-          <Skeleton className="h-[40px] w-full rounded-xl bg-slate-200" />
+          <Skeleton className="h-[50px] w-full rounded-xl bg-slate-200" />
+          <Skeleton className="h-[30px] w-full rounded-xl bg-slate-200" />
+          <Skeleton className="h-[30px] w-full rounded-xl bg-slate-200" />
         </div>
       ) : (
         <>
