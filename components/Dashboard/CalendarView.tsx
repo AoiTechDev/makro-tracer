@@ -11,7 +11,7 @@ const CalendarView = () => {
 
 
   return (
-    <div className="w-full flex justify-center mt-12">
+    <div className="w-full flex justify-center">
       <Calendar
         mode="single"
         selected={date}

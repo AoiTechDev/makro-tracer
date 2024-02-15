@@ -34,19 +34,21 @@ const SearchForMeal = ({ session }: SearchForMealProps) => {
     }
   });
 
+  
   return (
     <>
       {" "}
       <form onSubmit={onSubmit} className="flex gap-4 mt-6">
-        <Input {...register("prompt")} name="prompt" />
-        <Button className="w-[100px]" type="submit">
-          Check
+        <Input {...register("prompt")} name="prompt" required/>
+        <Button disabled={isSubmitting} className="w-[100px]" type="submit">
+          {isSubmitting ? "Searching..." : "Search"}
         </Button>
       </form>
       {isSubmitting ? (
         <div className=" w-full my-12 flex flex-col gap-4 justify-center items-center">
-          <Skeleton className="h-[40px] w-full rounded-xl bg-slate-200" />
-          <Skeleton className="h-[40px] w-full rounded-xl bg-slate-200" />
+          <Skeleton className="h-[50px] w-full rounded-xl bg-slate-200" />
+          <Skeleton className="h-[30px] w-full rounded-xl bg-slate-200" />
+          <Skeleton className="h-[30px] w-full rounded-xl bg-slate-200" />
         </div>
       ) : (
         <>
