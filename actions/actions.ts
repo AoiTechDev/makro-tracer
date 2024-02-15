@@ -33,17 +33,37 @@ export async function createCompletion(
 }
 
 const schema = z.object({
-  mealName: z.string(),
-  calories: z.number(),
-  protein: z.number(),
-  fat: z.number(),
-  carbs: z.number(),
-  sugar: z.number(),
-
+  mealName: z.string({
+    invalid_type_error: 'Meal name must be a string',
+    required_error: 'Meal name is required',
+  }),
+  calories: z.number({
+    invalid_type_error: 'Calories must be a number',
+    required_error: 'Calories is required',
+  }),
+  protein: z.number({
+    invalid_type_error: 'Protein must be a number',
+    required_error: 'Protein is required',
+  }),
+  fat: z.number({
+    invalid_type_error: 'Fat name must be a number',
+    required_error: 'Fat is required',
+  }),
+  carbs: z.number({
+    invalid_type_error: 'Carbohydrates name must be a number',
+    required_error: 'Carbohydrates is required',
+  }),
+  sugar: z.number({
+    invalid_type_error: 'Sugar must be a number',
+    required_error: 'Sugar is required',
+  }),
 });
 
-export async function createMeal(email:string, date: string, formData: FormData) {
-
+export async function createMeal(
+  email: string,
+  date: string,
+  formData: FormData
+) {
   const validatedFields = schema.safeParse({
     mealName: formData.get("mealName"),
     calories: Number(formData.get("calories")),
@@ -59,36 +79,19 @@ export async function createMeal(email:string, date: string, formData: FormData)
     };
   }
 
- 
   try {
     const response = await sql`
     SELECT * FROM users WHERE email=${email}
     `;
-const user = response.rows[0];
-    console.log(date)
-    const createMeal = await sql`
+    const user = response.rows[0];
+    await sql`
     INSERT INTO meals (userID, name, calories, protein, carbohydrates, fat, sugar, date)
     VALUES (${user.userid}, ${validatedFields.data.mealName}, ${validatedFields.data.calories}, ${validatedFields.data.protein}, ${validatedFields.data.carbs}, ${validatedFields.data.fat}, ${validatedFields.data.sugar}, ${date})
     `;
 
-    console.log(createMeal)
-    revalidatePath('/dashboard');
-    return {message: 'Added meal'}
+    revalidatePath("/dashboard");
+    return { message: "Added meal" };
   } catch (err) {
     return { message: "Fai to create meal" };
   }
-
-  // const res = await fetch('/api/createMeal', {
-  //   method: 'POST',
-  //   body: JSON.stringify({
-  //     mealName: formData.get('name'),
-  //     email: formData.get('email'),
-  //     calories: formData.get('calories'),
-  //     protein: formData.get('protein'),
-  //     carbs: formData.get('carbs'),
-  //     fat: formData.get('fat'),
-  //     sugar: formData.get('sugar'),
-  //     date: new Date().toISOString(),
-  //   }),
-  // });
 }
