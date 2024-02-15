@@ -38,9 +38,9 @@ const SearchForMeal = ({ session }: SearchForMealProps) => {
     <>
       {" "}
       <form onSubmit={onSubmit} className="flex gap-4 mt-6">
-        <Input {...register("prompt")} name="prompt" />
-        <Button className="w-[100px]" type="submit">
-          Check
+        <Input {...register("prompt")} name="prompt" required/>
+        <Button disabled={isSubmitting} className="w-[100px]" type="submit">
+          {isSubmitting ? "Searching..." : "Search"}
         </Button>
       </form>
       {isSubmitting ? (

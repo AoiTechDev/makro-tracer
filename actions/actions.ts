@@ -27,6 +27,10 @@ export async function createCompletion(
     }
   ).then((res) => {
     return res.json();
+  })
+  .catch((err) => {
+    console.error(err);
+    return { error: "Failed to fetch data", err};
   });
 
   return { success: res };
