@@ -1,6 +1,9 @@
 "use server";
-
+import { z } from "zod";
 import { Nutrition } from "@/types/types";
+import { NextResponse } from "next/server";
+import { sql } from "@vercel/postgres";
+import { revalidatePath } from "next/cache";
 
 type NutritionResponse = {
   error?: string;
@@ -29,3 +32,58 @@ export async function createCompletion(
   return { success: res };
 }
 
+const schema = z.object({
+  mealName: z.string(),
+  calories: z.number(),
+  protein: z.number(),
+  fat: z.number(),
+  carbs: z.number(),
+  sugar: z.number(),
+
+});
+
+export async function createMeal(formData: FormData) {
+
+  const validatedFields = schema.safeParse({
+    mealName: formData.get("mealName"),
+    calories: Number(formData.get("calories")),
+    protein: Number(formData.get("protein")),
+    fat: Number(formData.get("fat")),
+    carbs: Number(formData.get("carbs")),
+    sugar: Number(formData.get("sugar")),
+  });
+
+  if (!validatedFields.success) {
+    return {
+      error: validatedFields.error.flatten().fieldErrors,
+    };
+  }
+
+  const userid = "54bbb196-62df-409b-8bf2-496578b907f9";
+  try {
+    const createMeal = await sql`
+    INSERT INTO meals (userID, name, calories, protein, carbohydrates, fat, sugar)
+    VALUES (${userid}, ${validatedFields.data.mealName}, ${validatedFields.data.calories}, ${validatedFields.data.protein}, ${validatedFields.data.carbs}, ${validatedFields.data.fat}, ${validatedFields.data.sugar})
+    `;
+
+    console.log(createMeal)
+    revalidatePath('/dashboard');
+    return {message: 'Added meal'}
+  } catch (err) {
+    return { message: "Fai to create meal" };
+  }
+
+  // const res = await fetch('/api/createMeal', {
+  //   method: 'POST',
+  //   body: JSON.stringify({
+  //     mealName: formData.get('name'),
+  //     email: formData.get('email'),
+  //     calories: formData.get('calories'),
+  //     protein: formData.get('protein'),
+  //     carbs: formData.get('carbs'),
+  //     fat: formData.get('fat'),
+  //     sugar: formData.get('sugar'),
+  //     date: new Date().toISOString(),
+  //   }),
+  // });
+}
