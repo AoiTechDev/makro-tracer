@@ -42,7 +42,7 @@ const schema = z.object({
 
 });
 
-export async function createMeal(formData: FormData) {
+export async function createMeal(email:string, date: string, formData: FormData) {
 
   const validatedFields = schema.safeParse({
     mealName: formData.get("mealName"),
@@ -59,11 +59,16 @@ export async function createMeal(formData: FormData) {
     };
   }
 
-  const userid = "54bbb196-62df-409b-8bf2-496578b907f9";
+ 
   try {
+    const response = await sql`
+    SELECT * FROM users WHERE email=${email}
+    `;
+const user = response.rows[0];
+    console.log(date)
     const createMeal = await sql`
-    INSERT INTO meals (userID, name, calories, protein, carbohydrates, fat, sugar)
-    VALUES (${userid}, ${validatedFields.data.mealName}, ${validatedFields.data.calories}, ${validatedFields.data.protein}, ${validatedFields.data.carbs}, ${validatedFields.data.fat}, ${validatedFields.data.sugar})
+    INSERT INTO meals (userID, name, calories, protein, carbohydrates, fat, sugar, date)
+    VALUES (${user.userid}, ${validatedFields.data.mealName}, ${validatedFields.data.calories}, ${validatedFields.data.protein}, ${validatedFields.data.carbs}, ${validatedFields.data.fat}, ${validatedFields.data.sugar}, ${date})
     `;
 
     console.log(createMeal)

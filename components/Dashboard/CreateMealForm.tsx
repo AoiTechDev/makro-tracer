@@ -93,8 +93,10 @@ const CreateMealForm = ({ session }: CreateMealFormProps) => {
       register: "fat",
     },
   ];
+
+  const createMealWithDate = createMeal.bind(null, session?.user?.email!, formattedOriginalDate);
   return (
-    <form className="space-y-4 flex flex-col gap-6" action={createMeal}>
+    <form className="space-y-4 flex flex-col gap-6" action={createMealWithDate}>
       <div className="grid grid-cols-2 flex-1 gap-2">
         {inputData.map((input) => (
           <div key={input.html} className="space-y-2">
