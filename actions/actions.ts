@@ -95,3 +95,21 @@ export async function createMeal(
     return { message: "Fai to create meal" };
   }
 }
+
+
+export async function deleteMeal(email: string, mealid: number) {
+  try {
+    const response = await sql`
+    SELECT * FROM users WHERE email=${email}
+    `;
+    const user = response.rows[0];
+    await sql`
+    DELETE FROM meals WHERE mealid=${mealid} AND userid=${user.userid}
+    `;
+
+    revalidatePath("/dashboard");
+    return { message: "Deleted meal" };
+  } catch (err) {
+    return { message: "Failed to delete meal" };
+  }
+}

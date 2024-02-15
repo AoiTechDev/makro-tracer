@@ -10,7 +10,6 @@ type FormInputsProps = {
 };
 const FormInputs = ({ html, label, id, register }: FormInputsProps) => {
     const [error, setError] = useState<Record<string, string>>({});
-    console.log(error)
   return (
     <div key={html} className="space-y-2">
       <Label htmlFor={html}>{label}</Label>
