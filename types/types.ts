@@ -31,3 +31,13 @@ export type TotalNutritionData = {
   fat: number;
   sugar: number;
 };
+export type Meal = {
+  name: string;
+  protein: number;
+  fat: number;
+  carbohydrates: number;
+  sugar: number;
+  calories: number;
+  date: Date;
+  mealid: number
+}

@@ -2,9 +2,9 @@
 import { TableCell, TableRow } from "@/components/ui/table";
 import { GetMealsResponse } from "@/lib/getMeals/getMeals";
 import { formattedDate } from "@/lib/utils";
-import { useCalendarStore } from "@/store/store";
+import { useCalendarStore, useResultStore } from "@/store/store";
 import { Session } from "next-auth";
-import React from "react";
+import React, {memo, useEffect } from "react";
 import DeleteRow from "./DeleteRow";
 
 type MealsTableRowProps = {
@@ -12,9 +12,15 @@ type MealsTableRowProps = {
   session: Session | null;
 };
 
-const MealsTableRow = ({ result, session }: MealsTableRowProps) => {
+const MealsTableRow = memo(({ result, session }: MealsTableRowProps) => {
   const { date } = useCalendarStore();
 
+  const { setResult } = useResultStore();
+
+  useEffect(() => {
+    console.log('result use effect')
+    setResult({ success: result.success!, error: result.error });
+  }, [result]);
   const formattedOriginalDate = formattedDate(date);
   {
     return result?.success
@@ -41,6 +47,6 @@ const MealsTableRow = ({ result, session }: MealsTableRowProps) => {
         })
       : null;
   }
-};
+});
 
 export default MealsTableRow;

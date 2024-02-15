@@ -3,7 +3,7 @@ import React from "react";
 import { Calendar } from "@/components/ui/calendar";
 import { useCalendarStore } from "@/store/store";
 
-const CalendarView = () => {
+const CalendarView = React.memo(() => {
   const { setCurrentDate, date } = useCalendarStore();
 
   return (
@@ -23,6 +23,6 @@ const CalendarView = () => {
       />
     </div>
   );
-};
+})
 
 export default CalendarView;

@@ -1,16 +1,8 @@
+import { Meal } from "@/types/types";
 import { QueryResult, QueryResultRow} from "@vercel/postgres";
 
 
-type Meal = {
-  name: string;
-  protein: number;
-  fat: number;
-  carbohydrates: number;
-  sugar: number;
-  calories: number;
-  date: Date;
-  mealid: number
-}
+
 export type GetMealsResponse = {
   error?: string;
   success?: QueryResult<Meal>;

@@ -1,4 +1,5 @@
 import { GetMealsResponse } from "@/lib/getMeals/getMeals";
+import { Meal } from "@/types/types";
 import { QueryResult } from "@vercel/postgres";
 import { create } from "zustand";
 
@@ -45,13 +46,20 @@ export const useTotalNutritionStore = create<TotalNutrition>((set) => ({
   }) => set({ total }),
 }));
 
-type Meal = {
-    name: string;
-    protein: number;
-    fat: number;
-    carbohydrates: number;
-    sugar: number;
-    calories: number;
-    date: Date;
-  }
-
+type Result = {
+  result: {
+    error?: string | undefined; // Update the type to allow for undefined values
+    success: QueryResult<Meal> | undefined;
+  };
+  setResult: (result: {
+    error?: string | undefined;
+    success: QueryResult<Meal>;
+  }) => void;
+};
+export const useResultStore = create<Result>((set) => ({
+  result: {
+    error: "",
+    success: undefined as QueryResult<Meal> | undefined, // Update the type to allow for undefined values
+  },
+  setResult: (result: Result['result']) => set({ result }), // Update the parameter type
+}));
