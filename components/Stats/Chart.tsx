@@ -1,3 +1,4 @@
+import { Meal, WeeklyMealData } from "@/types/types";
 import React from "react";
 import {
   LineChart,
@@ -9,37 +10,23 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-const Chart = React.memo(() => {
-  const data = [
-    {
-      name: "Monday",
-      calories: 2400,
-    },
-    {
-      name: "Thursday",
-      calories: 1398,
-    },
-    {
-      name: "Wednesday",
-      calories: 3800,
-    },
-    {
-      name: "Thursday",
-      calories: 3908,
-    },
-    {
-      name: "Friday",
-      calories: 4800,
-    },
-    {
-      name: "Saturday",
-      calories: 3800,
-    },
-    {
-      name: "Sunday",
-      calories: 4300,
-    },
-  ];
+
+type ChartProps = {
+  daysInWeek: WeeklyMealData[];
+
+  currentWeek: string[];
+};
+const Chart = React.memo(({daysInWeek,  currentWeek}: ChartProps) => {
+  
+  const data = currentWeek.map((day, index) => {
+  
+    return {
+      date: day,
+      calories: daysInWeek[index]?.calories || 0,
+    };
+  });
+
+  
   return (
     <>
       <ResponsiveContainer height="80%">
@@ -50,8 +37,8 @@ const Chart = React.memo(() => {
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" fontSize={12} />
-          <YAxis fontSize={12} />
+          <XAxis dataKey="date" fontSize={12} />
+          <YAxis dataKey="calories" fontSize={12} />
           <Tooltip />
           <Legend />
           <Line type="monotone" dataKey="calories" stroke="#8884d8" />
@@ -59,6 +46,6 @@ const Chart = React.memo(() => {
       </ResponsiveContainer>
     </>
   );
-})
+});
 
 export default Chart;

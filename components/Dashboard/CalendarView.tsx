@@ -13,7 +13,6 @@ const CalendarView = React.memo(() => {
         selected={date}
         onSelect={(date: Date | undefined) => setCurrentDate(date)}
         className="rounded-md  "
-        ISOWeek
         showWeekNumber
         showOutsideDays
         formatters={{

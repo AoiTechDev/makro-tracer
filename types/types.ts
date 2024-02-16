@@ -41,3 +41,12 @@ export type Meal = {
   date: Date;
   mealid: number
 }
+export type WeeklyMealData = {
+  
+  protein: number;
+  fat: number;
+  carbohydrates: number;
+  sugar: number;
+  calories: number;
+  date: Date;
+};
