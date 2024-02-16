@@ -14,6 +14,7 @@ import {
 import { formattedDate, getDaysInWeek } from "@/lib/utils";
 import { useCalendarStore, useResultStore } from "@/store/store";
 import { getWeek, getYear } from "date-fns";
+import Chart from "./Chart";
 
 const ChartContainer = () => {
   const { date } = useCalendarStore();
@@ -50,25 +51,10 @@ const ChartContainer = () => {
 
   const currentWeek = getDaysInWeek(getYear(date!), getWeek(date!));
   const {result} = useResultStore();
-
-  console.log(result)
+console.log(result)
   return (
     <>
-      <ResponsiveContainer height="80%">
-        <LineChart
-          width={730}
-          height={250}
-          data={data}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" fontSize={12} />
-          <YAxis fontSize={12} />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="calories" stroke="#8884d8" />
-        </LineChart>
-      </ResponsiveContainer>
+      <Chart/>
     </>
   );
 };
