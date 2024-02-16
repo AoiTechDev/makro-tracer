@@ -1,62 +1,48 @@
 "use client";
-import React from "react";
+import React, {useEffect} from "react";
 
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  Tooltip,
-  CartesianGrid,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
 import { formattedDate, getDaysInWeek } from "@/lib/utils";
 import { useCalendarStore, useResultStore } from "@/store/store";
 import { getWeek, getYear } from "date-fns";
 import Chart from "./Chart";
+import { Meal } from "@/types/types";
 
-const ChartContainer = () => {
+const ChartContainer = React.memo(() => {
   const { date } = useCalendarStore();
-  const data = [
-    {
-      name: "Monday",
-      calories: 2400,
-    },
-    {
-      name: "Thursday",
-      calories: 1398,
-    },
-    {
-      name: "Wednesday",
-      calories: 3800,
-    },
-    {
-      name: "Thursday",
-      calories: 3908,
-    },
-    {
-      name: "Friday",
-      calories: 4800,
-    },
-    {
-      name: "Saturday",
-      calories: 3800,
-    },
-    {
-      name: "Sunday",
-      calories: 4300,
-    },
-  ];
 
   const currentWeek = getDaysInWeek(getYear(date!), getWeek(date!));
-  const {result} = useResultStore();
-console.log(result)
-  return (
-    <>
-      <Chart/>
-    </>
-  );
-};
+  const { result } = useResultStore();
+  const [daysInWeek, setDaysInWeek] = React.useState<string[]>([]);
+  // console.log(result.success);
+  // console.log(currentWeek);
+
+  let newResult: Meal[] = []
+  if(result.success){
+    newResult = [...result.success.rows]
+  }
+
+
+
+  useEffect(() => {
+    setDaysInWeek([])
+    currentWeek.map((day) => {
+      if (!result.success) return console.log("no data");
+      const tempArr: string [] = []
+      
+      const matchingDay = newResult.filter((row) => formattedDate(new Date(row.date)) === formattedDate(new Date(day)))
+      console.log(matchingDay)
+      if(matchingDay.length > 0) tempArr.push(formattedDate(new Date(matchingDay[0].date)))
+      
+      
+      newResult = newResult.filter((row) => formattedDate(new Date(row.date)) !== formattedDate(new Date(day)))
+      
+      
+      setDaysInWeek(prev =>[...prev, ...tempArr])
+    });
+  },[date])
+  
+  console.log(daysInWeek)
+  return <>{/* <Chart /> */}</>;
+});
 
 export default ChartContainer;
