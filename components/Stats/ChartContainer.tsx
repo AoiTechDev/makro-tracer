@@ -12,7 +12,7 @@ const ChartContainer = React.memo(() => {
 
   const currentWeek = getDaysInWeek(getYear(date!), getWeek(date!));
   const { result } = useResultStore();
-  const [daysInWeek, setDaysInWeek] = React.useState<string[]>([]);
+  const [daysInWeek, setDaysInWeek] = React.useState<Meal[]>([]);
   // console.log(result.success);
   // console.log(currentWeek);
 
@@ -27,11 +27,14 @@ const ChartContainer = React.memo(() => {
     setDaysInWeek([])
     currentWeek.map((day) => {
       if (!result.success) return console.log("no data");
-      const tempArr: string [] = []
+      const tempArr: Meal [] = []
       
       const matchingDay = newResult.filter((row) => formattedDate(new Date(row.date)) === formattedDate(new Date(day)))
-      console.log(matchingDay)
-      if(matchingDay.length > 0) tempArr.push(formattedDate(new Date(matchingDay[0].date)))
+      // console.log(matchingDay)
+      if(matchingDay.length > 0){
+        matchingDay.forEach(day =>  tempArr.push(day))
+       
+      } 
       
       
       newResult = newResult.filter((row) => formattedDate(new Date(row.date)) !== formattedDate(new Date(day)))
