@@ -21,7 +21,7 @@ const Chart = React.memo(({daysInWeek,  currentWeek}: ChartProps) => {
   const data = currentWeek.map((day, index) => {
   
     return {
-      date: day,
+      date: day.slice(5),
       calories: daysInWeek[index]?.calories || 0,
     };
   });

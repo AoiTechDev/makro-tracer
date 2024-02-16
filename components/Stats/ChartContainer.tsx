@@ -7,7 +7,6 @@ import { getWeek, getYear } from "date-fns";
 import Chart from "./Chart";
 import { WeeklyMealData } from "@/types/types";
 
-
 const ChartContainer = React.memo(() => {
   const { date } = useCalendarStore();
 
