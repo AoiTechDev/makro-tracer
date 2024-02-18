@@ -42,7 +42,6 @@ export type Meal = {
   mealid: number
 }
 export type WeeklyMealData = {
-  
   protein: number;
   fat: number;
   carbohydrates: number;

@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 
 import { formattedDate, getDaysInWeek } from "@/lib/utils";
-import { useCalendarStore, useResultStore } from "@/store/store";
+import { useCalendarStore, useChartOptionsStore, useResultStore } from "@/store/store";
 import { getWeek, getYear } from "date-fns";
 import Chart from "./Chart";
 import { WeeklyMealData } from "@/types/types";
@@ -12,6 +12,7 @@ const ChartContainer = React.memo(() => {
 
   const currentWeek = getDaysInWeek(getYear(date!), getWeek(date!));
   const { result } = useResultStore();
+  const {option} = useChartOptionsStore();
   const [daysInWeek, setDaysInWeek] = React.useState<WeeklyMealData[]>([]);
 
   let newResult: WeeklyMealData[] = [];
@@ -19,7 +20,7 @@ const ChartContainer = React.memo(() => {
     newResult = [...result.success.rows];
   }
 
-  // console.log(currentWeek, date)
+    //make it custom hook
   useEffect(() => {
     setDaysInWeek([]);
     currentWeek.map((day) => {
@@ -63,9 +64,10 @@ const ChartContainer = React.memo(() => {
     });
   }, [date, result]);
 
+  
   return (
     <>
-      <Chart daysInWeek={daysInWeek} currentWeek={currentWeek} />{" "}
+      <Chart daysInWeek={daysInWeek} currentWeek={currentWeek} option={option}/>{" "}
     </>
   );
 });
