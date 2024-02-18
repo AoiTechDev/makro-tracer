@@ -16,9 +16,13 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { useChartOptionsStore } from "@/store/store";
+import { Option, useChartOptionsStore } from "@/store/store";
 
-const nutrition = [
+type NutritionType = {
+    value: Option;
+    label: string;
+}
+const nutrition: NutritionType [] = [
   {
     value: "calories",
     label: "Calories",
@@ -43,7 +47,7 @@ const nutrition = [
 
 const ChartOptions = () => {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
+  const [value, setValue] = React.useState<Option>("calories");
 
   //make it custom hook
   const {option, setNutrition} = useChartOptionsStore();
@@ -73,14 +77,14 @@ const ChartOptions = () => {
           <CommandEmpty>No nutrition found.</CommandEmpty>
           <CommandGroup >
             {nutrition.map((nutrition) => (
-              <CommandItem
+            <CommandItem
                 key={nutrition.value}
                 value={nutrition.value}
-                onSelect={(currentValue) => {
-                  setValue(currentValue === value ? "" : currentValue);
-                  setOpen(false);
+                onSelect={(currentValue: string) => {
+                    setValue(currentValue === value ? "calories" : currentValue as Option);
+                    setOpen(false);
                 }}
-              >
+            >
                 <Check
                   className={cn(
                     "mr-2 h-4 w-4",

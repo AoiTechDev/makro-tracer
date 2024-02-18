@@ -64,12 +64,13 @@ export const useResultStore = create<Result>((set) => ({
   setResult: (result: Result['result']) => set({ result }), 
 }));
 
+export type Option = 'protein' | 'fat' | 'carbohydrates' | 'sugar' | 'calories';
 
 type ChartOption = {
-  option: string;
-  setNutrition: (nutrition: string) => void;
+  option: Option;
+  setNutrition: (nutrition: Option) => void;
 }
 export const useChartOptionsStore = create<ChartOption>((set) => ({
-  option: "",
-  setNutrition: (option: string) => set({ option }),
+  option: "calories",
+  setNutrition: (option: Option) => set({ option }),
 }));
