@@ -18,7 +18,6 @@ const MealsTableRow = memo(({ result, session }: MealsTableRowProps) => {
   const { setResult } = useResultStore();
 
   useEffect(() => {
-    console.log('result use effect')
     setResult({ success: result.success!, error: result.error });
   }, [result]);
   const formattedOriginalDate = formattedDate(date);

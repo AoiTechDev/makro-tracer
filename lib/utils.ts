@@ -15,8 +15,8 @@ export function formattedDate(date: Date | undefined) {
 
 
 export function getDaysInWeek( year:number, week:number) {
-  let date = new Date(year, 0, (1 + (week - 1) * 7)); // Elle's method
-  date.setDate(date.getDate() + (1 - date.getDay())-1); // 0 - Sunday, 1 - Monday etc
+  let date = new Date(year, 0, (1 + (week - 1) * 7)); 
+  date.setDate(date.getDate() + (1 - date.getDay())-1); 
   let days = [];
   for (let i = 0; i < 7; i++) {
     days.push(formattedDate(new Date(date)));

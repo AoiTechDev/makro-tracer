@@ -19,10 +19,10 @@ import {
 import { Option, useChartOptionsStore } from "@/store/store";
 
 type NutritionType = {
-    value: Option;
-    label: string;
-}
-const nutrition: NutritionType [] = [
+  value: Option;
+  label: string;
+};
+const nutrition: NutritionType[] = [
   {
     value: "calories",
     label: "Calories",
@@ -50,11 +50,11 @@ const ChartOptions = () => {
   const [value, setValue] = React.useState<Option>("calories");
 
   //make it custom hook
-  const {option, setNutrition} = useChartOptionsStore();
+  const { setNutrition } = useChartOptionsStore();
 
   useEffect(() => {
     setNutrition(value);
-  }, [value])
+  }, [value]);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -64,7 +64,6 @@ const ChartOptions = () => {
           role="combobox"
           aria-expanded={open}
           className="w-[200px] justify-between"
-
         >
           {value
             ? nutrition.find((nutrition) => nutrition.value === value)?.label
@@ -75,16 +74,20 @@ const ChartOptions = () => {
       <PopoverContent className="w-[200px] p-0">
         <Command>
           <CommandEmpty>No nutrition found.</CommandEmpty>
-          <CommandGroup >
+          <CommandGroup>
             {nutrition.map((nutrition) => (
-            <CommandItem
+              <CommandItem
                 key={nutrition.value}
                 value={nutrition.value}
                 onSelect={(currentValue: string) => {
-                    setValue(currentValue === value ? "calories" : currentValue as Option);
-                    setOpen(false);
+                  setValue(
+                    currentValue === value
+                      ? "calories"
+                      : (currentValue as Option)
+                  );
+                  setOpen(false);
                 }}
-            >
+              >
                 <Check
                   className={cn(
                     "mr-2 h-4 w-4",
