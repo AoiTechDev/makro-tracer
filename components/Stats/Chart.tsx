@@ -29,12 +29,11 @@ const Chart = React.memo(({daysInWeek,  currentWeek}: ChartProps) => {
   
   return (
     <>
-      <ResponsiveContainer height="80%">
+      <ResponsiveContainer  height="80%">
         <LineChart
-          width={730}
-          height={250}
+         
           data={data}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+          margin={{ top: 5,  bottom: 5 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="date" fontSize={12} />

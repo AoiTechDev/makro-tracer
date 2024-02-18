@@ -63,6 +63,7 @@ const ChartContainer = React.memo(() => {
     });
   }, [date, result]);
 
+  
   return (
     <>
       <Chart daysInWeek={daysInWeek} currentWeek={currentWeek} />{" "}
