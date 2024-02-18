@@ -19,7 +19,7 @@ const ChartContainer = React.memo(() => {
     newResult = [...result.success.rows];
   }
 
-  // console.log(currentWeek, date)
+    //make it custom hook
   useEffect(() => {
     setDaysInWeek([]);
     currentWeek.map((day) => {

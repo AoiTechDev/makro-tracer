@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { Check, ChevronsUpDown } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -16,6 +16,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { useChartOptionsStore } from "@/store/store";
 
 const nutrition = [
   {
@@ -43,6 +44,14 @@ const nutrition = [
 const ChartOptions = () => {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
+
+  //make it custom hook
+  const {option, setNutrition} = useChartOptionsStore();
+
+  useEffect(() => {
+    setNutrition(value);
+  }, [value])
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -51,6 +60,7 @@ const ChartOptions = () => {
           role="combobox"
           aria-expanded={open}
           className="w-[200px] justify-between"
+
         >
           {value
             ? nutrition.find((nutrition) => nutrition.value === value)?.label

@@ -48,7 +48,7 @@ export const useTotalNutritionStore = create<TotalNutrition>((set) => ({
 
 type Result = {
   result: {
-    error?: string | undefined; // Update the type to allow for undefined values
+    error?: string | undefined; 
     success: QueryResult<Meal> | undefined;
   };
   setResult: (result: {
@@ -59,7 +59,17 @@ type Result = {
 export const useResultStore = create<Result>((set) => ({
   result: {
     error: "",
-    success: undefined as QueryResult<Meal> | undefined, // Update the type to allow for undefined values
+    success: undefined as QueryResult<Meal> | undefined, 
   },
-  setResult: (result: Result['result']) => set({ result }), // Update the parameter type
+  setResult: (result: Result['result']) => set({ result }), 
+}));
+
+
+type ChartOption = {
+  option: string;
+  setNutrition: (nutrition: string) => void;
+}
+export const useChartOptionsStore = create<ChartOption>((set) => ({
+  option: "",
+  setNutrition: (option: string) => set({ option }),
 }));
