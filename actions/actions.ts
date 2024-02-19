@@ -4,6 +4,7 @@ import { Nutrition } from "@/types/types";
 import { NextResponse } from "next/server";
 import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
+import { toast } from "sonner"
 
 type NutritionResponse = {
   error?: string;
@@ -94,7 +95,7 @@ export async function createMeal(
     `;
 
     revalidatePath("/dashboard");
-    return { message: "Added meal" };
+    return { message: `${validatedFields.data.mealName} has been successfully added.` };
   } catch (err) {
     return { message: "Fai to create meal" };
   }
