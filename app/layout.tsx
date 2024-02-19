@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
-
+import { Toaster } from "@/components/ui/sonner"
 export const metadata: Metadata = {
   title: "MealFulness",
   description:
@@ -18,6 +18,7 @@ export default async function RootLayout({
       <body>
         <Navbar />
         <main className="pt-16 m-auto w-full">{children}</main>
+        <Toaster />
       </body>
     </html>
   );
