@@ -5,7 +5,7 @@ import { useFormStatus } from "react-dom";
 const AddMealButton = () => {
   const { pending } = useFormStatus();
   return (
-    <Button disabled={pending} className="w-full flex-1">
+    <Button disabled={pending} className="w-full flex-1" >
       {pending ? "Saving..." : "Add Meal"}
     </Button>
   );

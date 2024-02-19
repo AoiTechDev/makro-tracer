@@ -25,12 +25,14 @@ const SearchForMeal = ({ session }: SearchForMealProps) => {
 
   const onSubmit = handleSubmit(async ({ prompt }) => {
 
-    const result = await createCompletion(prompt as string);
+    const result = await createCompletion(prompt as string)
     setNutrition([])
+    
     if (result?.error) {
       console.log(result.error);
     } else if (result?.success) {
       setNutrition(result.success);
+      
     }
   });
 

@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/table";
 import { useCalendarStore } from "@/store/store";
 import { GetMealsResponse } from "@/lib/getMeals/getMeals";
-import { TotalNutritionData } from "@/types/types";
+import { TotalNutritionInMeal } from "@/types/types";
 import { cn, formattedDate } from "@/lib/utils";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Button } from "../ui/button";
@@ -25,7 +25,7 @@ type TotalNutritionProps = {
 };
 
 const TotalNutrition = ({ result }: TotalNutritionProps) => {
-  const [totalNutrition, setTotalNutrition] = useState<TotalNutritionData>({
+  const [totalNutrition, setTotalNutrition] = useState<TotalNutritionInMeal>({
     calories: 0,
     protein: 0,
     carbohydrates: 0,

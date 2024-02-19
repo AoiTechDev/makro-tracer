@@ -1,9 +1,10 @@
 "use server";
 import { z } from "zod";
-import { Nutrition } from "@/types/types";
+import { Nutrition, TotalNutritionInMeal } from "@/types/types";
 import { NextResponse } from "next/server";
 import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
+import { toast } from "sonner"
 
 type NutritionResponse = {
   error?: string;
@@ -66,15 +67,16 @@ const schema = z.object({
 export async function createMeal(
   email: string,
   date: string,
-  formData: FormData
+  total: TotalNutritionInMeal | undefined,
+  formData: FormData,
 ) {
   const validatedFields = schema.safeParse({
     mealName: formData.get("mealName"),
-    calories: Number(formData.get("calories")),
-    protein: Number(formData.get("protein")),
-    fat: Number(formData.get("fat")),
-    carbs: Number(formData.get("carbs")),
-    sugar: Number(formData.get("sugar")),
+    calories: total ? total.calories : Number(formData.get("calories")),
+    protein: total ? total.protein :Number(formData.get("protein")),
+    fat: total ? total.fat :Number(formData.get("fat")),
+    carbs: total ? total.carbohydrates : Number(formData.get("carbs")),
+    sugar: total ? total.sugar :Number(formData.get("sugar")),
   });
 
   if (!validatedFields.success) {
@@ -94,7 +96,7 @@ export async function createMeal(
     `;
 
     revalidatePath("/dashboard");
-    return { message: "Added meal" };
+    return { message: `${validatedFields.data.mealName} has been successfully added.` };
   } catch (err) {
     return { message: "Fai to create meal" };
   }
@@ -107,12 +109,15 @@ export async function deleteMeal(email: string, mealid: number) {
     SELECT * FROM users WHERE email=${email}
     `;
     const user = response.rows[0];
+    const mealName = await sql`
+    SELECT name FROM meals WHERE mealid=${mealid} AND userid=${user.userid}
+    `
     await sql`
     DELETE FROM meals WHERE mealid=${mealid} AND userid=${user.userid}
     `;
 
     revalidatePath("/dashboard");
-    return { message: "Deleted meal" };
+    return { message: `${mealName.rows[0].name} has been successfully deleted.` };
   } catch (err) {
     return { message: "Failed to delete meal" };
   }

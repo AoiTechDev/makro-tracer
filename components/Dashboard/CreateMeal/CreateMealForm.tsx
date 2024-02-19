@@ -7,6 +7,7 @@ import { createMeal } from "@/actions/actions";
 import { formattedDate } from "@/lib/utils";
 import AddMealButton from "./AddMealButton";
 import FormInputs from "./FormInputs";
+import { toast } from "sonner";
 
 type CreateMealFormProps = {
   session: Session;
@@ -59,9 +60,9 @@ const CreateMealForm = ({ session }: CreateMealFormProps) => {
     },
   ];
 
-  const createMealWithDate = createMeal.bind(null, session?.user?.email!, formattedOriginalDate);
+  const createMealWithDate = createMeal.bind(null, session?.user?.email!, formattedOriginalDate, undefined);
   return (
-    <form className="space-y-4 flex flex-col gap-6" action={createMealWithDate}>
+    <form className="space-y-4 flex flex-col gap-6" action={(data) => createMealWithDate(data).then((res) => toast.success(res.message ))} >
       <div className="grid grid-cols-2 flex-1 gap-2">
         {inputData.map((input, index) => (
          <FormInputs key={index} {...input}/>

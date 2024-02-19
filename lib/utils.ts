@@ -1,3 +1,4 @@
+import { Nutrition, TotalNutritionInMeal } from "@/types/types";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -23,4 +24,25 @@ export function getDaysInWeek( year:number, week:number) {
     date.setDate(date.getDate() + 1);
   }
   return days
+}
+
+
+export function countTotalNutrition(nutrition: Nutrition[]): TotalNutritionInMeal {
+  let total = {
+    calories: 0,
+    protein: 0,
+    carbohydrates: 0,
+    fat: 0,
+    sugar: 0,
+  };
+  nutrition.forEach((item) => {
+    total = {
+      calories: total.calories + Number(item.calories),
+      protein: total.protein + Number(item.protein_g),
+      carbohydrates: total.carbohydrates + Number(item.carbohydrates_total_g),
+      fat: total.fat + Number(item.fat_total_g),
+      sugar: total.sugar + Number(item.sugar_g),
+    };
+  });
+  return total;
 }
