@@ -108,12 +108,15 @@ export async function deleteMeal(email: string, mealid: number) {
     SELECT * FROM users WHERE email=${email}
     `;
     const user = response.rows[0];
+    const mealName = await sql`
+    SELECT name FROM meals WHERE mealid=${mealid} AND userid=${user.userid}
+    `
     await sql`
     DELETE FROM meals WHERE mealid=${mealid} AND userid=${user.userid}
     `;
 
     revalidatePath("/dashboard");
-    return { message: "Deleted meal" };
+    return { message: `${mealName.rows[0].name} has been successfully deleted.` };
   } catch (err) {
     return { message: "Failed to delete meal" };
   }
