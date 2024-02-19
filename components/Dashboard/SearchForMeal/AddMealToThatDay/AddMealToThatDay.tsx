@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { formattedDate } from "@/lib/utils";
+import { countTotalNutrition, formattedDate } from "@/lib/utils";
 import { useCalendarStore } from "@/store/store";
 import { Nutrition } from "@/types/types";
 import { Session } from "next-auth";
@@ -25,23 +25,8 @@ const AddMealToThatDay = ({ nutrition, session }: AddMealToThatDayProps) => {
 
   const router = useRouter();
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-    let total = {
-      calories: 0,
-      protein: 0,
-      carbohydrates: 0,
-      fat: 0,
-      sugar: 0,
-    };
-    nutrition.forEach((item) => {
-      total = {
-        calories: total.calories + Number(item.calories),
-        protein: total.protein + Number(item.protein_g),
-        carbohydrates: total.carbohydrates + Number(item.carbohydrates_total_g),
-        fat: total.fat + Number(item.fat_total_g),
-        sugar: total.sugar + Number(item.sugar_g),
-      };
-    });
 
+    const total = countTotalNutrition(nutrition);
     const response = await fetch("/api/createMeal", {
       method: "POST",
       body: JSON.stringify({
