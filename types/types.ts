@@ -10,26 +10,7 @@ export type Nutrition = {
   fat_total_g: number;
   carbohydrates_total_g: number;
   sugar_g: number;
-  cholesterol_mg: number;
   serving_size_g: number;
-};
-
-export type AddMealsFormFields = {
-  mealName: string;
-  email: string;
-  calories: number;
-  protein: number;
-  carbs: number;
-  fat: number;
-  sugar: number;
-};
-
-export type TotalNutritionData = {
-  calories: number;
-  protein: number;
-  carbohydrates: number;
-  fat: number;
-  sugar: number;
 };
 export type Meal = {
   name: string;
@@ -41,6 +22,26 @@ export type Meal = {
   date: Date;
   mealid: number
 }
+export type AddMealsFormFields = {
+  mealName: string;
+  email: string;
+  calories: number;
+  protein: number;
+  carbs: number;
+  fat: number;
+  sugar: number;
+};
+
+export type TotalNutritionInMeal = {
+  calories: number;
+  protein: number;
+  carbohydrates: number;
+  fat: number;
+  sugar: number;
+};
+
+
+
 export type WeeklyMealData = {
   protein: number;
   fat: number;
@@ -49,11 +50,3 @@ export type WeeklyMealData = {
   calories: number;
   date: Date;
 };
-
-export type NutritionInMeal = {
-  calories: number;
-  protein: number;
-  carbohydrates: number;
-  fat: number;
-  sugar: number;
-}

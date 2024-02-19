@@ -1,4 +1,4 @@
-import { Nutrition, NutritionInMeal } from "@/types/types";
+import { Nutrition, TotalNutritionInMeal } from "@/types/types";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -27,7 +27,7 @@ export function getDaysInWeek( year:number, week:number) {
 }
 
 
-export function countTotalNutrition(nutrition: Nutrition[]): NutritionInMeal {
+export function countTotalNutrition(nutrition: Nutrition[]): TotalNutritionInMeal {
   let total = {
     calories: 0,
     protein: 0,

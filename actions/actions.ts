@@ -1,6 +1,6 @@
 "use server";
 import { z } from "zod";
-import { Nutrition, NutritionInMeal } from "@/types/types";
+import { Nutrition, TotalNutritionInMeal } from "@/types/types";
 import { NextResponse } from "next/server";
 import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
@@ -67,7 +67,7 @@ const schema = z.object({
 export async function createMeal(
   email: string,
   date: string,
-  total: NutritionInMeal | undefined,
+  total: TotalNutritionInMeal | undefined,
   formData: FormData,
 ) {
   const validatedFields = schema.safeParse({
