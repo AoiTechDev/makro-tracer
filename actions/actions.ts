@@ -1,6 +1,6 @@
 "use server";
 import { z } from "zod";
-import { Nutrition } from "@/types/types";
+import { Nutrition, NutritionInMeal } from "@/types/types";
 import { NextResponse } from "next/server";
 import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
@@ -67,15 +67,16 @@ const schema = z.object({
 export async function createMeal(
   email: string,
   date: string,
-  formData: FormData
+  total: NutritionInMeal | undefined,
+  formData: FormData,
 ) {
   const validatedFields = schema.safeParse({
     mealName: formData.get("mealName"),
-    calories: Number(formData.get("calories")),
-    protein: Number(formData.get("protein")),
-    fat: Number(formData.get("fat")),
-    carbs: Number(formData.get("carbs")),
-    sugar: Number(formData.get("sugar")),
+    calories: total ? total.calories : Number(formData.get("calories")),
+    protein: total ? total.protein :Number(formData.get("protein")),
+    fat: total ? total.fat :Number(formData.get("fat")),
+    carbs: total ? total.carbohydrates : Number(formData.get("carbs")),
+    sugar: total ? total.sugar :Number(formData.get("sugar")),
   });
 
   if (!validatedFields.success) {

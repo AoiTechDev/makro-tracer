@@ -49,3 +49,11 @@ export type WeeklyMealData = {
   calories: number;
   date: Date;
 };
+
+export type NutritionInMeal = {
+  calories: number;
+  protein: number;
+  carbohydrates: number;
+  fat: number;
+  sugar: number;
+}

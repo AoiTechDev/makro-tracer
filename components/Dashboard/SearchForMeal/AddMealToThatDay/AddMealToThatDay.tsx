@@ -1,4 +1,5 @@
 "use client";
+import { createMeal } from "@/actions/actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -9,6 +10,8 @@ import { Session } from "next-auth";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "sonner";
+import AddMealButton from "../../CreateMeal/AddMealButton";
 
 type AddMealToThatDayProps = {
   nutrition: Nutrition[];
@@ -23,42 +26,16 @@ const AddMealToThatDay = ({ nutrition, session }: AddMealToThatDayProps) => {
   const { date } = useCalendarStore();
   const formattedOriginalDate = formattedDate(date)
 
-  const router = useRouter();
-  const onSubmit: SubmitHandler<FormData> = async (data) => {
 
-    const total = countTotalNutrition(nutrition);
-    const response = await fetch("/api/createMeal", {
-      method: "POST",
-      body: JSON.stringify({
-        mealName: data.mealName,
-        email: session?.user?.email,
-        calories: total.calories,
-        protein: total.protein,
-        carbs: total.carbohydrates,
-        fat: total.fat,
-        sugar: total.sugar,
-        date: formattedOriginalDate,
-      }),
-    });
-
-    router.refresh();
-  };
-
-  const {
-    handleSubmit,
-    register,
-    formState: { errors, isSubmitting },
-  } = useForm<FormData>();
-
+  const total = countTotalNutrition(nutrition);
+  const createMealWithDate = createMeal.bind(null, session?.user?.email!, formattedOriginalDate, total);
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex gap-4">
+    <form action={(data) => createMealWithDate(data).then((res) => toast.success(res.message ))} className="flex gap-4">
       <Label className="flex justify-center items-center font-bold">
         Name:{" "}
       </Label>
-      <Input {...register("mealName")} />
-      <Button className="w-[100px]" disabled={isSubmitting}>
-        {isSubmitting ? "Adding.." : "Add"}
-      </Button>
+      <Input required name="mealName"/>
+      <AddMealButton/>
     </form>
   );
 };
