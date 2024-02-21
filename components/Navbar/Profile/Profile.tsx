@@ -58,7 +58,11 @@ const Profile = ({ session }: ProfileProps) => {
               Dashboard
             </DropdownMenuItem>
           </Link>
-
+          <Link href="/meal-assistant">
+            <DropdownMenuItem className="cursor-pointer p-2">
+              Meal Assistant
+            </DropdownMenuItem>
+          </Link>
           {/* <DropdownMenuItem className="cursor-pointer p-2">
             Settings{" "}
           </DropdownMenuItem> */}
