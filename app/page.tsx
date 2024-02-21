@@ -14,17 +14,9 @@ export default async function Home() {
 
   return (
     <div className="h-screen m-auto w-full  flex flex-col">
-      <Hero session={session}/>
+      <Hero session={session} />
 
-      <div className="flex items-center justify-center flex-col">
-        <h2 className=" my-24 [font-size:_clamp(1.75rem,4vw,4rem)]">
-          Key{" "}
-          <span className="bg-gradient-to-r from-purple-500 to-[#e7836e] inline-block text-transparent bg-clip-text">
-            Features
-          </span>
-        </h2>
-        <Features />
-      </div>
+      <Features />
 
       <Footer />
     </div>
