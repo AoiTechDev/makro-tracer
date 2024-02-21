@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import ButtonWithBorder from "@/components/Buttons/ButtonWithBorder";
 import Features from "@/components/Landpage/Features";
+import Footer from "@/components/Footer/Footer";
 
 export default async function Home() {
   const session = await getServerSession();
@@ -55,6 +56,9 @@ export default async function Home() {
         </h2>
         <Features />
       </div>
+
+
+      <Footer/>
     </div>
   );
 }
