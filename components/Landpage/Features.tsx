@@ -3,7 +3,7 @@ import { BentoGrid, BentoGridItem } from "../ui/bento-grid";
 
 const Features = () => {
   return (
-    <BentoGrid className="max-w-7xl mx-auto">
+    <BentoGrid className="max-w-6xl mx-auto">
       {items.map((item, i) => (
         <BentoGridItem
           key={i}
