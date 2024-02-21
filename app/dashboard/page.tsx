@@ -13,8 +13,8 @@ const page = async () => {
   }
 
   return (
-    <Card className="min-h-[400px] flex-1 flex-shrink-0">
-      <Tabs  defaultValue="Add meal">
+    <Card className="min-h-[400px] flex-1 flex-shrink-0 ">
+      <Tabs  defaultValue="Add meal"> 
         <TabsList className="grid w-full grid-cols-3 lg:grid-cols-2">
           <TabsTrigger value="Add meal">Add meal</TabsTrigger>
           <TabsTrigger value="Search for meal">Search for meal</TabsTrigger>

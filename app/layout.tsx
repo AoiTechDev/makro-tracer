@@ -17,7 +17,7 @@ export default async function RootLayout({
     <html lang="en">
       <body>
         <Navbar />
-        <main className="pt-16 m-auto w-full">{children}</main>
+        <main className=" m-auto w-full">{children}</main>
         <Toaster />
       </body>
     </html>
