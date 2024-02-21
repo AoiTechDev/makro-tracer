@@ -28,7 +28,7 @@ export default async function Home() {
             Empower Yourself with Comprehensive Meal Tracking: Easily Create,
             Add and Search for Meals to Stay On Track.
           </p>
-          <div className="space-x-4">
+          <div className="space-y-4 md:space-x-4">
             <Link href={session ? "/dashboard" : "/register"}>
               <ButtonWithBorder text="Discover" size="lg" />
             </Link>
