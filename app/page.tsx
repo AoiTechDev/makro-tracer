@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import ButtonWithBorder from "@/components/Buttons/ButtonWithBorder";
 import Features from "@/components/Landpage/Features";
+import Footer from "@/components/Footer/Footer";
 
 export default async function Home() {
   const session = await getServerSession();
@@ -27,7 +28,7 @@ export default async function Home() {
             Empower Yourself with Comprehensive Meal Tracking: Easily Create,
             Add and Search for Meals to Stay On Track.
           </p>
-          <div className="space-x-4">
+          <div className="space-y-4 md:space-x-4">
             <Link href={session ? "/dashboard" : "/register"}>
               <ButtonWithBorder text="Discover" size="lg" />
             </Link>
@@ -55,6 +56,9 @@ export default async function Home() {
         </h2>
         <Features />
       </div>
+
+
+      <Footer/>
     </div>
   );
 }
