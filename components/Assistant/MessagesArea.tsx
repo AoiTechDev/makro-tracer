@@ -18,11 +18,11 @@ const MessagesArea = () => {
             className={`${
               message.isUserMessage ? "self-end" : "self-start"
             } flex items-center gap-4`}
+            isUserMessage={ message.isUserMessage}
           >
             {message.text}
           </ChatMessage>
         ))}
-        {/* <ChatMessage className="flex items-center gap-4" /> */}
       </div>
     </ScrollArea>
   );

@@ -3,17 +3,23 @@ import { FC, HTMLAttributes } from "react";
 
 interface ChatMessagesProps extends HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
+  isUserMessage: boolean;
 }
 const ChatMessage: FC<ChatMessagesProps> = ({
   className,
+  isUserMessage,
   children,
   ...props
 }) => {
   return (
-    <div className={cn("", className)} {...props}>
+    <div className={cn("flex", className)} {...props}>
       <img
         alt="Avatar"
-        className="rounded-full"
+        className={cn("rounded-full", {
+            "order-1": isUserMessage,
+            "order-0": !isUserMessage,
+            
+        })}
         height="40"
         src="/placeholder.svg"
         style={{
