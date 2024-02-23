@@ -87,7 +87,8 @@ const ChatInput = () => {
           value={input}
           rows={2}
           maxRows={4}
-          className='peer disabled:opacity-50 pr-14 pl-4 resize-none block w-full border-none outline-none bg-zinc-100 py-2 text-gray-900 focus:ring-0 text-sm sm:leading-6'
+          disabled={isPending}
+          className='peer disabled:opacity-50 pr-10 pl-4 resize-none block w-full border-none outline-none bg-zinc-100 py-2 text-gray-900 focus:ring-0 text-sm sm:leading-6'
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter" && !e.shiftKey) {
