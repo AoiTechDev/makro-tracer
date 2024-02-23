@@ -1,4 +1,4 @@
-import { schema } from "@/schema/input";
+import { schema } from "@/validators/input";
 import { z } from "zod";
 
 export type FormFields = z.infer<typeof schema>;

@@ -1,6 +1,8 @@
 import { GetMealsResponse } from "@/lib/getMeals/getMeals";
 import { Meal } from "@/types/types";
+import { Message } from "@/validators/message";
 import { QueryResult } from "@vercel/postgres";
+import { nanoid } from "nanoid";
 import { create } from "zustand";
 
 type CurrentCalendarDate = {
@@ -73,4 +75,26 @@ type ChartOption = {
 export const useChartOptionsStore = create<ChartOption>((set) => ({
   option: "calories",
   setNutrition: (option: Option) => set({ option }),
+}));
+
+
+type Messages ={
+  messages: Message[];
+  isMessageUpdating: boolean;
+  addMessage: (message: Message) => void;
+  removeMessage: (id: string) => void;
+  updateMessage: (id: string, updateFn: (prevText: string) => string ) => void;
+  setIsMessageUpdating: (isUpdating: boolean) => void;
+}
+export const useMessagesStore = create<Messages>((set) => ({
+  messages: [{
+    id: nanoid(),
+    isUserMessage: false,
+    text: "Hello! I'm your personal nutritionist. I can help you provide nutritional information and recommend meals based on what you eat. What would you like to do?"
+  }],
+  isMessageUpdating: false,
+  addMessage: (message: Message) => set((state) => ({ messages: [...state.messages, message] })),
+  removeMessage: (id: string) => set((state) => ({ messages: state.messages.filter((message) => message.id !== id) })),
+  updateMessage: (id: string, updateFn: (prevText: string) => string) => set((state) => ({ messages: state.messages.map((message) => message.id === id ? {...message, text: updateFn(message.text)} : message) })),
+  setIsMessageUpdating: (isUpdating: boolean) => set({ isMessageUpdating: isUpdating }),
 }));
