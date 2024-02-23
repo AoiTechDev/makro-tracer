@@ -10,8 +10,8 @@ const MessagesArea = () => {
   const inverseMessages = [...messages].reverse();
 
   return (
-    <ScrollArea className="flex-1 ">
-      <div className="p-6 flex flex-col-reverse overflow-y-auto gap-4">
+    <div className="flex-1 px-2 py-3 flex flex-col-reverse gap-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
+      <div className="p-6 flex flex-col-reverse overflow-y-auto gap-4 flex-grow" >
         {inverseMessages.map((message) => (
           <ChatMessage
             key={message.id}
@@ -24,7 +24,7 @@ const MessagesArea = () => {
           </ChatMessage>
         ))}
       </div>
-    </ScrollArea>
+    </div>
   );
 };
 
