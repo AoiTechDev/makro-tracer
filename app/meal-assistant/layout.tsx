@@ -5,7 +5,7 @@ const AiLayout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  return <div className="w-full h-screen pt-16">{children}</div>;
+  return <div className="w-full h-[100dvh] pt-16">{children}</div>;
 };
 
 export default AiLayout;
