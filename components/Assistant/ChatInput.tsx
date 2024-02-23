@@ -7,6 +7,7 @@ import TextareaAutosize from "react-textarea-autosize";
 import { nanoid } from "nanoid";
 import { Message } from "@/validators/message";
 import { useMessagesStore } from "@/store/store";
+import { CornerDownLeft, Loader2 } from "lucide-react";
 const ChatInput = () => {
   //TODO: change normal input to resizable area to allow for multi-line input
   const [input, setInput] = useState<string>("");
@@ -18,7 +19,8 @@ const ChatInput = () => {
     updateMessage,
     setIsMessageUpdating,
   } = useMessagesStore();
-  const { mutate: sendMessage } = useMutation({
+  const { mutate: sendMessage, isPending } = useMutation({
+    
     mutationFn: async (message: Message) => {
       const response = await fetch("/api/message", {
         method: "POST",
@@ -66,8 +68,8 @@ const ChatInput = () => {
   });
 
   return (
-    <div className=" flex w-full gap-4 px-2 lg:w-3/4 mx-auto">
-      <div className=" flex-1">
+    <div className=" flex w-full gap-4 px-2  mx-auto">
+      <div className=" flex-1 relative">
         <Input
           placeholder="Type a message..."
           ref={InputRef}
@@ -86,8 +88,13 @@ const ChatInput = () => {
             }
           }}
         />
+        <div className="absolute inset-y-0 right-0 flex py-2.5 pr-2.5">
+          <kbd className="inline-flex items-center rounded border bg-white border-gray-200 px-1 font-sans text-xs text-grey-300">
+            {isPending ? <Loader2 className="w-3 h-3 animate-spin"/> : <CornerDownLeft className="w-3 h-3"/>}
+          </kbd>
+        </div>
       </div>
-      <Button className="h-full rounded-l-none">Send</Button>
+      {/* <Button className="h-full rounded-md">Send</Button> */}
     </div>
   );
 };

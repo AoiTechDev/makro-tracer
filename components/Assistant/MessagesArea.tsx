@@ -17,7 +17,7 @@ const MessagesArea = () => {
             key={message.id}
             className={`${
               message.isUserMessage ? "self-end" : "self-start"
-            } flex items-center gap-4`}
+            } flex  items-center gap-4`}
             isUserMessage={ message.isUserMessage}
           >
             {message.text}

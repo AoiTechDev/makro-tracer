@@ -13,24 +13,19 @@ const ChatMessage: FC<ChatMessagesProps> = ({
 }) => {
   return (
     <div className={cn("flex", className)} {...props}>
-      <img
-        alt="Avatar"
-        className={cn("rounded-full", {
-            "order-1": isUserMessage,
-            "order-0": !isUserMessage,
-            
+      <div className={cn('w-10 h-10 rounded-full flex-shrink-0',{
+        "bg-blue-700 order-2": isUserMessage,
+        "bg-gray-100": !isUserMessage
+      
+      })}></div>
+      <p
+        className={cn("bg-gray-100 rounded-xl p-4 text-sm rounded-r-[20px]", {
+          "bg-blue-700 text-white rounded-l-[20px] ": isUserMessage,
+          "bg-gray-100 text-gray-900 rounded-r-[20px]": !isUserMessage,
         })}
-        height="40"
-        src="/placeholder.svg"
-        style={{
-          aspectRatio: "40/40",
-          objectFit: "cover",
-        }}
-        width="40"
-      />
-      <div className="bg-gray-100 rounded-xl p-4 text-sm rounded-r-[20px]">
+      >
         {children}
-      </div>
+      </p>
     </div>
   );
 };

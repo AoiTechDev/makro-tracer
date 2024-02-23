@@ -2,6 +2,7 @@ import { GetMealsResponse } from "@/lib/getMeals/getMeals";
 import { Meal } from "@/types/types";
 import { Message } from "@/validators/message";
 import { QueryResult } from "@vercel/postgres";
+import { nanoid } from "nanoid";
 import { create } from "zustand";
 
 type CurrentCalendarDate = {
@@ -86,7 +87,11 @@ type Messages ={
   setIsMessageUpdating: (isUpdating: boolean) => void;
 }
 export const useMessagesStore = create<Messages>((set) => ({
-  messages: [],
+  messages: [{
+    id: nanoid(),
+    isUserMessage: false,
+    text: "Hello! I'm your personal nutritionist. I can help you provide nutritional information and recommend meals based on what you eat. What would you like to do?"
+  }],
   isMessageUpdating: false,
   addMessage: (message: Message) => set((state) => ({ messages: [...state.messages, message] })),
   removeMessage: (id: string) => set((state) => ({ messages: state.messages.filter((message) => message.id !== id) })),
