@@ -16,6 +16,7 @@ const Features = () => {
   return (
     <div  className="flex items-center justify-center flex-col">
       <motion.h2 ref={ref}
+      initial={{opacity: 0, y: 50}}
       animate={isInView ? {opacity: 1, y: -20} : {opacity: 0, y: 50}}
       transition={{duration: 0.3}}
       viewport={{once: true, amount: 0.5}}

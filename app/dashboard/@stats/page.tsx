@@ -7,7 +7,7 @@ const page = () => {
   
 
   return (
-    <Card className="min-h-[400px] flex-1 flex flex-col gap-5 justify-center items-center p-4">
+    <Card className="hidden min-h-[400px] flex-1 lg:flex flex-col gap-5 justify-center items-center p-4">
      <ChartOptions/>
      <ChartContainer/>
     </Card>

@@ -20,11 +20,11 @@ const ChartContainer = React.memo(() => {
     newResult = [...result.success.rows];
   }
 
-    //make it custom hook
+    //TODO: make it custom hook
   useEffect(() => {
     setDaysInWeek([]);
     currentWeek.map((day) => {
-      if (!result.success) return console.log("no data");
+      if (!result.success) return 
       const tempArr: WeeklyMealData[] = [];
       let totalInit = {
         calories: 0,

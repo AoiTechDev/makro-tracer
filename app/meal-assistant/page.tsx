@@ -12,7 +12,7 @@ const page = async () => {
   return (
     <div className="flex flex-col h-full  justify-between max-w-[900px] gap-4 mx-auto pb-2">
       <h1 className="text-center [font-size:_clamp(1.75rem,4vw,4rem)] my-6">
-        Your Meal Assistant
+        <span  className=" bg-gradient-to-r from-indigo-500 to-purple-500 inline-block text-transparent bg-clip-text">Mealfull</span> Assistant
       </h1>
       <MessagesArea />
       <ChatInput />

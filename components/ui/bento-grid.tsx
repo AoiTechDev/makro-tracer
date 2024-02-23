@@ -41,7 +41,7 @@ export const BentoGridItem = ({
     <motion.div
       ref={ref}
       initial={{ opacity: 0 }}
-      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+      animate={isInView ? { opacity: 1} : { opacity: 0}}
       transition={{ delay: 0.05 * index, duration: 0.2 }}
       className={cn(
         "max-md:aspect-square max-md:max-w-[420px] row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2] bg-white border border-transparent justify-between flex flex-col space-y-4",

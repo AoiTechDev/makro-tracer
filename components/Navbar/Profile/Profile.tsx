@@ -39,7 +39,6 @@ const Profile = ({ session }: ProfileProps) => {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="w-64">
-        {/* <DropdownMenuLabel>My Account</DropdownMenuLabel> */}
         <DropdownMenuGroup className="p-4 flex items-center justify-start gap-2">
           <Avatar>
             <AvatarFallback>{avatarFallback}</AvatarFallback>
