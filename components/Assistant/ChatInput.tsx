@@ -8,6 +8,7 @@ import { nanoid } from "nanoid";
 import { Message } from "@/validators/message";
 import { useMessagesStore } from "@/store/store";
 import { CornerDownLeft, Loader2 } from "lucide-react";
+import { toast } from "sonner";
 const ChatInput = () => {
   //TODO: change normal input to resizable area to allow for multi-line input
   const [input, setInput] = useState<string>("");
@@ -28,6 +29,9 @@ const ChatInput = () => {
         body: JSON.stringify({ messages: [message] }),
       });
 
+      if(!response.ok){
+        throw new Error('Failed to send message')
+      }
       return response.body;
     },
     onMutate(message){
@@ -65,6 +69,12 @@ const ChatInput = () => {
         
       }, 10)
     },
+
+    onError(_, message){
+      toast.error('Something went wrong, please try again');
+      removeMessage(message.id);
+      InputRef.current?.focus();
+    }
   });
 
   return (

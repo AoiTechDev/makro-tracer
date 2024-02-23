@@ -5,6 +5,7 @@ import { MessageArraySchema } from "@/validators/message";
 export async function POST(req: Request) {
   const { messages } = await req.json();
 
+
   const parsedMessages = MessageArraySchema.parse(messages);
 
   const outboundMessages: ChatGPTMessage[] = parsedMessages.map((messages) => {
