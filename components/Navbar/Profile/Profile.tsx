@@ -1,20 +1,14 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Session } from "next-auth";
 import {
-  DropdownMenuCheckboxItemProps,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
 } from "@radix-ui/react-dropdown-menu";
-
-import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
-  DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuLabel,
   DropdownMenuSeparator,
@@ -22,6 +16,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Logout from "../Logout/Logout";
 import Link from "next/link";
+import { useSessionStore } from "@/store/store";
 
 type ProfileProps = {
   session: Session;
@@ -31,7 +26,10 @@ const Profile = ({ session }: ProfileProps) => {
   const avatarFallback = `${session?.user?.email
     ?.split("")[0]
     ?.toUpperCase()}${session?.user?.email?.split("")[1]?.toUpperCase()}`;
-
+    const {userSession, setUserSession} = useSessionStore();
+    useEffect(() => {
+      setUserSession(session);
+    }, [userSession])
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="cursor-pointer">
@@ -46,9 +44,7 @@ const Profile = ({ session }: ProfileProps) => {
           <Avatar>
             <AvatarFallback>{avatarFallback}</AvatarFallback>
           </Avatar>
-          <DropdownMenuLabel>
-            {session?.user?.email}
-          </DropdownMenuLabel>
+          <DropdownMenuLabel>{session?.user?.email}</DropdownMenuLabel>
         </DropdownMenuGroup>
 
         <DropdownMenuSeparator />

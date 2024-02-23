@@ -2,7 +2,7 @@
 import { TableCell, TableRow } from "@/components/ui/table";
 import { GetMealsResponse } from "@/lib/getMeals/getMeals";
 import { formattedDate } from "@/lib/utils";
-import { useCalendarStore, useResultStore } from "@/store/store";
+import { useCalendarStore, useResultStore, useSessionStore } from "@/store/store";
 import { Session } from "next-auth";
 import React, {memo, useEffect } from "react";
 import DeleteRow from "./DeleteRow";
@@ -16,7 +16,9 @@ const MealsTableRow = memo(({ result, session }: MealsTableRowProps) => {
   const { date } = useCalendarStore();
 
   const { setResult } = useResultStore();
+ 
 
+  
   useEffect(() => {
     setResult({ success: result.success!, error: result.error });
   }, [result]);

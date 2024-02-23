@@ -19,7 +19,7 @@ const DashboardLayout = ({
           {children}
          {stats}
         </div>
-        {table}
+        {table}     
       </div>
 
       {calendar}

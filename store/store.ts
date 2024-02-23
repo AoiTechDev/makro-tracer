@@ -3,6 +3,7 @@ import { Meal } from "@/types/types";
 import { Message } from "@/validators/message";
 import { QueryResult } from "@vercel/postgres";
 import { nanoid } from "nanoid";
+import { Session } from "next-auth";
 import { create } from "zustand";
 
 type CurrentCalendarDate = {
@@ -98,3 +99,14 @@ export const useMessagesStore = create<Messages>((set) => ({
   updateMessage: (id: string, updateFn: (prevText: string) => string) => set((state) => ({ messages: state.messages.map((message) => message.id === id ? {...message, text: updateFn(message.text)} : message) })),
   setIsMessageUpdating: (isUpdating: boolean) => set({ isMessageUpdating: isUpdating }),
 }));
+
+type SessionStore = {
+  userSession: Session | null;
+  setUserSession: (userSession: Session | null) => void;
+}
+export const useSessionStore = create<SessionStore>((set) => {
+  return {
+    userSession: null,
+    setUserSession: (userSession: Session | null) => set({ userSession }),
+  };
+})

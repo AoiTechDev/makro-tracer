@@ -21,7 +21,6 @@ const ChatInput = () => {
     setIsMessageUpdating,
   } = useMessagesStore();
 
-  console.log(messages)
   const { mutate: sendMessage, isPending } = useMutation({
     
     mutationFn: async (message: Message) => {
