@@ -51,3 +51,4 @@ I became interested in understanding my daily nutritional intake when I returned
 - [x] Get Nutrition details of given food and add it to db for specific day
 - [x] Delete meal from specific day
 - [x] Chart with weekly stats for all available nutrition
+- [x] AI assistant integrated
