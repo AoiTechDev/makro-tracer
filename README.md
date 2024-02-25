@@ -38,17 +38,11 @@ I became interested in understanding my daily nutritional intake when I returned
 
 <h2 align="left">Implemented Features</h2>
 
-- [x] Registration
-- [x] Login/Logout Functionality
-- [x] Page Protection
-- [x] Database Management
-- [x] Hashin passwords before put them into db 
-- [x] Session Management
-- [x] Input Validation
-- [x] Create your own meal and add to db
-- [x] Display all meals eatten on specific day
-- [x] Count total Nutrition eatten on specific day
-- [x] Get Nutrition details of given food and add it to db for specific day
-- [x] Delete meal from specific day
-- [x] Chart with weekly stats for all available nutrition
-- [x] AI assistant integrated
+- Login/register.
+- Create your own meal with given nutrition by you and add them to the calendar.
+- Search for Ingredients or meals and get their nutritions.
+- Add searched meals to the calendar.
+- Delete selected meal from the calendar.
+- Count total nutrition for specific day.
+- Line chart with weekly nutrittion. Combobox to choose which nutrition chart to display.
+- Integrated AI to assist user with everything about meals.
