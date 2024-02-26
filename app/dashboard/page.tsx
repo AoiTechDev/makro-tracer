@@ -18,7 +18,7 @@ const page = async () => {
         <TabsList className="grid w-full grid-cols-3 lg:grid-cols-2">
           <TabsTrigger value="Add meal">Add meal</TabsTrigger>
           <TabsTrigger value="Search for meal">Search for meal</TabsTrigger>
-          <TabsTrigger className="flex lg:hidden" value="Existing Meals">Existing Meals</TabsTrigger>
+  
         </TabsList>
         <TabsContent value="Add meal">
           <CardContent>
@@ -30,11 +30,7 @@ const page = async () => {
             <SearchForMeal session={session} />
           </CardContent>
         </TabsContent>
-        <TabsContent className="flex lg:hidden" value="Existing Meals">
-          <Card className="min-h-[400px] flex-1 bg-red-200 flex justify-center items-center">
-            Existing meals(comming soon)
-          </Card>
-        </TabsContent>
+       
       </Tabs>
     </Card>
   );
