@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { Session } from "next-auth";
 import { getMeals } from "@/lib/getMeals/getMeals";
@@ -11,11 +11,11 @@ type MealsTableBodyProps = {
 const MealsTableBody = async ({ session }: MealsTableBodyProps) => {
   const result = await getMeals(session?.user?.email ?? "");
 
-
-    
   return (
     <TableBody>
-      <MealsTableRow result={result} session={session}/>
+     
+        <MealsTableRow result={result} session={session} />
+     
     </TableBody>
   );
 };
