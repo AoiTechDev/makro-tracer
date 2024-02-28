@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { RxCross2 } from "react-icons/rx";
+import Stars from "./Stars";
 const Overlay = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -36,10 +37,12 @@ const Overlay = () => {
         </Card>
       ) : null}
       <div
-        className="fixed bottom-3 right-3 bg-black w-12 h-12 rounded-full flex justify-center items-center cursor-pointer"
+        className="fixed bottom-3 right-3 border-2 w-12 h-12 rounded-full flex justify-center items-center p-[2px] bg-gradient-to-r from-indigo-500 to-purple-500"
         onClick={() => setIsOpen((prev) => !prev)}
       >
-        <span className="text-white">AI</span>
+        <button className="rounded-full w-full h-full flex bg-white justify-center items-center ">
+          <Stars />
+        </button>
       </div>
     </>
   );
