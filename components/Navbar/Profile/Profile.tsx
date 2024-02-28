@@ -53,7 +53,7 @@ const Profile = ({ session }: ProfileProps) => {
               Dashboard
             </DropdownMenuItem>
           </Link>
-          <Link href="/meal-assistant">
+          <Link className="block lg:hidden" href="/meal-assistant">
             <DropdownMenuItem className="cursor-pointer p-2">
               Meal Assistant
             </DropdownMenuItem>
