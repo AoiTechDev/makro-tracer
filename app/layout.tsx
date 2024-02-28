@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import { Toaster } from "@/components/ui/sonner";
 import Provider from "@/components/Providers/Provider";
+import Overlay from "@/components/Assistant/Overlay/Overlay";
 export const metadata: Metadata = {
   title: "MealFulness",
   description:
@@ -20,6 +21,7 @@ export default async function RootLayout({
         <body>
           <Navbar />
           <main className=" w-full">{children}</main>
+          <Overlay/>
           <Toaster />
         </body>
       </Provider>
