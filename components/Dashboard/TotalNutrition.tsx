@@ -17,7 +17,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Button } from "../ui/button";
 import { CalendarIcon } from "lucide-react";
 import { Calendar } from "../ui/calendar";
-
+import { useTotalNutrition } from "@/hooks/useTotalNutrition";
 
 //TODO refactor this code to be reusable
 type TotalNutritionProps = {
@@ -25,47 +25,10 @@ type TotalNutritionProps = {
 };
 
 const TotalNutrition = ({ result }: TotalNutritionProps) => {
-  const [totalNutrition, setTotalNutrition] = useState<TotalNutritionInMeal>({
-    calories: 0,
-    protein: 0,
-    carbohydrates: 0,
-    fat: 0,
-    sugar: 0,
-  });
-
   const { date, setCurrentDate } = useCalendarStore();
   const formattedOriginalDate = formattedDate(date);
 
-  useEffect(() => {
-    if (result.success) {
-      let total = {
-        calories: 0,
-        protein: 0,
-        carbohydrates: 0,
-        fat: 0,
-        sugar: 0,
-      };
-
-      result.success.rows.forEach((row) => {
-        const rowDate = new Date(row.date);
-        const formattedRowDate = formattedDate(rowDate);
-
-        if (formattedOriginalDate === formattedRowDate) {
-          total = {
-            calories: total.calories + Number(row.calories),
-            protein: total.protein + Number(row.protein),
-            carbohydrates: total.carbohydrates + Number(row.carbohydrates),
-            fat: total.fat + Number(row.fat),
-            sugar: total.sugar + Number(row.sugar),
-          };
-        }
-      });
-
-      setTotalNutrition(total);
-    }
-  }, [result.success, date]);
-
-
+  const { totalNutrition } = useTotalNutrition({ result });
   const tableRow = [
     {
       nutrition: "Calories",
@@ -86,55 +49,55 @@ const TotalNutrition = ({ result }: TotalNutritionProps) => {
     {
       nutrition: "Sugar",
       amount: totalNutrition.sugar.toFixed(1),
-    }
-  ]
+    },
+  ];
 
   return (
     <CardContent className="flex flex-col items-center justify-start gap-4">
       <CardHeader>
         <CardTitle>Total Nutrition</CardTitle>
-
-       
       </CardHeader>
-      <Popover >
-          <PopoverTrigger asChild className="max-[1400px]:flex hidden">
-            <Button
-              variant={"outline"}
-              className={cn("w-[240px] pl-3 text-left font-normal")}
-            >
-             
-              <span> {typeof date === 'undefined' ? "Select Date"  : formattedOriginalDate}</span>
-              <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-auto p-0" align="start">
-            <Calendar
-              mode="single"
-              selected={date}
-              onSelect={(date: Date | undefined) => setCurrentDate(date)}
-              className="rounded-md "
-              initialFocus
-            />
-          </PopoverContent>
-        </Popover>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Nutrition</TableHead>
-              <TableHead>Amount (g)</TableHead>
+      <Popover>
+        <PopoverTrigger asChild className="max-[1400px]:flex hidden">
+          <Button
+            variant={"outline"}
+            className={cn("w-[240px] pl-3 text-left font-normal")}
+          >
+            <span>
+              {" "}
+              {typeof date === "undefined"
+                ? "Select Date"
+                : formattedOriginalDate}
+            </span>
+            <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-auto p-0" align="start">
+          <Calendar
+            mode="single"
+            selected={date}
+            onSelect={(date: Date | undefined) => setCurrentDate(date)}
+            className="rounded-md "
+            initialFocus
+          />
+        </PopoverContent>
+      </Popover>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Nutrition</TableHead>
+            <TableHead>Amount (g)</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {tableRow.map((row, index) => (
+            <TableRow key={index}>
+              <TableCell className="font-medium">{row.nutrition}</TableCell>
+              <TableCell className="font-medium">{row.amount}</TableCell>
             </TableRow>
-          </TableHeader>
-          <TableBody>
-            {tableRow.map((row, index) => (
-              <TableRow key={index}>
-                <TableCell className="font-medium">{row.nutrition}</TableCell>
-                <TableCell className="font-medium">{row.amount}</TableCell>
-              </TableRow>
-            ))}
-     
-          </TableBody>
-        </Table>
-      
+          ))}
+        </TableBody>
+      </Table>
     </CardContent>
   );
 };
