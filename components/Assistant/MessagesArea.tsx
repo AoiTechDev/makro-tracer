@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { ScrollArea } from "../ui/scroll-area";
 import ChatMessage from "./ChatMessage";
 import { useMessagesStore } from "@/store/store";
 

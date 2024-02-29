@@ -16,12 +16,11 @@ const MealsTableRow = memo(({ result, session }: MealsTableRowProps) => {
   const { date } = useCalendarStore();
 
   const { setResult } = useResultStore();
- 
-
-  
   useEffect(() => {
     setResult({ success: result.success!, error: result.error });
   }, [result]);
+
+
   const formattedOriginalDate = formattedDate(date);
   {
     return result?.success
