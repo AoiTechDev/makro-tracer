@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { CardContent, CardHeader, CardTitle } from "../ui/card";
 import {
   Table,
@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/table";
 import { useCalendarStore } from "@/store/store";
 import { GetMealsResponse } from "@/lib/getMeals/getMeals";
-import { TotalNutritionInMeal } from "@/types/types";
+
 import { cn, formattedDate } from "@/lib/utils";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Button } from "../ui/button";

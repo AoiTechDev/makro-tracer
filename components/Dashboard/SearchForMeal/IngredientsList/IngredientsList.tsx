@@ -6,11 +6,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Nutrition } from "@/types/types";
+import { NutritionAPIResponse } from "@/types/types";
 import React from "react";
 
 type IngredientsListProps = {
-  nutrition: Nutrition[];
+  nutrition: NutritionAPIResponse[];
 };
 
 const IngredientsList = ({ nutrition }: IngredientsListProps) => {

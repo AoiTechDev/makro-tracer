@@ -1,7 +1,7 @@
 import { GetMealsResponse } from "@/lib/getMeals/getMeals";
 import { formattedDate } from "@/lib/utils";
 import { useCalendarStore } from "@/store/store";
-import { TotalNutritionInMeal } from "@/types/types";
+import { Nutrition } from "@/types/types";
 import { useEffect, useState } from "react";
 
 type TotalNutritionProps = {
@@ -10,7 +10,7 @@ type TotalNutritionProps = {
   
 export const useTotalNutrition = ({result}: TotalNutritionProps) => {
 
-    const [totalNutrition, setTotalNutrition] = useState<TotalNutritionInMeal>({
+    const [totalNutrition, setTotalNutrition] = useState<Nutrition>({
         calories: 0,
         protein: 0,
         carbohydrates: 0,

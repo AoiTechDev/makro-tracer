@@ -3,7 +3,7 @@ import { z } from "zod";
 
 export type FormFields = z.infer<typeof schema>;
 
-export type Nutrition = {
+export type NutritionAPIResponse = {
   name: string;
   calories: number;
   protein_g: number;
@@ -12,41 +12,25 @@ export type Nutrition = {
   sugar_g: number;
   serving_size_g: number;
 };
-export type Meal = {
-  name: string;
+export type Nutrition = {
+  calories: number;
   protein: number;
   fat: number;
   carbohydrates: number;
   sugar: number;
-  calories: number;
+};
+
+export interface Meal extends Nutrition {
+  name: string;
   date: Date;
-  mealid: number
+  mealid: number;
 }
-export type AddMealsFormFields = {
+
+export interface AddMealsFormFields extends Nutrition {
   mealName: string;
   email: string;
-  calories: number;
-  protein: number;
-  carbs: number;
-  fat: number;
-  sugar: number;
-};
+}
 
-export type TotalNutritionInMeal = {
-  calories: number;
-  protein: number;
-  carbohydrates: number;
-  fat: number;
-  sugar: number;
-};
-
-
-
-export type WeeklyMealData = {
-  protein: number;
-  fat: number;
-  carbohydrates: number;
-  sugar: number;
-  calories: number;
+export interface WeeklyMealData extends Nutrition {
   date: Date;
-};
+}

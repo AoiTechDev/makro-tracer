@@ -1,4 +1,4 @@
-import { GetMealsResponse } from "@/lib/getMeals/getMeals";
+
 import { Meal } from "@/types/types";
 import { Message } from "@/validators/message";
 import { QueryResult } from "@vercel/postgres";

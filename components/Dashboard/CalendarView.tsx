@@ -16,7 +16,6 @@ const CalendarView = React.memo(() => {
         showWeekNumber
         showOutsideDays
         formatters={{
-          // Add `W` prefix to week number
           formatWeekNumber: (weekNumber) => `W${weekNumber}`
         }}
       />

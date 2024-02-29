@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { createCompletion } from "@/actions/actions";
-import { Nutrition } from "@/types/types";
+import { NutritionAPIResponse } from "@/types/types";
 import { Skeleton } from "@/components/ui/skeleton";
 import {  useForm } from "react-hook-form";
 import { Session } from "next-auth";
@@ -16,7 +16,7 @@ type SearchForMealProps = {
   session: Session;
 };
 const SearchForMeal = ({ session }: SearchForMealProps) => {
-  const [nutrition, setNutrition] = useState<Nutrition[]>([]);
+  const [nutrition, setNutrition] = useState<NutritionAPIResponse[]>([]);
   const {
     handleSubmit,
     register,

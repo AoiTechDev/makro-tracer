@@ -1,8 +1,8 @@
-import React, { Suspense } from "react";
-import { TableBody, TableCell, TableRow } from "@/components/ui/table";
+import React from "react";
+import { TableBody} from "@/components/ui/table";
 import { Session } from "next-auth";
 import { getMeals } from "@/lib/getMeals/getMeals";
-import { useCalendarStore } from "@/store/store";
+
 import MealsTableRow from "./MealsTableRow/MealsTableRow";
 
 type MealsTableBodyProps = {

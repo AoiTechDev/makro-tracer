@@ -1,5 +1,5 @@
 import { Meal } from "@/types/types";
-import { QueryResult, QueryResultRow} from "@vercel/postgres";
+import { QueryResult} from "@vercel/postgres";
 
 
 

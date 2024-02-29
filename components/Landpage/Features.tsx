@@ -7,10 +7,10 @@ import prepare from "@/assets/prepare.jpg";
 import calendar from "@/assets/calendar.jpg";
 import stats from "@/assets/stats.webp";
 import Image from "next/image";
-import { motion, useScroll, useInView  } from "framer-motion"
+import { motion, useInView  } from "framer-motion"
 
 const Features = () => {
-  const { scrollYProgress } = useScroll();
+
   const ref = useRef(null)
   const isInView = useInView(ref)
   return (
