@@ -46,5 +46,6 @@ I became interested in understanding my daily nutritional intake when I returned
 - Used Suspense for each Paraller Route to improve user experience by avoiding long page load.
 - Created message rate limit with Redis to prevent spams to OpenAI API.
 - Hasing passowrds before inserting it to DB.
+- Stream AI responses to the user to enchance UX.
 
 
