@@ -12,7 +12,10 @@ import { motion, useInView  } from "framer-motion"
 const Features = () => {
 
   const ref = useRef(null)
-  const isInView = useInView(ref)
+  const isInView = useInView(ref,{
+    margin: "-100px",
+    once: true
+  })
   return (
     <div  className="flex items-center justify-center flex-col">
       <motion.h2 ref={ref}

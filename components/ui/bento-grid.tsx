@@ -36,7 +36,11 @@ export const BentoGridItem = ({
   index: number;
 }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref);
+  const isInView = useInView(ref, {
+    margin: "-200px",
+    once: true,
+  
+  });
   return (
     <motion.div
       ref={ref}
