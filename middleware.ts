@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { rateLimiter } from "./lib/rate-limiter";
 
 export async function middleware(req: NextRequest) {
-  const ip = req.ip ?? "127.0.0.1";
+  const ip = req.ip ?? process.env.IP_ADDRESS!;
 
   try {
     const { success } = await rateLimiter.limit(ip);
