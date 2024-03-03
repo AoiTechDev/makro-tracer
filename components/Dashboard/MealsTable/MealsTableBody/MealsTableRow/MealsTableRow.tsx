@@ -2,9 +2,13 @@
 import { TableCell, TableRow } from "@/components/ui/table";
 import { GetMealsResponse } from "@/lib/getMeals/getMeals";
 import { formattedDate } from "@/lib/utils";
-import { useCalendarStore, useResultStore, useSessionStore } from "@/store/store";
+import {
+  useCalendarStore,
+  useResultStore,
+  useSessionStore,
+} from "@/store/store";
 import { Session } from "next-auth";
-import React, {memo, useEffect } from "react";
+import React, { memo, useEffect } from "react";
 import DeleteRow from "./DeleteRow";
 
 type MealsTableRowProps = {
@@ -20,7 +24,6 @@ const MealsTableRow = memo(({ result, session }: MealsTableRowProps) => {
     setResult({ success: result.success!, error: result.error });
   }, [result]);
 
-
   const formattedOriginalDate = formattedDate(date);
   {
     return result?.success
@@ -33,10 +36,18 @@ const MealsTableRow = memo(({ result, session }: MealsTableRowProps) => {
               <TableRow key={row.mealid} className="relative group ">
                 <TableCell className="font-medium">{row.name}</TableCell>
                 <TableCell>{row.calories}</TableCell>
-                <TableCell>{row.protein}</TableCell>
-                <TableCell>{row.carbohydrates}</TableCell>
-                <TableCell>{row.fat}</TableCell>
-                <TableCell>{row.sugar}</TableCell>
+                <TableCell>
+                  {row.protein} <span className="opacity-50">g</span>
+                </TableCell>
+                <TableCell>
+                  {row.carbohydrates} <span className="opacity-50">g</span>
+                </TableCell>
+                <TableCell>
+                  {row.fat} <span className="opacity-50">g</span>
+                </TableCell>
+                <TableCell>
+                  {row.sugar} <span className="opacity-50">g</span>
+                </TableCell>
                 <TableCell>
                   {" "}
                   <DeleteRow mealid={row.mealid} session={session} />

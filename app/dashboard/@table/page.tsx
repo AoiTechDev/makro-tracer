@@ -26,10 +26,10 @@ const page = async () => {
             <TableRow>
               <TableHead>Meal</TableHead>
               <TableHead>Calories</TableHead>
-              <TableHead>Protein (g)</TableHead>
-              <TableHead>Carbs (g)</TableHead>
-              <TableHead>Fat (g)</TableHead>
-              <TableHead>Sugar (g)</TableHead>
+              <TableHead>Protein</TableHead>
+              <TableHead>Carbs</TableHead>
+              <TableHead>Fat</TableHead>
+              <TableHead>Sugar</TableHead>
             </TableRow>
           </TableHeader>
           <MealsTableBody session={session} />

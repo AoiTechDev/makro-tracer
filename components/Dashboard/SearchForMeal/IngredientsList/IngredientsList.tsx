@@ -21,19 +21,19 @@ const IngredientsList = ({ nutrition }: IngredientsListProps) => {
         <TableHeader>
           <TableRow className="">
             <TableHead>Meal</TableHead>
-            <TableHead>Serving Size (g) </TableHead>
+            <TableHead>Serving Size</TableHead>
             <TableHead>Calories</TableHead>
-            <TableHead>Protein (g)</TableHead>
-            <TableHead>Carbohydrates (g)</TableHead>
-            <TableHead>Fat (g)</TableHead>
-            <TableHead>Sugar (g)</TableHead>
+            <TableHead>Protein</TableHead>
+            <TableHead>Carbs</TableHead>
+            <TableHead>Fat</TableHead>
+            <TableHead>Sugar</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody className="">
           {nutrition.map((item) => (
             <TableRow key={item.name}>
               <TableCell className="font-medium">{item.name}</TableCell>
-              <TableCell>{item.serving_size_g}</TableCell>
+              <TableCell>{item.serving_size_g} <span className="opacity-50">g</span></TableCell>
               <TableCell>{item.calories}</TableCell>
               <TableCell>{item.protein_g}</TableCell>
               <TableCell>{item.carbohydrates_total_g}</TableCell>
