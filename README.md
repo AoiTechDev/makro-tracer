@@ -27,6 +27,8 @@ After registration, you will be redirected to the dashboard containing all conte
 - `React Query`
 - `React Hook Form`
 - `Redis`
+- `Jest`
+- `React Testing Library`
   
 
 <h2 align="left">Features</h2>
