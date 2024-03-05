@@ -10,6 +10,8 @@ import {
 } from "@/components/ui/popover";
 import SVGPencil from "./SVGPencil";
 import { Card } from "@/components/ui/card";
+import { getSignedURL } from "@/app/settings/actions";
+import { Button } from "@/components/ui/button";
 
 const ProfileImage = () => {
   const [file, setFile] = useState<File | undefined>(undefined);
@@ -30,14 +32,39 @@ const ProfileImage = () => {
     }
   };
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (file) {
+      const signedURLResult = await getSignedURL();
+      if (signedURLResult.failure !== undefined) {
+        console.log("failed");
+        return;
+      }
+
+      const url = signedURLResult.success.url;
+      await fetch(url, {
+        method: "PUT",
+        body: file,
+        headers: {
+          "Content-Type": file.type,
+        },
+      });
+    }
+  };
+
   return (
-    <div className="flex-1 w-full flex flex-col items-center">
+    <form onSubmit={handleSubmit} className="flex-1 w-full flex flex-col items-center">
       <div className="relative">
         <Label>Profile Picture</Label>
         <Avatar className="border h-48 w-48">
           {file && fileUrl ? (
             <>
-              <AvatarImage alt="Avatar image" src={fileUrl} className="object-cover"/>
+              <AvatarImage
+                alt="Avatar image"
+                src={fileUrl}
+                className="object-cover"
+              />
               <AvatarFallback>JD</AvatarFallback>
             </>
           ) : (
@@ -60,7 +87,6 @@ const ProfileImage = () => {
             <Label className="cursor-pointer" htmlFor="profile-image">
               Upload a photo...
             </Label>
-            <Label className="cursor-pointer">Remove photo</Label>
             <Input
               type="file"
               id="profile-image"
@@ -68,10 +94,13 @@ const ProfileImage = () => {
               accept="image/ipeg,image/png,image/webp"
               onChange={handleFileChange}
             />
+            <Label className="cursor-pointer">Remove photo</Label>
           </PopoverContent>
         </Popover>
       </div>
-    </div>
+
+      <Button>Save</Button>
+    </form>
   );
 };
 
