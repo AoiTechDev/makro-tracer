@@ -7,15 +7,20 @@ import { getServerSession } from "next-auth";
 
 import { redirect } from "next/navigation";
 import React from "react";
+import { getAvatarImage } from "./actions";
 
 const page = async () => {
   const session = await getServerSession();
   if (!session) {
     redirect("/login");
   }
+
+  const avatar = await getAvatarImage()
+
+  console.log(avatar)
   return (
     <Card className="w-full p-2 md:p-4 space-y-4">
-      <TopProfileInfo />
+      <TopProfileInfo avatar={avatar.success?.url} />
 
       <SettingsContent />
     </Card>
