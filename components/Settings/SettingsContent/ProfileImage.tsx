@@ -32,29 +32,45 @@ const ProfileImage = () => {
     }
   };
 
+  const computeSHA256 = async (file: File) => {
+    const buffer = await file.arrayBuffer();
+    const hashBuffer = await crypto.subtle.digest("SHA-256", buffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+    return hashHex;
+  }
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    try {
+      if (file) {
+        const checksum = await computeSHA256(file);
+        const signedURLResult = await getSignedURL(file.type, file.size, checksum);
+        if (signedURLResult.failure !== undefined) {
+          throw new Error(signedURLResult.failure);
+        }
 
-    if (file) {
-      const signedURLResult = await getSignedURL();
-      if (signedURLResult.failure !== undefined) {
-        console.log("failed");
-        return;
+        const {url} = signedURLResult.success;
+
+    
+        await fetch(url, {
+          method: "PUT",
+          body: file,
+          headers: {
+            "Content-Type": file.type,
+          },
+        });
       }
-
-      const url = signedURLResult.success.url;
-      await fetch(url, {
-        method: "PUT",
-        body: file,
-        headers: {
-          "Content-Type": file.type,
-        },
-      });
+    } catch (err) {
+        console.error(err);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex-1 w-full flex flex-col items-center">
+    <form
+      onSubmit={handleSubmit}
+      className="flex-1 w-full flex flex-col items-center"
+    >
       <div className="relative">
         <Label>Profile Picture</Label>
         <Avatar className="border h-48 w-48">
