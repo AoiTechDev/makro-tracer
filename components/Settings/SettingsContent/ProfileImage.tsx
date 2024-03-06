@@ -132,7 +132,7 @@ const ProfileImage = () => {
         </Popover>
       </div>
 
-      <Button>Save</Button>
+     {file && fileUrl ?  <Button>Save</Button> : null}
     </form>
   );
 };
