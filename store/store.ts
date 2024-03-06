@@ -1,5 +1,5 @@
 
-import { Meal } from "@/types/types";
+import { AvatarProps, Meal } from "@/types/types";
 import { Message } from "@/validators/message";
 import { QueryResult } from "@vercel/postgres";
 import { nanoid } from "nanoid";
@@ -110,3 +110,13 @@ export const useSessionStore = create<SessionStore>((set) => {
     setUserSession: (userSession: Session | null) => set({ userSession }),
   };
 })
+
+
+type AvatarStore = {
+  avatar: string | undefined
+  setAvatar: (avatar: string | undefined) => void;
+}
+export const useAvatarStore = create<AvatarStore>((set) => ({
+  avatar: "",
+  setAvatar: (avatar: string | undefined) => set({ avatar }),
+}));
