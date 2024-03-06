@@ -12,6 +12,8 @@ import SVGPencil from "./SVGPencil";
 import { Card } from "@/components/ui/card";
 import { getSignedURL } from "@/app/settings/actions";
 import { Button } from "@/components/ui/button";
+import { useAvatarStore } from "@/store/store";
+import Image from "next/image";
 
 const ProfileImage = () => {
   const [file, setFile] = useState<File | undefined>(undefined);
@@ -31,28 +33,34 @@ const ProfileImage = () => {
       setFileUrl(undefined);
     }
   };
+  const { avatar } = useAvatarStore();
 
   const computeSHA256 = async (file: File) => {
     const buffer = await file.arrayBuffer();
     const hashBuffer = await crypto.subtle.digest("SHA-256", buffer);
     const hashArray = Array.from(new Uint8Array(hashBuffer));
-    const hashHex = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+    const hashHex = hashArray
+      .map((b) => b.toString(16).padStart(2, "0"))
+      .join("");
     return hashHex;
-  }
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       if (file) {
         const checksum = await computeSHA256(file);
-        const signedURLResult = await getSignedURL(file.type, file.size, checksum);
+        const signedURLResult = await getSignedURL(
+          file.type,
+          file.size,
+          checksum
+        );
         if (signedURLResult.failure !== undefined) {
           throw new Error(signedURLResult.failure);
         }
 
-        const {url} = signedURLResult.success;
+        const { url } = signedURLResult.success;
 
-    
         await fetch(url, {
           method: "PUT",
           body: file,
@@ -62,7 +70,7 @@ const ProfileImage = () => {
         });
       }
     } catch (err) {
-        console.error(err);
+      console.error(err);
     }
   };
 
@@ -76,17 +84,26 @@ const ProfileImage = () => {
         <Avatar className="border h-48 w-48">
           {file && fileUrl ? (
             <>
-              <AvatarImage
-                alt="Avatar image"
-                src={fileUrl}
-                className="object-cover"
+              <Image
+                alt="small avatar image"
+                src={fileUrl || ""}
+                className="aspect-square h-full w-full object-cover"
+                fill
+                priority
               />
-              <AvatarFallback>JD</AvatarFallback>
+              <AvatarFallback></AvatarFallback>
             </>
           ) : (
             <>
-              <AvatarImage alt="Avatar image" src="/placeholder-user.jpg" />
-              <AvatarFallback>JD</AvatarFallback>
+              <Image
+                alt=" small avatar image"
+                src={avatar || ""}
+                className="aspect-square h-full w-full object-cover"
+                fill
+                priority
+              />
+
+              <AvatarFallback></AvatarFallback>
             </>
           )}
           {/* <AvatarImage alt="Avatar image" src="/placeholder-user.jpg" />

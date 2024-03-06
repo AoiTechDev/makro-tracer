@@ -17,7 +17,6 @@ const page = async () => {
 
   const avatar = await getAvatarImage()
 
-  console.log(avatar)
   return (
     <Card className="w-full p-2 md:p-4 space-y-4">
       <TopProfileInfo image={avatar.success?.url} />
