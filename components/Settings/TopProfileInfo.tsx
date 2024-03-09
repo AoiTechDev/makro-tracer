@@ -5,18 +5,22 @@ import { CardDescription, CardTitle } from "../ui/card";
 import { AvatarProps } from "@/types/types";
 import { useAvatarStore } from "@/store/store";
 import Image from "next/image";
+import UserAvatar from "../reusable/UserAvatar";
 
-const TopProfileInfo = ({ image }: AvatarProps) => {
-  const { avatar, setAvatar } = useAvatarStore();
+const TopProfileInfo = () => {
 
-  useEffect(() => {
-    setAvatar(image);
-  }, [avatar, image]);
+  
+  const { avatar } = useAvatarStore();
+
+  // useEffect(() => {
+  //   setAvatar(image);
+  // }, [avatar, image]);
+
+
   return (
     <div className="flex gap-4">
       <Avatar className="border h-12 w-12">
-        <Image alt="" src={image || ""} className="aspect-square h-full w-full object-cover" fill priority/>
-        <AvatarFallback></AvatarFallback>
+        <UserAvatar image={avatar}/>
       </Avatar>
       <div className="space-y-1">
         <CardTitle>John Doe</CardTitle>

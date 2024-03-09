@@ -11,6 +11,8 @@ import { Button } from "@/components/ui/button";
 import CustomInput from "@/components/reusable/CustomInput";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { schema } from "@/validators/input";
+import { getAvatarImage } from "@/app/settings/actions";
+import { useAvatarStore } from "@/store/store";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -27,6 +29,9 @@ const LoginForm = () => {
         setSignInError("Invalid credentials. Please try again." );
       }
     } else {
+
+      const userAvatar = await getAvatarImage();
+      useAvatarStore.getState().setAvatar(userAvatar.success?.url || undefined);
       router.push("/");
       router.refresh();
     }

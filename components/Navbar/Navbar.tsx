@@ -6,6 +6,7 @@ import Register from "./Register/Register";
 
 import Profile from "./Profile/Profile";
 import Logo from "./Logo";
+import { getAvatarImage } from "@/app/settings/actions";
 
 const Navbar = async () => {
   const session = await getServerSession();

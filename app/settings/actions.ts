@@ -62,7 +62,7 @@ export async function getSignedURL(
     `;
 
    
-    revalidatePath("/dashboard");
+    revalidatePath("/settings");
     return { success: { url: signedURL} };
 
   } catch (err) {
@@ -88,7 +88,8 @@ export async function getAvatarImage(){
         `;
         // console.log(avatar)
 
-        return { success: { url: avatar.rows[0].url} };
+        
+        return { success: { url: avatar.rows[0]?.url} };
     } catch (err) {
         console.error(err)
         return { failure: "Failed to get image" };

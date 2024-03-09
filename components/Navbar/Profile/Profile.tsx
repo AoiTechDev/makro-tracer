@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar } from "@/components/ui/avatar";
 import { Session } from "next-auth";
 import {
   DropdownMenuGroup,
@@ -16,32 +16,46 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Logout from "../Logout/Logout";
 import Link from "next/link";
-import { useSessionStore } from "@/store/store";
+import { useAvatarStore, useSessionStore } from "@/store/store";
 
+import UserAvatar from "@/components/reusable/UserAvatar";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { getAvatarImage } from "@/app/settings/actions";
+import { QueryCache } from '@tanstack/react-query'
 type ProfileProps = {
   session: Session;
 };
 
 const Profile = ({ session }: ProfileProps) => {
-  const avatarFallback = `${session?.user?.email
-    ?.split("")[0]
-    ?.toUpperCase()}${session?.user?.email?.split("")[1]?.toUpperCase()}`;
-    const {userSession, setUserSession} = useSessionStore();
-    useEffect(() => {
-      setUserSession(session);
-    }, [userSession])
+ 
+
+  const { userSession, setUserSession } = useSessionStore();
+  useEffect(() => {
+    setUserSession(session);
+  }, [userSession]);
+
+  const { avatar } = useAvatarStore();
+
+  // const queryClient = useQueryClient();
+  const query = useQuery({queryKey: ['avatar'], queryFn: async () => {
+    const result = await getAvatarImage();
+   
+    return result
+  }})
+
+  
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="cursor-pointer">
-        <Avatar>
-          <AvatarFallback>{avatarFallback}</AvatarFallback>
+        <Avatar className="border">
+          <UserAvatar image={avatar} />
         </Avatar>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="w-64">
         <DropdownMenuGroup className="p-4 flex items-center justify-start gap-2">
-          <Avatar>
-            <AvatarFallback>{avatarFallback}</AvatarFallback>
+          <Avatar className="border">
+            <UserAvatar image={avatar} />
           </Avatar>
           <DropdownMenuLabel>{session?.user?.email}</DropdownMenuLabel>
         </DropdownMenuGroup>
@@ -58,7 +72,7 @@ const Profile = ({ session }: ProfileProps) => {
               Meal Assistant
             </DropdownMenuItem>
           </Link>
-          <Link  href="/settings">
+          <Link href="/settings">
             <DropdownMenuItem className="cursor-pointer p-2">
               Settings
             </DropdownMenuItem>

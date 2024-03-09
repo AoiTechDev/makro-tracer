@@ -14,6 +14,8 @@ import { getSignedURL } from "@/app/settings/actions";
 import { Button } from "@/components/ui/button";
 import { useAvatarStore } from "@/store/store";
 import Image from "next/image";
+import Placeholder from "@/assets/avatar_placeholder.jpg";
+import UserAvatar from "@/components/reusable/UserAvatar";
 
 const ProfileImage = () => {
   const [file, setFile] = useState<File | undefined>(undefined);
@@ -84,30 +86,14 @@ const ProfileImage = () => {
         <Avatar className="border h-48 w-48">
           {file && fileUrl ? (
             <>
-              <Image
-                alt="small avatar image"
-                src={fileUrl || ""}
-                className="aspect-square h-full w-full object-cover"
-                fill
-                priority
-              />
-              <AvatarFallback></AvatarFallback>
+              <UserAvatar image={fileUrl || undefined}/>
             </>
           ) : (
             <>
-              <Image
-                alt=" small avatar image"
-                src={avatar || ""}
-                className="aspect-square h-full w-full object-cover"
-                fill
-                priority
-              />
-
-              <AvatarFallback></AvatarFallback>
+             <UserAvatar image={avatar}/>
             </>
           )}
-          {/* <AvatarImage alt="Avatar image" src="/placeholder-user.jpg" />
-          <AvatarFallback>JD</AvatarFallback> */}
+     
         </Avatar>
         <Popover>
           <PopoverTrigger className="absolute bottom-3 left-0">
