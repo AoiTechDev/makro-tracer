@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import CustomInput from "@/components/reusable/CustomInput";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { schema } from "@/validators/input";
-import { getAvatarImage } from "@/app/settings/actions";
+import {  getUserInfo } from "@/app/settings/actions";
 
 import { setAvatarInLocalStorage } from "@/lib/utils";
 
@@ -40,9 +40,7 @@ const LoginForm = () => {
       }
     } else {
 
-      const userAvatar = await getAvatarImage();
-      
-      await setAvatarInLocalStorage(userAvatar.success?.url);
+
       router.push("/");
       router.refresh();
     }

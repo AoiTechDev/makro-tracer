@@ -6,6 +6,7 @@ import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
+import { signOut } from "next-auth/react";
 const s3 = new S3Client({
   region: process.env.AWS_BUCKET_REGION!,
   credentials: {
@@ -69,13 +70,10 @@ export async function getSignedURL(
   }
 }
 
-
-
-
 type UserInfoResponse = {
   success?: {
     avatar: string | undefined;
-    name: string | null ;
+    name: string | null;
   };
   failure?: string;
 };
@@ -112,12 +110,36 @@ export async function changeName(formData: FormData) {
 
   try {
     await sql`
-   UPDATE users SET name = ${validatedName.data} WHERE email=${session.user?.email!}
+   UPDATE users SET name = ${validatedName.data} WHERE email=${session.user
+      ?.email!}
     `;
 
     revalidatePath("/settings");
   } catch (err) {
     console.error(err);
     return { failure: "Failed to change name" };
+  }
+}
+
+export async function changeEmail(formData: FormData) {
+  const session = await getServerSession();
+  if (!session) {
+    return { error: "Not authenticated" };
+  }
+  const emailSchema = z.string().email();
+  const validatedEmail = emailSchema.safeParse(formData.get("email"));
+
+  if (!validatedEmail.success) {
+    return { error: "Invalid email" };
+  }
+
+  try {
+    await sql`
+   UPDATE users SET email = ${validatedEmail.data} WHERE email=${session.user
+      ?.email!}
+    `;
+  } catch (err) {
+    console.error(err);
+    return { error: "Failed to change email" };
   }
 }
