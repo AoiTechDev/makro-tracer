@@ -7,6 +7,7 @@ import { getServerSession } from "next-auth";
 
 import { redirect } from "next/navigation";
 import React from "react";
+import { getUserInfo } from "./actions";
 
 const page = async () => {
   const session = await getServerSession();
@@ -14,9 +15,11 @@ const page = async () => {
     redirect("/login");
   }
 
+  const { success } = await getUserInfo();
+ 
   return (
     <Card className="w-full p-2 md:p-4 space-y-4">
-      <TopProfileInfo />
+      <TopProfileInfo userName={success?.name!} />
 
       <SettingsContent />
     </Card>

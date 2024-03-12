@@ -1,5 +1,5 @@
 import { getServerSession } from "next-auth";
-import React from "react";
+import React, { useEffect } from "react";
 
 import Login from "./Login/Login";
 import Register from "./Register/Register";
@@ -10,6 +10,7 @@ import Logo from "./Logo";
 
 const Navbar = async () => {
   const session = await getServerSession();
+
 
 
   return (

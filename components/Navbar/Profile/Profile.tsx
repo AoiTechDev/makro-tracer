@@ -19,9 +19,9 @@ import Link from "next/link";
 import { useSessionStore, useUserStore } from "@/store/store";
 
 import UserAvatar from "@/components/reusable/UserAvatar";
-import { QueryClient, useQuery, useQueryClient } from "@tanstack/react-query";
-import { getAvatarImage } from "@/app/settings/actions";
-import { QueryCache } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
+import { getUserInfo } from "@/app/settings/actions";
+
 type ProfileProps = {
   session: Session;
 };
@@ -32,33 +32,35 @@ const Profile = ({ session }: ProfileProps) => {
     setUserSession(session);
   }, [userSession]);
 
-  const {avatar, setAvatar } = useUserStore();
+  const { name, avatar, setName, setAvatar } = useUserStore();
 
-  const { data } = useQuery({
-    queryKey: ["avatar", avatar],
+  
+  useQuery({
+    queryKey: ["user", avatar],
     queryFn: async () => {
-      const result = await getAvatarImage();
-      setAvatar(result?.success?.url);
+      const result = await getUserInfo();
+      setAvatar(result?.success?.avatar);
 
       return result;
     },
-    staleTime: Infinity,
   });
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="cursor-pointer">
         <Avatar className="border">
-          <UserAvatar image={data?.success?.url} />
+          <UserAvatar image={avatar} />
         </Avatar>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="w-64">
         <DropdownMenuGroup className="p-4 flex items-center justify-start gap-2">
           <Avatar className="border">
-            <UserAvatar image={data?.success?.url} />
+            <UserAvatar image={avatar} />
           </Avatar>
-          <DropdownMenuLabel>{session?.user?.email}</DropdownMenuLabel>
+          <DropdownMenuLabel>
+            {name ? name : session?.user?.email}
+          </DropdownMenuLabel>
         </DropdownMenuGroup>
 
         <DropdownMenuSeparator />

@@ -38,6 +38,9 @@ const ProfileImage = () => {
   };
   const { avatar, setAvatar } = useUserStore();
    
+
+
+
   const computeSHA256 = async (file: File) => {
     const buffer = await file.arrayBuffer();
     const hashBuffer = await crypto.subtle.digest("SHA-256", buffer);
@@ -47,6 +50,22 @@ const ProfileImage = () => {
       .join("");
     return hashHex;
   };
+
+
+
+  // const { data } = useQuery({
+  //   queryKey: ["user", avatar, name],
+  //   queryFn: async () => {
+  //     const result = await getAvatarImage();
+  //     setAvatar(result?.success?.avatar);
+  //     setName(result?.success?.name);
+  //     return result;
+  //   },
+    
+  // });
+
+
+
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -78,8 +97,8 @@ const ProfileImage = () => {
         await setAvatar(correctURL)
        
 
-        router.push("/settings")
-       router.refresh();
+      // router.push("/settings")
+      //  router.refresh();
       }
     } catch (err) {
       console.error(err);

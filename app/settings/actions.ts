@@ -5,6 +5,7 @@ import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
+import { z } from "zod";
 const s3 = new S3Client({
   region: process.env.AWS_BUCKET_REGION!,
   credentials: {
@@ -68,22 +69,55 @@ export async function getSignedURL(
   }
 }
 
-export async function getAvatarImage() {
+
+
+
+type UserInfoResponse = {
+  success?: {
+    avatar: string | undefined;
+    name: string | null ;
+  };
+  failure?: string;
+};
+
+export async function getUserInfo(): Promise<UserInfoResponse> {
   const session = await getServerSession();
   if (!session) {
     return { failure: "Not authenticated" };
   }
   try {
     const response = await sql`
-        SELECT * FROM users WHERE email=${session.user?.email!}
+        SELECT avatar, name FROM users WHERE email=${session.user?.email!}
         `;
     const user = response.rows[0];
 
-
-    return { success: { url: user.avatar } };
+    return { success: { avatar: user.avatar, name: user.name } };
   } catch (err) {
     console.error(err);
     return { failure: "Failed to get image" };
   }
 }
 
+export async function changeName(formData: FormData) {
+  const session = await getServerSession();
+  if (!session) {
+    return { failure: "Not authenticated" };
+  }
+  const nameSchema = z.string().min(1).max(50);
+  const validatedName = nameSchema.safeParse(formData.get("name"));
+
+  if (!validatedName.success) {
+    return { failure: "Invalid name" };
+  }
+
+  try {
+    await sql`
+   UPDATE users SET name = ${validatedName.data} WHERE email=${session.user?.email!}
+    `;
+
+    revalidatePath("/settings");
+  } catch (err) {
+    console.error(err);
+    return { failure: "Failed to change name" };
+  }
+}
