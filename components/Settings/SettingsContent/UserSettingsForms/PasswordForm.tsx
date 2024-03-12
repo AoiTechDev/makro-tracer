@@ -7,17 +7,17 @@ const PasswordForm = () => {
   return (
     <div className="space-y-4">
       <p>Change your password</p>
-      <div>
-        <Label>Current Password</Label>
-        <div className="flex gap-2">
+      <div className="space-y-2">
+        <div className=" gap-2">
+          <Label>Current Password</Label>
           <Input type="password" />
         </div>
-        <Label>New Password</Label>
-        <div className="flex gap-2">
+        <div className=" gap-2">
+          <Label>New Password</Label>
           <Input type="password" />
         </div>
-        <Label>Confirm New Password</Label>
-        <div className="flex gap-2">
+        <div className=" gap-2">
+          <Label>Confirm New Password</Label>
           <Input type="password" />
         </div>
       </div>

@@ -4,11 +4,13 @@ import { Avatar } from "../ui/avatar";
 import { CardDescription, CardTitle } from "../ui/card";
 import { useUserStore } from "@/store/store";
 import UserAvatar from "../reusable/UserAvatar";
+import { Session } from "next-auth";
 
 type TopProfileInfoProps = {
-  userName: string | null 
+  userName: string | null ,
+  session: Session | null
 }
-const TopProfileInfo = ({userName}: TopProfileInfoProps) => {
+const TopProfileInfo = ({userName, session}: TopProfileInfoProps) => {
 
   
   const { avatar,setName } = useUserStore();
@@ -17,13 +19,13 @@ const TopProfileInfo = ({userName}: TopProfileInfoProps) => {
     setName(userName);
   }, [userName])
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-4 ml-5">
       <Avatar className="border h-12 w-12">
         <UserAvatar image={avatar}/>
       </Avatar>
       <div className="space-y-1">
         <CardTitle>{userName}</CardTitle>
-        <CardDescription>john@example.com</CardDescription>
+        <CardDescription>{session?.user?.email}</CardDescription>
       </div>
     </div>
   );
