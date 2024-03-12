@@ -61,38 +61,31 @@ export async function getSignedURL(
     SET url = excluded.url
     `;
 
-   
-    revalidatePath("/settings");
-    return { success: { url: signedURL} };
-
+    return { success: { url: signedURL } };
   } catch (err) {
-    console.error(err)
+    console.error(err);
     return { failure: "Failed to upload image" };
   }
-
 }
 
-
-export async function getAvatarImage(){
-    const session = await getServerSession();
-    if (!session) {
-        return { failure: "Not authenticated" };
-    }
-    try {
-        const response = await sql`
+export async function getAvatarImage() {
+  const session = await getServerSession();
+  if (!session) {
+    return { failure: "Not authenticated" };
+  }
+  try {
+    const response = await sql`
         SELECT * FROM users WHERE email=${session.user?.email!}
         `;
-        const user = response.rows[0];
-        const avatar = await sql`
+    const user = response.rows[0];
+    const avatar = await sql`
         SELECT url FROM usersAvatars WHERE userId=${user.userid}
         `;
-        // console.log(avatar)
+    // console.log(avatar)
 
-        
-        return { success: { url: avatar.rows[0]?.url} };
-    } catch (err) {
-        console.error(err)
-        return { failure: "Failed to get image" };
-    }
+    return { success: { url: avatar.rows[0]?.url } };
+  } catch (err) {
+    console.error(err);
+    return { failure: "Failed to get image" };
+  }
 }
-

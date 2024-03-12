@@ -13,8 +13,18 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { schema } from "@/validators/input";
 import { getAvatarImage } from "@/app/settings/actions";
 import { useAvatarStore } from "@/store/store";
+import { setAvatarInLocalStorage } from "@/lib/utils";
 
 const LoginForm = () => {
+
+  // const {avatar, setAvatar} = useAvatarStore();
+
+  // React.useEffect(() => {
+
+  // }, [avatar])
+
+
+
   const router = useRouter();
   const [signInError, setSignInError] = useState<string | null>(null);
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
@@ -31,7 +41,8 @@ const LoginForm = () => {
     } else {
 
       const userAvatar = await getAvatarImage();
-      useAvatarStore.getState().setAvatar(userAvatar.success?.url || undefined);
+      
+      await setAvatarInLocalStorage(userAvatar.success?.url);
       router.push("/");
       router.refresh();
     }

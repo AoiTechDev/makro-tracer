@@ -120,3 +120,12 @@ export const useAvatarStore = create<AvatarStore>((set) => ({
   avatar: "",
   setAvatar: (avatar: string | undefined) => set({ avatar }),
 }));
+
+type AvatarFlag = {
+  changeAvatar: boolean;
+  setChangeAvatar: (changeAvatar: boolean) => void;
+}
+export const useChangeAvatarFlagStore = create<AvatarFlag>((set) => ({
+  changeAvatar: false,
+  setChangeAvatar: (changeAvatar: boolean) => set({ changeAvatar }),
+}));

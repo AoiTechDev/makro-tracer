@@ -21,14 +21,12 @@ import { useAvatarStore, useSessionStore } from "@/store/store";
 import UserAvatar from "@/components/reusable/UserAvatar";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getAvatarImage } from "@/app/settings/actions";
-import { QueryCache } from '@tanstack/react-query'
+import { QueryCache } from "@tanstack/react-query";
 type ProfileProps = {
   session: Session;
 };
 
 const Profile = ({ session }: ProfileProps) => {
- 
-
   const { userSession, setUserSession } = useSessionStore();
   useEffect(() => {
     setUserSession(session);
@@ -37,25 +35,31 @@ const Profile = ({ session }: ProfileProps) => {
   const { avatar } = useAvatarStore();
 
   // const queryClient = useQueryClient();
-  const query = useQuery({queryKey: ['avatar'], queryFn: async () => {
-    const result = await getAvatarImage();
-   
-    return result
-  }})
 
-  
+
+  const { data } = useQuery({
+    queryKey: ["avatar"],
+    queryFn: async () => {
+      const result = await getAvatarImage();
+
+      return result;
+    },
+  });
+
+
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="cursor-pointer">
         <Avatar className="border">
-          <UserAvatar image={avatar} />
+          <UserAvatar image={data?.success?.url}/>
         </Avatar>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="w-64">
         <DropdownMenuGroup className="p-4 flex items-center justify-start gap-2">
           <Avatar className="border">
-            <UserAvatar image={avatar} />
+            <UserAvatar image={data?.success?.url}/>
           </Avatar>
           <DropdownMenuLabel>{session?.user?.email}</DropdownMenuLabel>
         </DropdownMenuGroup>

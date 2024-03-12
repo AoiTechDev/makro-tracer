@@ -2,6 +2,7 @@ import SettingsContent from "@/components/Settings/SettingsContent/SettingsConte
 import TopProfileInfo from "@/components/Settings/TopProfileInfo";
 
 import { Card } from "@/components/ui/card";
+import { useQuery } from "@tanstack/react-query";
 
 import { getServerSession } from "next-auth";
 
@@ -15,8 +16,15 @@ const page = async () => {
     redirect("/login");
   }
 
-  // const avatar = await getAvatarImage()
-  // console.log(avatar)
+  // const { data } = useQuery({
+  //   queryKey: ["avatar"],
+  //   queryFn: async () => {
+  //     const result = await getAvatarImage();
+
+  //     return result;
+  //   },
+  // });
+
 
   return (
     <Card className="w-full p-2 md:p-4 space-y-4">

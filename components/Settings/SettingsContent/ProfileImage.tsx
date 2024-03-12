@@ -10,14 +10,17 @@ import {
 } from "@/components/ui/popover";
 import SVGPencil from "./SVGPencil";
 import { Card } from "@/components/ui/card";
-import { getSignedURL } from "@/app/settings/actions";
+import { getAvatarImage, getSignedURL } from "@/app/settings/actions";
 import { Button } from "@/components/ui/button";
-import { useAvatarStore } from "@/store/store";
+import { useAvatarStore, useChangeAvatarFlagStore } from "@/store/store";
 import Image from "next/image";
 import Placeholder from "@/assets/avatar_placeholder.jpg";
 import UserAvatar from "@/components/reusable/UserAvatar";
+import { setAvatarInLocalStorage } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 const ProfileImage = () => {
+  const router = useRouter();
   const [file, setFile] = useState<File | undefined>(undefined);
   const [fileUrl, setFileUrl] = useState<string | undefined>(undefined);
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,8 +38,9 @@ const ProfileImage = () => {
       setFileUrl(undefined);
     }
   };
-  const { avatar } = useAvatarStore();
-
+  const { avatar, setAvatar } = useAvatarStore();
+  const {changeAvatar, setChangeAvatar} = useChangeAvatarFlagStore();
+   
   const computeSHA256 = async (file: File) => {
     const buffer = await file.arrayBuffer();
     const hashBuffer = await crypto.subtle.digest("SHA-256", buffer);
@@ -62,7 +66,7 @@ const ProfileImage = () => {
         }
 
         const { url } = signedURLResult.success;
-
+       
         await fetch(url, {
           method: "PUT",
           body: file,
@@ -70,6 +74,16 @@ const ProfileImage = () => {
             "Content-Type": file.type,
           },
         });
+
+        const correctURL = url.split("?")[0]
+        // const userAvatar = await getAvatarImage();
+        
+        await setAvatarInLocalStorage(correctURL);
+        await setAvatar(correctURL)
+       
+
+        router.push("/settings")
+       router.refresh();
       }
     } catch (err) {
       console.error(err);
@@ -86,11 +100,11 @@ const ProfileImage = () => {
         <Avatar className="border h-48 w-48">
           {file && fileUrl ? (
             <>
-              <UserAvatar image={fileUrl || undefined}/>
+              <UserAvatar image={fileUrl}/>
             </>
           ) : (
             <>
-             <UserAvatar image={avatar}/>
+             <UserAvatar image={avatar } />
             </>
           )}
      
