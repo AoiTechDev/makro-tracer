@@ -10,7 +10,9 @@ Dynamic meal tracking platform seamlessly integrated with nutrition data from ex
 ## Motivation - Why am I creating this app?
 I became interested in understanding my daily nutritional intake when I returned to the gym. I wanted to monitor my meals to gauge the amount of protein and calories I was consuming. Additionally, some of my family members and friends expressed interest in using an app like this, but they couldn't find a free and satisfactory option. This motivated me to develop my own app that would cater to our specific requirements.
 
-
+## How to use? - IMPORTANT
+To utilize the platform, registration is required. No need for concern; you can input any email and password without requiring email confirmation. Additionally, passwords are encrypted in the database.
+After registration, you will be redirected to the dashboard containing all content. However, without proper authorization, you won't be able to access the functionality.
 
 <h2 align="left">Technologies</h2>
 
@@ -25,6 +27,8 @@ I became interested in understanding my daily nutritional intake when I returned
 - `React Query`
 - `React Hook Form`
 - `Redis`
+- `Jest`
+- `React Testing Library`
   
 
 <h2 align="left">Features</h2>
