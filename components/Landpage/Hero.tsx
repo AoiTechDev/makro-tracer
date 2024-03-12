@@ -69,7 +69,7 @@ const Hero = ({ session }: HeroProps) => {
         className=" aspect-square relative w-full   "
       >
  
-        <Image alt="landpage img" fill src={landpageImg} className="" />
+        <Image alt="landpage img" fill src={landpageImg} className="" priority/>
       </motion.div>
     </div>
   );
