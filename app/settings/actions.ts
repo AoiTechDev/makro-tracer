@@ -38,7 +38,7 @@ export async function getSignedURL(
 
   const putObjectCommand = new PutObjectCommand({
     Bucket: process.env.AWS_BUCKET_NAME!,
-    Key: session.user?.email!,
+    Key: checksum,
     ContentType: type,
     ContentLength: size,
     ChecksumSHA256: checksum,

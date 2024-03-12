@@ -12,14 +12,11 @@ const TopProfileInfo = () => {
 
 
 
-  const cashe = new QueryCache();
-  const query = cashe.find({ queryKey: ["avatar"] });
-
-  console.log(query)
+  const { avatar } = useAvatarStore();
   return (
     <div className="flex gap-4">
       <Avatar className="border h-12 w-12">
-        <UserAvatar />
+        <UserAvatar image={avatar}/>
       </Avatar>
       <div className="space-y-1">
         <CardTitle>John Doe</CardTitle>

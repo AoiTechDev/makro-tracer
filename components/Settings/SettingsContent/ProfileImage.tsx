@@ -39,7 +39,6 @@ const ProfileImage = () => {
     }
   };
   const { avatar, setAvatar } = useAvatarStore();
-  const {changeAvatar, setChangeAvatar} = useChangeAvatarFlagStore();
    
   const computeSHA256 = async (file: File) => {
     const buffer = await file.arrayBuffer();
@@ -76,9 +75,8 @@ const ProfileImage = () => {
         });
 
         const correctURL = url.split("?")[0]
-        // const userAvatar = await getAvatarImage();
+       
         
-        await setAvatarInLocalStorage(correctURL);
         await setAvatar(correctURL)
        
 

@@ -19,7 +19,7 @@ import Link from "next/link";
 import { useAvatarStore, useSessionStore } from "@/store/store";
 
 import UserAvatar from "@/components/reusable/UserAvatar";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { QueryClient, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getAvatarImage } from "@/app/settings/actions";
 import { QueryCache } from "@tanstack/react-query";
 type ProfileProps = {
@@ -32,34 +32,31 @@ const Profile = ({ session }: ProfileProps) => {
     setUserSession(session);
   }, [userSession]);
 
-  const { avatar } = useAvatarStore();
-
-  // const queryClient = useQueryClient();
-
+  const {avatar, setAvatar } = useAvatarStore();
 
   const { data } = useQuery({
-    queryKey: ["avatar"],
+    queryKey: ["avatar", avatar],
     queryFn: async () => {
       const result = await getAvatarImage();
+      setAvatar(result?.success?.url);
 
       return result;
     },
+    staleTime: Infinity,
   });
-
-
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="cursor-pointer">
         <Avatar className="border">
-          <UserAvatar image={data?.success?.url}/>
+          <UserAvatar image={data?.success?.url} />
         </Avatar>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="w-64">
         <DropdownMenuGroup className="p-4 flex items-center justify-start gap-2">
           <Avatar className="border">
-            <UserAvatar image={data?.success?.url}/>
+            <UserAvatar image={data?.success?.url} />
           </Avatar>
           <DropdownMenuLabel>{session?.user?.email}</DropdownMenuLabel>
         </DropdownMenuGroup>

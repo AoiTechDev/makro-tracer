@@ -16,19 +16,9 @@ const page = async () => {
     redirect("/login");
   }
 
-  // const { data } = useQuery({
-  //   queryKey: ["avatar"],
-  //   queryFn: async () => {
-  //     const result = await getAvatarImage();
-
-  //     return result;
-  //   },
-  // });
-
 
   return (
     <Card className="w-full p-2 md:p-4 space-y-4">
-      {/* <TopProfileInfo image={avatar.success?.url} /> */}
       <TopProfileInfo  />
 
       <SettingsContent />
