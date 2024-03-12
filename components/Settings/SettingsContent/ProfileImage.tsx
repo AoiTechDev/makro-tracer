@@ -10,13 +10,11 @@ import {
 } from "@/components/ui/popover";
 import SVGPencil from "./SVGPencil";
 import { Card } from "@/components/ui/card";
-import { getAvatarImage, getSignedURL } from "@/app/settings/actions";
+import {getSignedURL } from "@/app/settings/actions";
 import { Button } from "@/components/ui/button";
-import { useAvatarStore, useChangeAvatarFlagStore } from "@/store/store";
-import Image from "next/image";
-import Placeholder from "@/assets/avatar_placeholder.jpg";
+import {  useUserStore} from "@/store/store";
+
 import UserAvatar from "@/components/reusable/UserAvatar";
-import { setAvatarInLocalStorage } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 
 const ProfileImage = () => {
@@ -38,7 +36,7 @@ const ProfileImage = () => {
       setFileUrl(undefined);
     }
   };
-  const { avatar, setAvatar } = useAvatarStore();
+  const { avatar, setAvatar } = useUserStore();
    
   const computeSHA256 = async (file: File) => {
     const buffer = await file.arrayBuffer();

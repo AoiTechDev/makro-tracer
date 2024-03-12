@@ -6,7 +6,7 @@ import Register from "./Register/Register";
 
 import Profile from "./Profile/Profile";
 import Logo from "./Logo";
-import { getUser } from "@/actions/actions";
+
 
 const Navbar = async () => {
   const session = await getServerSession();

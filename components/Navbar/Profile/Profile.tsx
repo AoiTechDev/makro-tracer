@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Logout from "../Logout/Logout";
 import Link from "next/link";
-import { useAvatarStore, useSessionStore } from "@/store/store";
+import { useSessionStore, useUserStore } from "@/store/store";
 
 import UserAvatar from "@/components/reusable/UserAvatar";
 import { QueryClient, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -32,7 +32,7 @@ const Profile = ({ session }: ProfileProps) => {
     setUserSession(session);
   }, [userSession]);
 
-  const {avatar, setAvatar } = useAvatarStore();
+  const {avatar, setAvatar } = useUserStore();
 
   const { data } = useQuery({
     queryKey: ["avatar", avatar],

@@ -12,7 +12,7 @@ import CustomInput from "@/components/reusable/CustomInput";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { schema } from "@/validators/input";
 import { getAvatarImage } from "@/app/settings/actions";
-import { useAvatarStore } from "@/store/store";
+
 import { setAvatarInLocalStorage } from "@/lib/utils";
 
 const LoginForm = () => {

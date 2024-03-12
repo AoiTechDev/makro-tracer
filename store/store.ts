@@ -1,4 +1,3 @@
-
 import { AvatarProps, Meal } from "@/types/types";
 import { Message } from "@/validators/message";
 import { QueryResult } from "@vercel/postgres";
@@ -51,7 +50,7 @@ export const useTotalNutritionStore = create<TotalNutrition>((set) => ({
 
 type Result = {
   result: {
-    error?: string | undefined; 
+    error?: string | undefined;
     success: QueryResult<Meal> | undefined;
   };
   setResult: (result: {
@@ -62,72 +61,81 @@ type Result = {
 export const useResultStore = create<Result>((set) => ({
   result: {
     error: "",
-    success: undefined as QueryResult<Meal> | undefined, 
+    success: undefined as QueryResult<Meal> | undefined,
   },
-  setResult: (result: Result['result']) => set({ result }), 
+  setResult: (result: Result["result"]) => set({ result }),
 }));
 
-export type Option = 'protein' | 'fat' | 'carbohydrates' | 'sugar' | 'calories';
+export type Option = "protein" | "fat" | "carbohydrates" | "sugar" | "calories";
 
 type ChartOption = {
   option: Option;
   setNutrition: (nutrition: Option) => void;
-}
+};
 export const useChartOptionsStore = create<ChartOption>((set) => ({
   option: "calories",
   setNutrition: (option: Option) => set({ option }),
 }));
 
-
-type Messages ={
+type Messages = {
   messages: Message[];
   isMessageUpdating: boolean;
   addMessage: (message: Message) => void;
   removeMessage: (id: string) => void;
-  updateMessage: (id: string, updateFn: (prevText: string) => string ) => void;
+  updateMessage: (id: string, updateFn: (prevText: string) => string) => void;
   setIsMessageUpdating: (isUpdating: boolean) => void;
-}
+};
 export const useMessagesStore = create<Messages>((set) => ({
-  messages: [{
-    id: nanoid(),
-    isUserMessage: false,
-    text: "Hello! I'm your personal nutritionist. I can help you provide nutritional information and recommend meals based on what you eat. What would you like to do?"
-  }],
+  messages: [
+    {
+      id: nanoid(),
+      isUserMessage: false,
+      text: "Hello! I'm your personal nutritionist. I can help you provide nutritional information and recommend meals based on what you eat. What would you like to do?",
+    },
+  ],
   isMessageUpdating: false,
-  addMessage: (message: Message) => set((state) => ({ messages: [...state.messages, message] })),
-  removeMessage: (id: string) => set((state) => ({ messages: state.messages.filter((message) => message.id !== id) })),
-  updateMessage: (id: string, updateFn: (prevText: string) => string) => set((state) => ({ messages: state.messages.map((message) => message.id === id ? {...message, text: updateFn(message.text)} : message) })),
-  setIsMessageUpdating: (isUpdating: boolean) => set({ isMessageUpdating: isUpdating }),
+  addMessage: (message: Message) =>
+    set((state) => ({ messages: [...state.messages, message] })),
+  removeMessage: (id: string) =>
+    set((state) => ({
+      messages: state.messages.filter((message) => message.id !== id),
+    })),
+  updateMessage: (id: string, updateFn: (prevText: string) => string) =>
+    set((state) => ({
+      messages: state.messages.map((message) =>
+        message.id === id
+          ? { ...message, text: updateFn(message.text) }
+          : message
+      ),
+    })),
+  setIsMessageUpdating: (isUpdating: boolean) =>
+    set({ isMessageUpdating: isUpdating }),
 }));
 
 type SessionStore = {
   userSession: Session | null;
   setUserSession: (userSession: Session | null) => void;
-}
+};
 export const useSessionStore = create<SessionStore>((set) => {
   return {
     userSession: null,
     setUserSession: (userSession: Session | null) => set({ userSession }),
   };
-})
-
+});
 
 type AvatarStore = {
-  avatar: string | undefined
+  avatar: string | undefined;
   setAvatar: (avatar: string | undefined) => void;
+};
+
+interface User extends AvatarStore {
+  name: string | null;
+  setName: (name: string | null) => void;
 }
-export const useAvatarStore = create<AvatarStore>((set) => ({
+
+export const useUserStore = create<User>((set) => ({
+  name: null,
+  setName: (name: string | null) => set({ name }),
   avatar: "",
   setAvatar: (avatar: string | undefined) => set({ avatar }),
 }));
-
-type AvatarFlag = {
-  changeAvatar: boolean;
-  setChangeAvatar: (changeAvatar: boolean) => void;
-}
-export const useChangeAvatarFlagStore = create<AvatarFlag>((set) => ({
-  changeAvatar: false,
-  setChangeAvatar: (changeAvatar: boolean) => set({ changeAvatar }),
-}));
-
-
