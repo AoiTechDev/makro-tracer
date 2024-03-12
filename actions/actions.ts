@@ -5,6 +5,7 @@ import { NextResponse } from "next/server";
 import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
 import { toast } from "sonner"
+import { getServerSession } from "next-auth";
 
 type NutritionResponse = {
   error?: string;
@@ -120,5 +121,21 @@ export async function deleteMeal(email: string, mealid: number) {
     return { message: `${mealName.rows[0].name} has been successfully deleted.` };
   } catch (err) {
     return { message: "Failed to delete meal" };
+  }
+}
+
+
+export async function getUser(){
+  const session = await getServerSession();
+  if (!session) {
+    return { failure: "Not authenticated" };
+  }
+  try {
+    const response = await sql`
+    SELECT * FROM users WHERE email=${session.user?.email!}
+    `;
+    return { success: response.rows[0] };
+  } catch (err) {
+    return { failure: "Failed to get user" };
   }
 }

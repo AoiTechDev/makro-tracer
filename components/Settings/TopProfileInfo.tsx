@@ -1,12 +1,9 @@
 "use client";
-import React, { useEffect } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import React from "react";
+import { Avatar } from "../ui/avatar";
 import { CardDescription, CardTitle } from "../ui/card";
-import { AvatarProps } from "@/types/types";
 import { useAvatarStore } from "@/store/store";
-import Image from "next/image";
 import UserAvatar from "../reusable/UserAvatar";
-import { QueryCache } from "@tanstack/react-query";
 
 const TopProfileInfo = () => {
 

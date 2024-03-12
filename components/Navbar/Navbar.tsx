@@ -6,14 +6,15 @@ import Register from "./Register/Register";
 
 import Profile from "./Profile/Profile";
 import Logo from "./Logo";
-import { getAvatarImage } from "@/app/settings/actions";
+import { getUser } from "@/actions/actions";
 
 const Navbar = async () => {
   const session = await getServerSession();
 
+
   return (
     <nav className="fixed  bg-white flex border-b w-full h-16 top-0 items-center z-50 justify-between px-6 ">
-      <Logo/>
+      <Logo />
       {!!session && (
         <div className="flex gap-4">
           <Profile session={session} />

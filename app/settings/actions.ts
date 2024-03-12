@@ -55,10 +55,10 @@ export async function getSignedURL(
     `;
     const user = response.rows[0];
     const avatar = await sql`
-    INSERT INTO usersAvatars (url, userId)
+    INSERT INTO users (avatar, userId)
     VALUES (${signedURL.split("?")[0]}, ${user.userid})
     ON CONFLICT (userId) DO UPDATE
-    SET url = excluded.url
+    SET avatar = excluded.avatar
     `;
 
     return { success: { url: signedURL } };
@@ -78,14 +78,12 @@ export async function getAvatarImage() {
         SELECT * FROM users WHERE email=${session.user?.email!}
         `;
     const user = response.rows[0];
-    const avatar = await sql`
-        SELECT url FROM usersAvatars WHERE userId=${user.userid}
-        `;
-    // console.log(avatar)
 
-    return { success: { url: avatar.rows[0]?.url } };
+
+    return { success: { url: user.avatar } };
   } catch (err) {
     console.error(err);
     return { failure: "Failed to get image" };
   }
 }
+
