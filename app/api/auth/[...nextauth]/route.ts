@@ -2,6 +2,7 @@ import { sql } from "@vercel/postgres";
 import { compare } from "bcrypt";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { toast } from "sonner";
 
 const handler = NextAuth({
   session: {
@@ -21,7 +22,6 @@ const handler = NextAuth({
         `;
         const user = response.rows[0];
 
-        
         const passwordCorrect = await compare(
           credentials?.password || "",
           user?.password
@@ -37,5 +37,17 @@ const handler = NextAuth({
       },
     }),
   ],
+  // callbacks: {
+  //   async redirect({ url, baseUrl }) {
+    
+  //     if (url.startsWith("/")) return `${baseUrl}${url}`;
+  //     // Allows callback URLs on the same origin
+      
+      
+  //     else if (new URL(url).origin === baseUrl) return url;
+      
+  //     return url;
+  //   },
+  // },
 });
 export { handler as GET, handler as POST };

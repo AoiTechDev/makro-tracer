@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import { Toaster } from "@/components/ui/sonner";
 import Provider from "@/components/Providers/Provider";
 import Overlay from "@/components/Assistant/Overlay/Overlay";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 export const metadata: Metadata = {
   title: "MealFulness",
   description:
@@ -23,6 +24,7 @@ export default async function RootLayout({
           <main className=" w-full">{children}</main>
           <Overlay/>
           <Toaster />
+          <ReactQueryDevtools initialIsOpen={false} />
         </body>
       </Provider>
     </html>

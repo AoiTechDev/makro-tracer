@@ -18,6 +18,8 @@ const RegisterForm = () => {
     resolver: zodResolver(schema),
   });
   const router = useRouter();
+
+  
   const [error, setError] = React.useState<string | null>(null);
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {

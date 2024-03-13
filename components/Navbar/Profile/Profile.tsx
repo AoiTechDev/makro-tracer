@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar } from "@/components/ui/avatar";
 import { Session } from "next-auth";
 import {
   DropdownMenuGroup,
@@ -16,34 +16,51 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Logout from "../Logout/Logout";
 import Link from "next/link";
-import { useSessionStore } from "@/store/store";
+import { useSessionStore, useUserStore } from "@/store/store";
+
+import UserAvatar from "@/components/reusable/UserAvatar";
+import { useQuery } from "@tanstack/react-query";
+import { getUserInfo } from "@/app/settings/actions";
 
 type ProfileProps = {
   session: Session;
 };
 
 const Profile = ({ session }: ProfileProps) => {
-  const avatarFallback = `${session?.user?.email
-    ?.split("")[0]
-    ?.toUpperCase()}${session?.user?.email?.split("")[1]?.toUpperCase()}`;
-    const {userSession, setUserSession} = useSessionStore();
-    useEffect(() => {
-      setUserSession(session);
-    }, [userSession])
+  const { userSession, setUserSession } = useSessionStore();
+  useEffect(() => {
+    setUserSession(session);
+  }, [userSession]);
+
+  const { name, avatar, setName, setAvatar } = useUserStore();
+
+  
+  useQuery({
+    queryKey: ["user", avatar],
+    queryFn: async () => {
+      const result = await getUserInfo();
+      setAvatar(result?.success?.avatar);
+
+      return result;
+    },
+  });
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="cursor-pointer">
-        <Avatar>
-          <AvatarFallback>{avatarFallback}</AvatarFallback>
+        <Avatar className="border">
+          <UserAvatar image={avatar} />
         </Avatar>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="w-64">
         <DropdownMenuGroup className="p-4 flex items-center justify-start gap-2">
-          <Avatar>
-            <AvatarFallback>{avatarFallback}</AvatarFallback>
+          <Avatar className="border">
+            <UserAvatar image={avatar} />
           </Avatar>
-          <DropdownMenuLabel>{session?.user?.email}</DropdownMenuLabel>
+          <DropdownMenuLabel>
+            {name ? name : session?.user?.email}
+          </DropdownMenuLabel>
         </DropdownMenuGroup>
 
         <DropdownMenuSeparator />
@@ -56,6 +73,11 @@ const Profile = ({ session }: ProfileProps) => {
           <Link className="block lg:hidden" href="/meal-assistant">
             <DropdownMenuItem className="cursor-pointer p-2">
               Meal Assistant
+            </DropdownMenuItem>
+          </Link>
+          <Link href="/settings">
+            <DropdownMenuItem className="cursor-pointer p-2">
+              Settings
             </DropdownMenuItem>
           </Link>
           {/* <DropdownMenuItem className="cursor-pointer p-2">

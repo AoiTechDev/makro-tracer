@@ -12,9 +12,16 @@ import CustomInput from "@/components/reusable/CustomInput";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { schema } from "@/validators/input";
 
+
 const LoginForm = () => {
+
+
+
+
   const router = useRouter();
   const [signInError, setSignInError] = useState<string | null>(null);
+
+  
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     const response = await signIn("credentials", {
       email: data.email,
@@ -27,6 +34,7 @@ const LoginForm = () => {
         setSignInError("Invalid credentials. Please try again." );
       }
     } else {
+
       router.push("/");
       router.refresh();
     }

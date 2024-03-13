@@ -13,7 +13,7 @@ export async function POST(request: Request) {
       );
     }
 
-    // Checking the user is already registered or not
+
     const user = await sql`
         SELECT * FROM users WHERE email=${email}
         `;
@@ -34,7 +34,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "success" });
   } catch (err) {
     console.error("register/route error", err);
-    // Return a 500 Internal Server Error status with the actual error message
+
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

@@ -34,3 +34,15 @@ export interface AddMealsFormFields extends Nutrition {
 export interface WeeklyMealData extends Nutrition {
   date: Date;
 }
+
+export type AvatarProps ={
+  image: string | undefined;
+}
+
+export type FieldErrors = {
+  currentPassword?: string[] | undefined;
+  newPassword?: string[] | undefined;
+  confirmPassword?: string[] | undefined;
+  error?: string | undefined;
+
+};
