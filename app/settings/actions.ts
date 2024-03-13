@@ -7,6 +7,8 @@ import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { signOut } from "next-auth/react";
+import { compare, hash } from "bcrypt";
+import { FieldErrors } from "@/types/types";
 const s3 = new S3Client({
   region: process.env.AWS_BUCKET_REGION!,
   credentials: {
@@ -141,5 +143,73 @@ export async function changeEmail(formData: FormData) {
   } catch (err) {
     console.error(err);
     return { error: "Failed to change email" };
+  }
+}
+
+type ChangePasswordResult =
+  | { error: FieldErrors | string }
+  | { success: string };
+
+export async function changePassword(
+  formData: FormData
+): Promise<ChangePasswordResult> {
+  const session = await getServerSession();
+  if (!session) {
+    return { error: "Not authenticated" };
+  }
+  const passwordSchema = z
+    .object({
+      currentPassword: z.string(),
+      newPassword: z
+        .string()
+        .min(8, { message: "Password must contain at least 8 character(s)" })
+        .max(16, {
+          message: "New password can not be longer than 16 character(s)",
+        }),
+      confirmPassword: z
+        .string()
+        .min(8, { message: "Password must contain at least 8 character(s)" })
+        .max(16),
+    })
+    .refine((data) => data.newPassword === data.confirmPassword, {
+      message: "Passwords do not match",
+      path: ["confirmPassword"],
+    });
+
+  const validatedPassword = passwordSchema.safeParse({
+    currentPassword: formData.get("currentPassword"),
+    newPassword: formData.get("newPassword"),
+    confirmPassword: formData.get("confirmPassword"),
+  });
+
+  if (!validatedPassword.success) {
+    return { error: validatedPassword.error.flatten().fieldErrors };
+  }
+
+  const userResponse = await sql`
+  SELECT * FROM users WHERE email=${session.user?.email}
+  `;
+  const user = userResponse.rows[0];
+
+  const passwordCorrect = await compare(
+    validatedPassword.data.currentPassword,
+    user.password
+  );
+
+  if (!passwordCorrect) {
+    return { error: { currentPassword: ["Incorrect password"] } };
+  }
+
+  try {
+
+    const hashedPassword = await hash(validatedPassword.data.newPassword, 10);
+    await sql`
+    UPDATE users SET password = ${hashedPassword} WHERE email=${session.user?.email}
+    `;
+
+    return { success: "Password changed" };
+  } catch (err) {
+    console.error(err);
+    return { error: "Failed to change password" };
   }
 }

@@ -53,19 +53,6 @@ const ProfileImage = () => {
 
 
 
-  // const { data } = useQuery({
-  //   queryKey: ["user", avatar, name],
-  //   queryFn: async () => {
-  //     const result = await getAvatarImage();
-  //     setAvatar(result?.success?.avatar);
-  //     setName(result?.success?.name);
-  //     return result;
-  //   },
-    
-  // });
-
-
-
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
