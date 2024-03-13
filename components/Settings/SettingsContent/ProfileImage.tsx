@@ -15,10 +15,12 @@ import { Button } from "@/components/ui/button";
 import { useUserStore } from "@/store/store";
 
 import UserAvatar from "@/components/reusable/UserAvatar";
-import { useRouter } from "next/navigation";
+import { SubmitHandler, useForm } from "react-hook-form";
 
+type AvatarInput = {
+  file: File | undefined
+}
 const ProfileImage = () => {
-  const router = useRouter();
   const [file, setFile] = useState<File | undefined>(undefined);
   const [fileUrl, setFileUrl] = useState<string | undefined>(undefined);
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,8 +50,11 @@ const ProfileImage = () => {
     return hashHex;
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+
+
+  
+  const onSubmit: SubmitHandler<AvatarInput> = async () => {
+   
     try {
       if (file) {
         const checksum = await computeSHA256(file);
@@ -75,16 +80,24 @@ const ProfileImage = () => {
         const correctURL = url.split("?")[0];
 
         await setAvatar(correctURL);
+        setFileUrl(undefined);
+        setFile(undefined);
       }
     } catch (err) {
       console.error(err);
     }
   };
 
+  const {
+    handleSubmit,
+ 
+    formState: { errors, isSubmitting },
+  } = useForm<AvatarInput>({});
+
   return (
     <form
-      onSubmit={handleSubmit}
-      className="flex-1 w-full flex flex-col items-center my-12 sm:my-0"
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex-1 w-full flex flex-col items-center my-12 sm:my-0 gap-2"
     >
       <div className="relative">
         <Label>Profile Picture</Label>
@@ -122,7 +135,7 @@ const ProfileImage = () => {
         </Popover>
       </div>
 
-      {file && fileUrl ? <Button>Save</Button> : null}
+      {file && fileUrl ? <Button disabled={isSubmitting}>{isSubmitting ? 'Saving...' : 'Save'}</Button> : null}
     </form>
   );
 };
