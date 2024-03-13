@@ -84,7 +84,7 @@ const ProfileImage = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex-1 w-full flex flex-col items-center"
+      className="flex-1 w-full flex flex-col items-center my-12 sm:my-0"
     >
       <div className="relative">
         <Label>Profile Picture</Label>
