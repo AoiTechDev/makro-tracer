@@ -6,7 +6,6 @@ import { Label } from "@/components/ui/label";
 import { FieldErrors } from "@/types/types";
 import { signOut } from "next-auth/react";
 import React from "react";
-import { toast } from "sonner";
 
 const PasswordForm = () => {
   const [error, setError] = React.useState<FieldErrors | string>({});

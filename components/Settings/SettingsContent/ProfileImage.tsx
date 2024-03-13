@@ -10,9 +10,9 @@ import {
 } from "@/components/ui/popover";
 import SVGPencil from "./SVGPencil";
 import { Card } from "@/components/ui/card";
-import {getSignedURL } from "@/app/settings/actions";
+import { getSignedURL } from "@/app/settings/actions";
 import { Button } from "@/components/ui/button";
-import {  useUserStore} from "@/store/store";
+import { useUserStore } from "@/store/store";
 
 import UserAvatar from "@/components/reusable/UserAvatar";
 import { useRouter } from "next/navigation";
@@ -37,9 +37,6 @@ const ProfileImage = () => {
     }
   };
   const { avatar, setAvatar } = useUserStore();
-   
-
-
 
   const computeSHA256 = async (file: File) => {
     const buffer = await file.arrayBuffer();
@@ -50,9 +47,6 @@ const ProfileImage = () => {
       .join("");
     return hashHex;
   };
-
-
-
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -69,7 +63,7 @@ const ProfileImage = () => {
         }
 
         const { url } = signedURLResult.success;
-       
+
         await fetch(url, {
           method: "PUT",
           body: file,
@@ -78,14 +72,9 @@ const ProfileImage = () => {
           },
         });
 
-        const correctURL = url.split("?")[0]
-       
-        
-        await setAvatar(correctURL)
-       
+        const correctURL = url.split("?")[0];
 
-      // router.push("/settings")
-      //  router.refresh();
+        await setAvatar(correctURL);
       }
     } catch (err) {
       console.error(err);
@@ -102,14 +91,13 @@ const ProfileImage = () => {
         <Avatar className="border h-48 w-48">
           {file && fileUrl ? (
             <>
-              <UserAvatar image={fileUrl}/>
+              <UserAvatar image={fileUrl} />
             </>
           ) : (
             <>
-             <UserAvatar image={avatar } />
+              <UserAvatar image={avatar} />
             </>
           )}
-     
         </Avatar>
         <Popover>
           <PopoverTrigger className="absolute bottom-3 left-0">
@@ -134,7 +122,7 @@ const ProfileImage = () => {
         </Popover>
       </div>
 
-     {file && fileUrl ?  <Button>Save</Button> : null}
+      {file && fileUrl ? <Button>Save</Button> : null}
     </form>
   );
 };
