@@ -1,6 +1,7 @@
 import { NutritionAPIResponse, Nutrition } from "@/types/types";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import Resizer from "react-image-file-resizer";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -61,3 +62,21 @@ export const getAvatarFromLocalStorage = () => {
   }
   return null;
 };
+
+const acceptedTypes = ["image/jpeg", "image/png", "image/webp"];
+export const resizeFile = (type: string, file: File): Promise<File> =>
+  new Promise((resolve, reject) => {
+    console.log(type);
+    Resizer.imageFileResizer(
+      file,
+      200,
+      200,
+      "WEBP",
+      100,
+      0,
+      (uri) => {
+        resolve(uri as File);
+      },
+      "file"
+    );
+  });

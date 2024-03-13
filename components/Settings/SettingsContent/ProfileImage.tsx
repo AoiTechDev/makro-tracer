@@ -16,6 +16,7 @@ import { useUserStore } from "@/store/store";
 
 import UserAvatar from "@/components/reusable/UserAvatar";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { resizeFile } from "@/lib/utils";
 
 type AvatarInput = {
   file: File | undefined
@@ -58,9 +59,11 @@ const ProfileImage = () => {
     try {
       if (file) {
         const checksum = await computeSHA256(file);
+        const resizedFile = await resizeFile(file.type, file)
+        console.log(resizedFile)
         const signedURLResult = await getSignedURL(
-          file.type,
-          file.size,
+          resizedFile.type,
+          resizedFile.size,
           checksum
         );
         if (signedURLResult.failure !== undefined) {
@@ -71,9 +74,9 @@ const ProfileImage = () => {
 
         await fetch(url, {
           method: "PUT",
-          body: file,
+          body: resizedFile,
           headers: {
-            "Content-Type": file.type,
+            "Content-Type": resizedFile.type,
           },
         });
 
