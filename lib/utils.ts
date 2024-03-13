@@ -63,7 +63,6 @@ export const getAvatarFromLocalStorage = () => {
   return null;
 };
 
-const acceptedTypes = ["image/jpeg", "image/png", "image/webp"];
 export const resizeFile = (type: string, file: File): Promise<File> =>
   new Promise((resolve, reject) => {
     console.log(type);

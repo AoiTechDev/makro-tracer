@@ -60,7 +60,6 @@ const ProfileImage = () => {
       if (file) {
         const checksum = await computeSHA256(file);
         const resizedFile = await resizeFile(file.type, file)
-        console.log(resizedFile)
         const signedURLResult = await getSignedURL(
           resizedFile.type,
           resizedFile.size,
