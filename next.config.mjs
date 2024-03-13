@@ -4,7 +4,7 @@ const nextConfig = {
         remotePatterns: [
           {
             protocol: 'https',
-            hostname: 'prod-mealfulness.s3.eu-central-1.amazonaws.com',
+            hostname: process.env.NEXT_CONFIG_HOSTNAME,
             port: '',
             pathname: '/**',
           },
