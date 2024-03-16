@@ -56,10 +56,10 @@ After registration, you will be redirected to the dashboard containing all conte
 
 Users can change few things here due to their account like: 
 
-- Their names. By default it is set as null because they do not need to provide it in registration.
+- Their names.
 - Email,
 - Password.
-- Avatar. Users can set their avatars which will be displayed in every places.
+- Avatar. 
 
 Feature with avatar was bit tricky and fun to do and also really teaching. I used AWS S3 Bucket to keep all images which user upload. I generate url for the image which is stored in S3 and I keep it in db. For optimizing all of this, I rezise image down to improve performance and avoid uploading large resolution images just for avatar picture.
 
