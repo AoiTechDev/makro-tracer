@@ -3,6 +3,7 @@
 
 https://mealfulness.vercel.app/
 
+![image](https://github.com/AoiTechDev/mealfulness/assets/88384089/b9c51ec8-653d-4c5c-ba82-8f92959c9088)
 
 ## Project Overview
 Dynamic meal tracking platform seamlessly integrated with nutrition data from external APIs. Enhanced with AI capabilities for personalized meal guidance, the platform facilitates effortless monitoring of weekly nutrition charts. Designed with streamlined efficiency in mind, it offers intuitive tools for effective meal management.
