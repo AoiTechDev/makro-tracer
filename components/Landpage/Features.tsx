@@ -35,7 +35,7 @@ const Features = () => {
       animate={isInView ? {opacity: 1, y: -20} : {opacity: 0, y: 50}}
       transition={{duration: 0.3}}
       viewport={{once: true, amount: 0.5}}
-      className=" my-24 [font-size:_clamp(1.75rem,4vw,4rem)]">
+      className=" mb-12 mt-24 [font-size:_clamp(1.75rem,4vw,4rem)]">
         Key{" "}
         <span className="bg-gradient-to-r from-purple-500 to-[#e7836e] inline-block text-transparent bg-clip-text">
           Features
