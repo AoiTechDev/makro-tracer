@@ -12,7 +12,7 @@ type HeroProps = {
 };
 const Hero = ({ session }: HeroProps) => {
   return (
-    <div className="grid grid-cols-2 max-[900px]:grid-cols-1 items-center lg:pl-12 max-[900px]:mt-24 lg:mt-0">
+    <div className="flex flex-col items-center justify-center mt-24 sm:mt-40">
       <div className="relative w-full flex justify-center items-start max-[900px]:items-center  gap-8 flex-col p-4  max-[900px]:text-center">
         <div
           aria-hidden="true"
@@ -26,11 +26,11 @@ const Hero = ({ session }: HeroProps) => {
             className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30  sm:left-[calc(50%-15rem)] sm:w-[72.1875rem]"
           />
         </div>
-      
+
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className=" [font-size:_clamp(2rem,5vw,5rem)] text-balance "
+          className=" [font-size:_clamp(2rem,5vw,4rem)] text-balance max-w-prose text-center"
         >
           <span className=" bg-gradient-to-r from-indigo-500 to-purple-500 inline-block text-transparent bg-clip-text">
             Nourish
@@ -44,7 +44,7 @@ const Hero = ({ session }: HeroProps) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text text-balance"
+          className="mx-auto text-balance text-center   max-w-prose"
         >
           Empower Yourself with Comprehensive Meal Tracking: Easily Create, Add
           and Search for Meals to Stay On Track.
@@ -52,8 +52,8 @@ const Hero = ({ session }: HeroProps) => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="space-y-4 md:space-x-4"
+          transition={{ delay: 0.4 }}
+          className="space-y-4 md:space-x-4 mx-auto mt-4  "
         >
           <Link href={session ? "/dashboard" : "/register"}>
             <ButtonWithBorder text="Discover" size="lg" />
@@ -62,15 +62,6 @@ const Hero = ({ session }: HeroProps) => {
           {/* <ButtonWithBorder text="Learn more" variant="outline" size="lg" /> */}
         </motion.div>
       </div>
-      
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className=" aspect-square relative w-full   "
-      >
- 
-        <Image alt="landpage img" fill src={landpageImg} className="" priority/>
-      </motion.div>
     </div>
   );
 };
