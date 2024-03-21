@@ -45,6 +45,7 @@ const Hero = ({ session }: HeroProps) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
           className="mx-auto text-balance text-center   max-w-prose"
+          data-testid="heroArticle"
         >
           Empower Yourself with Comprehensive Meal Tracking: Easily Create, Add
           and Search for Meals to Stay On Track.
@@ -54,6 +55,7 @@ const Hero = ({ session }: HeroProps) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
           className="space-y-4 md:space-x-4 mx-auto mt-4  "
+          
         >
           <Link href={session ? "/dashboard" : "/register"}>
             <ButtonWithBorder text="Discover" size="lg" />
