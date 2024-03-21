@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 import preview from "@/assets/dashboard-preview.png";
 import { motion } from "framer-motion";
-const ImageSection = () => {
+const Preview = () => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -28,4 +28,4 @@ const ImageSection = () => {
   );
 };
 
-export default ImageSection;
+export default Preview;
