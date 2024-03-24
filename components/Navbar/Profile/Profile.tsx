@@ -34,7 +34,6 @@ const Profile = ({ session }: ProfileProps) => {
 
   const { name, avatar, setName, setAvatar } = useUserStore();
 
-  
   useQuery({
     queryKey: ["user", avatar],
     queryFn: async () => {
@@ -45,6 +44,7 @@ const Profile = ({ session }: ProfileProps) => {
     },
   });
 
+  
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="cursor-pointer">
@@ -75,15 +75,16 @@ const Profile = ({ session }: ProfileProps) => {
               Meal Assistant
             </DropdownMenuItem>
           </Link>
-          <Link href="/settings">
-            <DropdownMenuItem className="cursor-pointer p-2">
-              Settings
-            </DropdownMenuItem>
-          </Link>
-          {/* <DropdownMenuItem className="cursor-pointer p-2">
-            Settings{" "}
-          </DropdownMenuItem> */}
-          {/* <DropdownMenuItem className="cursor-pointer p-2">Meals</DropdownMenuItem> */}
+
+
+          {session?.user?.email !== "test@gmail.com" ? (
+            <Link href="/settings">
+              <DropdownMenuItem className="cursor-pointer p-2">
+                Settings
+              </DropdownMenuItem>
+            </Link>
+          ) : null}
+         
         </DropdownMenuGroup>
 
         <DropdownMenuSeparator />

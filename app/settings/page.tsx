@@ -15,6 +15,11 @@ const page = async () => {
     redirect("/login");
   }
 
+  if(session.user?.email === 'test@gmail.com'){
+    redirect("/dashboard");
+  }
+
+  
   const { success } = await getUserInfo();
  
   return (
