@@ -5,8 +5,8 @@ https://mealfulness.vercel.app/
 
 Test account credentials:
 
-login: test@gmail.com
-password: test1234
+- login: test@gmail.com
+- password: test1234
 
 (Settings on this account have been disabled to prevent changing credentials. Dashboard functionality fully works.)
 
