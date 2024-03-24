@@ -50,6 +50,9 @@ Feature with avatar was bit tricky and fun to do and also really teaching. I use
 To utilize the platform, registration is required. No need for concern; you can input any email and password without requiring email confirmation. Additionally, passwords are encrypted in the database.
 After registration, you will be redirected to the dashboard containing all content. However, without proper authorization, you won't be able to access the functionality.
 
+- To search for ingredients you need to provide amout of that ingredient and its name, for example: 200g chicken
+- To search for multiple ingredients you follow the same rule, for example: 200g chicken 100g rice 150g vegetables
+
 <h2 align="left">Technologies</h2>
 
 - `Typescript`
