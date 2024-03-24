@@ -3,6 +3,13 @@
 
 https://mealfulness.vercel.app/
 
+Test account credentials:
+
+login: test@gmail.com
+password: test1234
+
+(Settings on this account have been disabled to prevent changing credentials. Dashboard functionality fully works.)
+
 ## Motivation - Why am I creating this app?
 I became interested in understanding my daily nutritional intake when I returned to the gym. I wanted to monitor my meals to gauge the amount of protein and calories I was consuming. Additionally, some of my family members and friends expressed interest in using an app like this, but they couldn't find a free and satisfactory option. This motivated me to develop my own app that would cater to our specific requirements.
 
