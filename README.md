@@ -3,6 +3,13 @@
 
 https://mealfulness.vercel.app/
 
+Test account credentials:
+
+- login: test@gmail.com
+- password: test1234
+
+(Settings on this account have been disabled to prevent changing credentials. Dashboard functionality fully works.)
+
 ## Motivation - Why am I creating this app?
 I became interested in understanding my daily nutritional intake when I returned to the gym. I wanted to monitor my meals to gauge the amount of protein and calories I was consuming. Additionally, some of my family members and friends expressed interest in using an app like this, but they couldn't find a free and satisfactory option. This motivated me to develop my own app that would cater to our specific requirements.
 
@@ -42,6 +49,9 @@ Feature with avatar was bit tricky and fun to do and also really teaching. I use
 ## How to use? - IMPORTANT
 To utilize the platform, registration is required. No need for concern; you can input any email and password without requiring email confirmation. Additionally, passwords are encrypted in the database.
 After registration, you will be redirected to the dashboard containing all content. However, without proper authorization, you won't be able to access the functionality.
+
+- To search for ingredients you need to provide amout of that ingredient and its name, for example: 200g chicken
+- To search for multiple ingredients you follow the same rule, for example: 200g chicken 100g rice 150g vegetables
 
 <h2 align="left">Technologies</h2>
 
