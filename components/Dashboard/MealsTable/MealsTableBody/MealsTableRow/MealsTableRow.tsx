@@ -37,16 +37,16 @@ const MealsTableRow = memo(({ result, session }: MealsTableRowProps) => {
                 <TableCell className="font-medium">{row.name}</TableCell>
                 <TableCell>{row.calories}</TableCell>
                 <TableCell>
-                  {row.protein} <span className="opacity-50">g</span>
+                  {row.protein} 
                 </TableCell>
                 <TableCell>
-                  {row.carbohydrates} <span className="opacity-50">g</span>
+                  {row.carbohydrates}
                 </TableCell>
                 <TableCell>
-                  {row.fat} <span className="opacity-50">g</span>
+                  {row.fat}
                 </TableCell>
                 <TableCell>
-                  {row.sugar} <span className="opacity-50">g</span>
+                  {row.sugar} 
                 </TableCell>
                 <TableCell>
                   {" "}

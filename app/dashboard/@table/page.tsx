@@ -1,6 +1,6 @@
 
 import MealsTableBody from "@/components/Dashboard/MealsTable/MealsTableBody/MealsTableBody";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Table,
 
@@ -19,6 +19,7 @@ const page = async () => {
     <Card className="w-full">
       <CardHeader>
         <CardTitle>Meals for Selected Day</CardTitle>
+        <span className="opacity-60">All nutrition displayed in grams</span>
       </CardHeader>
       <CardContent className="">
         <Table>
