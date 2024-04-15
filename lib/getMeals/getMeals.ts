@@ -1,5 +1,6 @@
 import { Meal } from "@/types/types";
 import { QueryResult} from "@vercel/postgres";
+import { getServerSession } from "next-auth";
 
 
 
@@ -8,10 +9,10 @@ export type GetMealsResponse = {
   success?: QueryResult<Meal>;
 };
 
-export async function getMeals(email: string): Promise<GetMealsResponse> {
-
+export async function getMeals(): Promise<GetMealsResponse> {
+  const session = await getServerSession();
   try {
-    const url = `${process.env.NEXTAUTH_URL}api/getMeals?email=${email}`;
+    const url = `${process.env.NEXTAUTH_URL}api/getMeals?email=${session?.user?.email}`;
     const data = await fetch(url, {
       method: "GET",
     

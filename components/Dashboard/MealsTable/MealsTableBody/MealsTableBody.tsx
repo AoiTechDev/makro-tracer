@@ -9,7 +9,7 @@ type MealsTableBodyProps = {
   session: Session | null;
 };
 const MealsTableBody = async ({ session }: MealsTableBodyProps) => {
-  const result = await getMeals(session?.user?.email ?? "");
+  const result = await getMeals();
 
   return (
     <TableBody>

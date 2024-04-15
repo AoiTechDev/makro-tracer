@@ -1,5 +1,6 @@
 
 import MealsTableBody from "@/components/Dashboard/MealsTable/MealsTableBody/MealsTableBody";
+import MobileCard from "@/components/Dashboard/MealsTable/MobileCard/MobileCard";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Table,
@@ -21,8 +22,8 @@ const page = async () => {
         <CardTitle>Meals for Selected Day</CardTitle>
         <span className="opacity-60">All nutrition displayed in grams</span>
       </CardHeader>
-      <CardContent className="">
-        <Table>
+      <CardContent className="md:flex hidden">
+        <Table >
           <TableHeader>
             <TableRow>
               <TableHead>Meal</TableHead>
@@ -35,6 +36,9 @@ const page = async () => {
           </TableHeader>
           <MealsTableBody session={session} />
         </Table>
+      </CardContent>
+      <CardContent  className="flex md:hidden">
+        <MobileCard />
       </CardContent>
     </Card>
   );
