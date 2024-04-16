@@ -9,7 +9,7 @@ import React from "react";
 
 const Page = async () => {
   const session = await getServerSession();
-  const result = await getMeals(session?.user?.email ?? "");
+  const result = await getMeals();
 
   return (
     <div className="flex flex-col   md:mt-0 w-full lg:w-1/4 order-1 lg:order-2">
