@@ -1,14 +1,13 @@
-
 import MealsTableBody from "@/components/Dashboard/MealsTable/MealsTableBody/MealsTableBody";
 import MobileCard from "@/components/Dashboard/MealsTable/MobileCard/MobileCard";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import {
-  Table,
-
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Table, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { getServerSession } from "next-auth";
 
 import React from "react";
@@ -23,7 +22,7 @@ const page = async () => {
         <span className="opacity-60">All nutrition displayed in grams</span>
       </CardHeader>
       <CardContent className="md:flex hidden">
-        <Table >
+        <Table>
           <TableHeader>
             <TableRow>
               <TableHead>Meal</TableHead>
@@ -37,7 +36,7 @@ const page = async () => {
           <MealsTableBody session={session} />
         </Table>
       </CardContent>
-      <CardContent  className="flex md:hidden">
+      <CardContent className="flex md:hidden">
         <MobileCard />
       </CardContent>
     </Card>

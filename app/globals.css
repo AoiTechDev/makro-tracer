@@ -55,3 +55,9 @@ body {
 .overlay-circle:hover:before {
    opacity: 1;
   }
+
+
+  .activeCard{
+    min-height: 250px;
+    
+  }
