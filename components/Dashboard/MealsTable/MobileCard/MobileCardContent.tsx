@@ -43,20 +43,33 @@ const MobileCardContent = ({ result, session }: MealsTableRowProps) => {
         return (
           formattedOriginalDate === formattedRowDate && (
             <Card
-              className="space-y-10 p-4 h-14 overflow-hidden"
+              className="space-y-10 p-4 h-24 overflow-hidden"
               key={row.mealid}
               ref={(el) => (cardRefs.current[index] = el)}
               onClick={() => handleClick(index)}
             >
-              <div className="flex justify-between">
-                <div>{row.name}</div>
-                <div>Cal: {row.calories}</div>
+              <div className="flex flex-col">
+                <div className="text-2xl">{row.name}</div>
+                <div className="flex justify-between">
+                  <span>Calories</span> <span>{row.calories}</span>
+                </div>
               </div>
-              <div className="flex flex-col gap-2">
-                <span>Protein: {row.protein}</span>
-                <span>Carbs: {row.carbohydrates}</span>
-                <span>Fat: {row.fat}</span>
-                <span> Sugar: {row.sugar}</span>
+              <div className="flex flex-col gap-2 ">
+                <div className="flex justify-between">
+                  <span>Calories</span> <span>{row.calories}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Protein</span> <span>{row.protein}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Carbs</span> <span>{row.carbohydrates}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Fat</span> <span>{row.fat}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Sugar</span> <span>{row.sugar}</span>
+                </div>
               </div>
             </Card>
           )
