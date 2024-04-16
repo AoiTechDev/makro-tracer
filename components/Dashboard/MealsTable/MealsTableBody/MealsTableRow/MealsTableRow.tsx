@@ -50,7 +50,7 @@ const MealsTableRow = memo(({ result, session }: MealsTableRowProps) => {
                 </TableCell>
                 <TableCell>
                   {" "}
-                  <DeleteRow mealid={row.mealid} session={session} />
+                  <DeleteRow mealid={row.mealid} session={session} className="absolute  top-[50%] -translate-y-[50%] group-hover:block hidden cursor-pointer "/>
                 </TableCell>
               </TableRow>
             )

@@ -5,6 +5,7 @@ import { formattedDate } from "@/lib/utils";
 import { useCalendarStore, useResultStore } from "@/store/store";
 import { Session } from "next-auth";
 import React, { useEffect, useRef } from "react";
+import DeleteRow from "../MealsTableBody/MealsTableRow/DeleteRow";
 
 type MealsTableRowProps = {
   result: GetMealsResponse;
@@ -43,7 +44,7 @@ const MobileCardContent = ({ result, session }: MealsTableRowProps) => {
         return (
           formattedOriginalDate === formattedRowDate && (
             <Card
-              className="space-y-10 p-4 h-24 overflow-hidden"
+              className="space-y-10 p-4 h-24 overflow-hidden "
               key={row.mealid}
               ref={(el) => (cardRefs.current[index] = el)}
               onClick={() => handleClick(index)}
@@ -54,7 +55,7 @@ const MobileCardContent = ({ result, session }: MealsTableRowProps) => {
                   <span>Calories</span> <span>{row.calories}</span>
                 </div>
               </div>
-              <div className="flex flex-col gap-2 ">
+              <div className="flex flex-col gap-2 relative">
                 <div className="flex justify-between">
                   <span>Calories</span> <span>{row.calories}</span>
                 </div>
@@ -70,7 +71,9 @@ const MobileCardContent = ({ result, session }: MealsTableRowProps) => {
                 <div className="flex justify-between">
                   <span>Sugar</span> <span>{row.sugar}</span>
                 </div>
+                <DeleteRow mealid={row.mealid} session={session} className="absolute -bottom-6" />
               </div>
+            
             </Card>
           )
         );

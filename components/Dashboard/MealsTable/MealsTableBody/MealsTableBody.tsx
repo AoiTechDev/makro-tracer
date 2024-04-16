@@ -1,5 +1,5 @@
 import React from "react";
-import { TableBody} from "@/components/ui/table";
+import { TableBody } from "@/components/ui/table";
 import { Session } from "next-auth";
 import { getMeals } from "@/lib/getMeals/getMeals";
 
@@ -13,9 +13,7 @@ const MealsTableBody = async ({ session }: MealsTableBodyProps) => {
 
   return (
     <TableBody>
-     
-        <MealsTableRow result={result} session={session} />
-     
+      <MealsTableRow result={result} session={session} />
     </TableBody>
   );
 };

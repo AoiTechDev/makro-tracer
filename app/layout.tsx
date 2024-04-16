@@ -25,7 +25,7 @@ export default async function RootLayout({
             {children}
           </main>
           <Overlay />
-          <Toaster />
+          <Toaster position="top-center" />
           <ReactQueryDevtools initialIsOpen={false} />
         </body>
       </Provider>
