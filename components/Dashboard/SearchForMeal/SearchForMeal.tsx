@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { createCompletion } from "@/actions/actions";
 import { NutritionAPIResponse } from "@/types/types";
 import { Skeleton } from "@/components/ui/skeleton";
-import {  useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Session } from "next-auth";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -24,24 +24,21 @@ const SearchForMeal = ({ session }: SearchForMealProps) => {
   } = useForm<FormData>();
 
   const onSubmit = handleSubmit(async ({ prompt }) => {
+    const result = await createCompletion(prompt as string);
+    setNutrition([]);
 
-    const result = await createCompletion(prompt as string)
-    setNutrition([])
-    
     if (result?.error) {
       console.log(result.error);
     } else if (result?.success) {
       setNutrition(result.success);
-      
     }
   });
 
-  
   return (
     <>
       {" "}
       <form onSubmit={onSubmit} className="flex gap-4 mt-6">
-        <Input {...register("prompt")} name="prompt" required/>
+        <Input {...register("prompt")} name="prompt" required />
         <Button disabled={isSubmitting} className="w-[100px]" type="submit">
           {isSubmitting ? "Searching..." : "Search"}
         </Button>
@@ -54,11 +51,23 @@ const SearchForMeal = ({ session }: SearchForMealProps) => {
         </div>
       ) : (
         <>
-          <IngredientsList nutrition={nutrition} />
+          {nutrition.length !== 0 ? (
+            <IngredientsList nutrition={nutrition} />
+          ) : (
+            <div className="w-full mt-12 flex flex-col justify-center items-center gap-4">
+              <span className="text-center">
+                {" "}
+                Please type Ingredients that are contained in your meal.
+              </span>
+              <span>Keep format like example below.</span>
+              <span>For Example: <span className="opacity-60">100g rice 200g chicken</span></span>
+            </div>
+          )}
         </>
       )}
-
-      {(nutrition.length > 0 && !isSubmitting) ? <AddMealToThatDay nutrition={nutrition} session={session} /> : null}
+      {nutrition.length > 0 && !isSubmitting ? (
+        <AddMealToThatDay nutrition={nutrition} session={session} />
+      ) : null}
     </>
   );
 };
