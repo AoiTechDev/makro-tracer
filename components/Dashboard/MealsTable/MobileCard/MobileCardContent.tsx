@@ -82,3 +82,4 @@ const MobileCardContent = ({ result, session }: MealsTableRowProps) => {
 };
 
 export default MobileCardContent;
+
