@@ -61,3 +61,8 @@ body {
     min-height: 300px;
     
   }
+
+  #gradient{
+    background: rgb(139, 74, 242);
+    background: linear-gradient(180deg, rgba(139, 74, 242, 1) 0%, rgba(98, 89, 248, 1) 100%);
+  }

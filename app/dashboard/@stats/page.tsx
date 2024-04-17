@@ -18,6 +18,7 @@ import {
   AnimatedAnnotation,
   Grid,
 } from "@visx/xychart";
+import { LinearGradient, RadialGradient } from '@visx/gradient';
 import { Option, useCalendarStore, useChartOptionsStore } from "@/store/store";
 import { getDaysInWeek } from "@/lib/utils";
 import { getWeek, getYear } from "date-fns";
@@ -54,15 +55,13 @@ const page = () => {
   return (
     <Card className=" min-h-[400px] flex-1 flex flex-col gap-5 justify-center items-center lg:p-4 pt-2">
       <ChartOptions />
-{/* 
+      {/* 
       <ChartContainer /> */}
 
       <XYChart
         height={350}
-        
         xScale={{ type: "band" }}
         yScale={{ type: "linear" }}
-      
       >
         <AnimatedAxis orientation="bottom" />
         <AnimatedAxis orientation="left" />
@@ -70,7 +69,10 @@ const page = () => {
           dataKey="date"
           data={chartData(option)}
           {...accessors}
+        
+        stroke="#6366F1"
         />
+      
 
         <Tooltip
           snapTooltipToDatumX
@@ -79,12 +81,18 @@ const page = () => {
           showSeriesGlyphs
           renderTooltip={({ tooltipData }) => (
             <div className="p-2 flex flex-col gap-1">
-              <span>{accessors.xAccessor(tooltipData?.nearestDatum?.datum)}</span>
-             <span> {option} : {accessors.yAccessor(tooltipData?.nearestDatum?.datum)}</span>
+              <span>
+                {accessors.xAccessor(tooltipData?.nearestDatum?.datum)}
+              </span>
+              <span>
+                {" "}
+                {option} :{" "}
+                {accessors.yAccessor(tooltipData?.nearestDatum?.datum)}
+              </span>
             </div>
           )}
         />
-        <Grid numTicks={3} columns={false}/>
+        <Grid numTicks={3} columns={false} />
       </XYChart>
     </Card>
   );

@@ -29,6 +29,7 @@
     "@upstash/ratelimit": "^1.0.1",
     "@upstash/redis": "^1.28.4",
     "@vercel/postgres": "^0.7.2",
+    "@visx/gradient": "^3.3.0",
     "@visx/group": "^3.3.0",
     "@visx/mock-data": "^3.3.0",
     "@visx/scale": "^3.5.0",
