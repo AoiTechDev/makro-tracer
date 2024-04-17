@@ -15,10 +15,10 @@ const DashboardLayout = ({
   return (
     <div className="flex flex-col lg:flex-row gap-4 justify-around w-full p-2 md:p-4 mt-16">
       <div className="w-full lg:w-3/4 flex flex-col gap-4 order-2 lg:order-1">
-        <div className="flex  gap-4 ">
+        <div className="flex flex-col lg:flex-row gap-4 ">
           <Suspense
             fallback={
-              <Skeleton className="min-h-[400px]  flex-1 flex-shrink-0"></Skeleton>
+              <Skeleton className="min-h-[400px]   flex-1 flex-shrink-0"></Skeleton>
             }
           >
             {children}

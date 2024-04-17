@@ -16,6 +16,7 @@ import {
   XYChart,
   Tooltip,
   AnimatedAnnotation,
+  Grid,
 } from "@visx/xychart";
 import { Option, useCalendarStore, useChartOptionsStore } from "@/store/store";
 import { getDaysInWeek } from "@/lib/utils";
@@ -46,18 +47,18 @@ const page = () => {
   };
 
   const accessors = {
-    xAccessor: (d) => d.date,
-    yAccessor: (d) => d[option],
+    xAccessor: (d: any) => d.date,
+    yAccessor: (d: any) => d[option],
   };
 
   return (
-    <Card className=" min-h-[400px] flex-1 lg:flex flex-col gap-5 justify-center items-center p-4">
+    <Card className=" min-h-[400px] flex-1 flex flex-col gap-5 justify-center items-center lg:p-4 pt-2">
       <ChartOptions />
 {/* 
       <ChartContainer /> */}
 
       <XYChart
-        height={300}
+        height={350}
         
         xScale={{ type: "band" }}
         yScale={{ type: "linear" }}
@@ -77,11 +78,13 @@ const page = () => {
           showVerticalCrosshair
           showSeriesGlyphs
           renderTooltip={({ tooltipData }) => (
-            <div>
-              {option} : {accessors.yAccessor(tooltipData?.nearestDatum?.datum)}
+            <div className="p-2 flex flex-col gap-1">
+              <span>{accessors.xAccessor(tooltipData?.nearestDatum?.datum)}</span>
+             <span> {option} : {accessors.yAccessor(tooltipData?.nearestDatum?.datum)}</span>
             </div>
           )}
         />
+        <Grid numTicks={3} columns={false}/>
       </XYChart>
     </Card>
   );
