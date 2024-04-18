@@ -1,32 +1,23 @@
 "use client";
 import { Card } from "@/components/ui/card";
-import React, { Suspense } from "react";
+import React from "react";
 
-import ChartContainer from "@/components/Stats/ChartContainer";
 import ChartOptions from "@/components/Stats/ChartOptions";
 
-import { letterFrequency } from "@visx/mock-data";
-import { Group } from "@visx/group";
-import { Bar } from "@visx/shape";
-import { scaleLinear, scaleBand } from "@visx/scale";
 import {
   AnimatedAxis, // any of these can be non-animated equivalents
-  AnimatedGrid,
   AnimatedLineSeries,
   XYChart,
   Tooltip,
-  AnimatedAnnotation,
   Grid,
 } from "@visx/xychart";
-import { LinearGradient, RadialGradient } from '@visx/gradient';
+
 import { Option, useCalendarStore, useChartOptionsStore } from "@/store/store";
 import { getDaysInWeek } from "@/lib/utils";
 import { getWeek, getYear } from "date-fns";
 import { useProcessWeeklyMealData } from "@/hooks/useProcessWeeklyMealData";
 
 const page = () => {
-  const test = ["calories", "protein", "carbs", "fat", "sugar"];
-
   const { option } = useChartOptionsStore();
   const { date } = useCalendarStore();
   const currentWeek = getDaysInWeek(getYear(date!), getWeek(date!));
@@ -55,9 +46,7 @@ const page = () => {
   return (
     <Card className=" min-h-[400px] flex-1 flex flex-col gap-5 justify-center items-center lg:p-4 pt-2">
       <ChartOptions />
-      {/* 
-      <ChartContainer /> */}
-
+ 
       <XYChart
         height={350}
         xScale={{ type: "band" }}
@@ -69,10 +58,8 @@ const page = () => {
           dataKey="date"
           data={chartData(option)}
           {...accessors}
-        
-        stroke="#6366F1"
+          stroke="#6366F1"
         />
-      
 
         <Tooltip
           snapTooltipToDatumX
