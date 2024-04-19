@@ -6,7 +6,7 @@ const ContainerLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <div className="flex w-full h-screen justify-center flex-col items-center p-8 bg-[#f8f8ff]">
+    <div className="flex w-full h-screen justify-center flex-col items-center p-8 ">
       {children}
     </div>
   );
