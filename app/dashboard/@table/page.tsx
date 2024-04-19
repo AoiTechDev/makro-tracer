@@ -3,7 +3,7 @@ import MobileCard from "@/components/Dashboard/MealsTable/MobileCard/MobileCard"
 import {
   Card,
   CardContent,
-  CardFooter,
+
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";

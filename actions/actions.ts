@@ -1,11 +1,12 @@
 "use server";
 import { z } from "zod";
-import { NutritionAPIResponse, Nutrition } from "@/types/types";
+import { NutritionAPIResponse, Nutrition, Meal } from "@/types/types";
 import { NextResponse } from "next/server";
-import { sql } from "@vercel/postgres";
+import { QueryResult, QueryResultRow, sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
 import { toast } from "sonner";
 import { getServerSession } from "next-auth";
+import { GetMealsResponse } from "@/lib/getMeals/getMeals";
 
 type NutritionResponse = {
   error?: string;
@@ -155,6 +156,26 @@ export async function getUser() {
     SELECT * FROM users WHERE email=${session.user?.email!}
     `;
     return { success: response.rows[0] };
+  } catch (err) {
+    return { failure: "Failed to get user" };
+  }
+}
+
+
+//TODO: CREATE TYPE SAFETY RESPONSE
+export async function getPreparedMeals() {
+  const session = await getServerSession();
+  if (!session) {
+    return { failure: "Not authenticated" };
+  }
+  try {
+    const user = await getUser();
+
+    const preparedMeals = await sql`
+   SELECT * FROM prepared_meals WHERE userid=${user?.success?.userid}
+   `
+
+    return { success: preparedMeals.rows };
   } catch (err) {
     return { failure: "Failed to get user" };
   }

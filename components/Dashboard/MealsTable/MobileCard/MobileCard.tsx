@@ -2,7 +2,6 @@ import { getMeals } from "@/lib/getMeals/getMeals";
 import React from "react";
 import MobileCardContent from "./MobileCardContent";
 import { getServerSession } from "next-auth";
-import { Card } from "@/components/ui/card";
 
 const MobileCard = async () => {
   const result = await getMeals();

@@ -1,8 +1,6 @@
 import { Meal } from "@/types/types";
-import { QueryResult} from "@vercel/postgres";
+import { QueryResult } from "@vercel/postgres";
 import { getServerSession } from "next-auth";
-
-
 
 export type GetMealsResponse = {
   error?: string;
@@ -15,9 +13,8 @@ export async function getMeals(): Promise<GetMealsResponse> {
     const url = `${process.env.NEXTAUTH_URL}api/getMeals?email=${session?.user?.email}`;
     const data = await fetch(url, {
       method: "GET",
-    
     });
-   
+
     return data.json();
   } catch (err) {
     console.error("create meal error", err);

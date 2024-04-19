@@ -6,11 +6,13 @@ const DashboardLayout = ({
   table,
   calendar,
   stats,
+  prepared,
 }: Readonly<{
   children: React.ReactNode;
   calendar: React.ReactNode;
   table: React.ReactNode;
   stats: React.ReactNode;
+  prepared: React.ReactNode;
 }>) => {
   return (
     <div className="flex flex-col lg:flex-row gap-4 justify-around w-full p-2 md:p-4 mt-16">
@@ -23,7 +25,13 @@ const DashboardLayout = ({
           >
             {children}
           </Suspense>
-          <Card className="min-h-[400px] flex-1 flex-shrink-0 flex justify-center items-center">Adding existing meals comming soon.</Card>
+          <Suspense
+            fallback={
+              <Skeleton className="min-h-[400px]   flex-1 flex-shrink-0"></Skeleton>
+            }
+          >
+            {prepared}
+          </Suspense>
         </div>
         <Suspense
           fallback={
