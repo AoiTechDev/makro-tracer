@@ -1,17 +1,11 @@
 "use server";
 import { z } from "zod";
-import {
-  NutritionAPIResponse,
-  Nutrition,
+import { NutritionAPIResponse, Nutrition } from "@/types/types";
 
-
-} from "@/types/types";
-import { NextResponse } from "next/server";
-import { QueryResult, QueryResultRow, sql } from "@vercel/postgres";
+import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
-import { toast } from "sonner";
+
 import { getServerSession } from "next-auth";
-import { GetMealsResponse } from "@/lib/getMeals/getMeals";
 
 type NutritionResponse = {
   error?: string;
