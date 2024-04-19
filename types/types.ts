@@ -26,6 +26,7 @@ export interface Meal extends Nutrition {
   mealid: number;
 }
 
+
 export interface AddMealsFormFields extends Nutrition {
   mealName: string;
   email: string;
