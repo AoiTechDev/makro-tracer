@@ -161,7 +161,6 @@ export async function getUser() {
   }
 }
 
-
 //TODO: CREATE TYPE SAFETY RESPONSE
 export async function getPreparedMeals() {
   const session = await getServerSession();
@@ -173,10 +172,30 @@ export async function getPreparedMeals() {
 
     const preparedMeals = await sql`
    SELECT * FROM prepared_meals WHERE userid=${user?.success?.userid}
-   `
+   `;
 
     return { success: preparedMeals.rows };
   } catch (err) {
     return { failure: "Failed to get user" };
+  }
+}
+
+export async function deletePreparedMeal(mealid: string) {
+  try {
+    const user = await getUser();
+
+    const mealName = await sql`
+    SELECT name FROM prepared_meals WHERE mealid=${mealid} AND userid=${user?.success?.userid}
+    `;
+    await sql`
+    DELETE FROM prepared_meals WHERE mealid=${mealid} AND userid=${user?.success?.userid}
+    `;
+
+    revalidatePath("/dashboard");
+    return {
+      message: `${mealName.rows[0].name} has been successfully deleted.`,
+    };
+  } catch (err) {
+    return { message: "Failed to delete meal" };
   }
 }
