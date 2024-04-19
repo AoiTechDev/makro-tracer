@@ -79,7 +79,7 @@ const page = () => {
             </div>
           )}
         />
-        <Grid numTicks={3} columns={false} />
+        <Grid numTicks={3} columns={false} strokeDasharray='6' />
       </XYChart>
     </Card>
   );

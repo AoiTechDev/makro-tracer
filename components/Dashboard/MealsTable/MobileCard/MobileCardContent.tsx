@@ -25,7 +25,7 @@ const MobileCardContent = ({ result, session }: MealsTableRowProps) => {
   const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
 
   const handleClick = (index: number) => {
-    console.log(cardRefs.current[index]);
+
 
     if (cardRefs.current[index]?.classList.contains("activeCard")) {
       setTimeout(() => {
