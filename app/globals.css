@@ -58,10 +58,13 @@ body {
 
 
   .activeCard{
-    min-height: 300px;
+    min-height: 250px;
 
   }
 
+  .activeCardRotateArrow{
+    transform: rotate(180deg);
+  }
   #gradient{
     background: rgb(139, 74, 242);
     background: linear-gradient(180deg, rgba(139, 74, 242, 1) 0%, rgba(98, 89, 248, 1) 100%);

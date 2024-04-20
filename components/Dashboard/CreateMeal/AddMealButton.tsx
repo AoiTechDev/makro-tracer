@@ -12,10 +12,11 @@ const AddMealButton = ({
   name: string;
   className?: string
 }) => {
-  const { pending } = useFormStatus();
+  const status = useFormStatus();
+  console.log(status)
   return (
-    <Button disabled={pending} className={cn("w-full flex-1", className)} name={name} >
-      {pending ? "Saving..." :  text}
+    <Button disabled={status.pending} className={cn("w-full flex-1", className)} name={name} >
+      {status.pending ? "Saving..." :  text}
     </Button>
   );
 };

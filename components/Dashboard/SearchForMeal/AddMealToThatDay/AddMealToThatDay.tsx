@@ -29,7 +29,8 @@ const AddMealToThatDay = ({ nutrition, session }: AddMealToThatDayProps) => {
         Name:{" "}
       </Label>
       <Input required name="mealName"/>
-      <AddMealButton text="Add to Calendar" name="addSearchedToCalendar"/>
+      <AddMealButton text="Add to Calendar" name="calendarBtn"/>
+      <AddMealButton text="Add to Calendar" name="preparedBtn"/>
     </form>
   );
 };

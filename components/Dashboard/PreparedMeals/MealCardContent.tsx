@@ -22,12 +22,14 @@ const MealCardContent = ({
     if (cardRefs.current[index]?.classList.contains("activeCard")) {
       setTimeout(() => {
         cardRefs.current[index]?.classList.remove("activeCard");
+        arrowRefs.current[index]?.classList.remove("activeCardRotateArrow");
       }, 10);
     }
 
     cardRefs.current[index]?.classList.add("activeCard");
+    arrowRefs.current[index]?.classList.add("activeCardRotateArrow");
   };
-
+  const arrowRefs = useRef<Array<HTMLDivElement | null>>([]);
   return (
     <Card
       key={meal.mealid}
@@ -70,10 +72,14 @@ const MealCardContent = ({
             )
           }
         />
-        <IoIosArrowDown
-          className="text-xl lg:text-2xl text-black cursor-pointer"
+        <div
+          ref={(el) => (arrowRefs.current[index] = el)}
           onClick={() => handleExpandCard(index)}
-        />
+        >
+          <IoIosArrowDown
+            className={`text-xl lg:text-2xl text-black cursor-pointer }`}
+          />
+        </div>
       </div>
     </Card>
   );
