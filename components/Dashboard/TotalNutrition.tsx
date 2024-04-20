@@ -53,7 +53,7 @@ const TotalNutrition = ({ result }: TotalNutritionProps) => {
   ];
 
   return (
-    <CardContent className="flex flex-col items-center justify-start gap-4">
+    <CardContent className="flex flex-col items-center justify-start gap-4 w-full">
       <CardHeader>
         <CardTitle>Total Nutrition</CardTitle>
       </CardHeader>

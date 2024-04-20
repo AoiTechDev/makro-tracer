@@ -33,15 +33,16 @@ const DashboardLayout = ({
             {prepared}
           </Suspense>
         </div>
+
+        <Suspense fallback={<Skeleton className="w-full h-36"></Skeleton>}>
+          {table}
+        </Suspense>
         <Suspense
           fallback={
             <Skeleton className="hidden min-h-[400px] flex-1 lg:flex "></Skeleton>
           }
         >
           {stats}
-        </Suspense>
-        <Suspense fallback={<Skeleton className="w-full h-36"></Skeleton>}>
-          {table}
         </Suspense>
       </div>
       <Suspense
