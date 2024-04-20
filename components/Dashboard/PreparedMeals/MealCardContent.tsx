@@ -42,11 +42,21 @@ const MealCardContent = ({
       </CardHeader>
 
       <CardContent className="flex flex-col">
-        <span>Calories: {meal.calories}</span>
-        <span>Protein: {meal.protein}</span>
-        <span>Carbs: {meal.carbohydrates}</span>
-        <span>Fat: {meal.fat}</span>
-        <span>Sugar: {meal.sugar}</span>
+        <div className="flex justify-between">
+          <span>Calories:</span> <span>{Number(meal.calories).toFixed(2)} </span>
+        </div>
+        <div className="flex justify-between">
+          <span>Protein:</span> <span>{Number(meal.protein).toFixed(2)} g</span>
+        </div>
+        <div className="flex justify-between">
+          <span>Carbs:</span> <span> {Number(meal.carbohydrates).toFixed(2)} g</span>
+        </div>
+        <div className="flex justify-between">
+          <span>Fat:</span> <span>{Number(meal.fat).toFixed(2)} g</span>
+        </div>
+        <div className="flex justify-between">
+          <span>Sugar:</span> <span>{Number(meal.sugar).toFixed(2)} g</span>
+        </div>
       </CardContent>
       <div className="absolute right-4 top-4 group-hover:flex gap-4 hidden">
         <TiPlus
