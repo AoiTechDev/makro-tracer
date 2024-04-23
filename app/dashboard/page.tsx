@@ -21,12 +21,12 @@ const page = async () => {
         </TabsList>
         <TabsContent value="Add meal">
           <CardContent>
-            <CreateMealForm session={session} />
+            <CreateMealForm />
           </CardContent>
         </TabsContent>
         <TabsContent value="Search for meal">
           <CardContent className="flex-1">
-            <SearchForMeal session={session} />
+            <SearchForMeal />
           </CardContent>
         </TabsContent>
       </Tabs>

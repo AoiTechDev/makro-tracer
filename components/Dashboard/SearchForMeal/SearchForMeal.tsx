@@ -12,10 +12,8 @@ import AddMealToThatDay from "./AddMealToThatDay/AddMealToThatDay";
 type FormData = {
   prompt: string;
 };
-type SearchForMealProps = {
-  session: Session;
-};
-const SearchForMeal = ({ session }: SearchForMealProps) => {
+
+const SearchForMeal = () => {
   const [nutrition, setNutrition] = useState<NutritionAPIResponse[]>([]);
   const {
     handleSubmit,
@@ -60,13 +58,16 @@ const SearchForMeal = ({ session }: SearchForMealProps) => {
                 Please type Ingredients that are contained in your meal.
               </span>
               <span>Keep format like example below.</span>
-              <span>For Example: <span className="opacity-60">100g rice 200g chicken</span></span>
+              <span>
+                For Example:{" "}
+                <span className="opacity-60">100g rice 200g chicken</span>
+              </span>
             </div>
           )}
         </>
       )}
       {nutrition.length > 0 && !isSubmitting ? (
-        <AddMealToThatDay nutrition={nutrition}  />
+        <AddMealToThatDay nutrition={nutrition} />
       ) : null}
     </>
   );
