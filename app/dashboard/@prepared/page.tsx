@@ -7,7 +7,7 @@ const page = async () => {
   const preparedMeals = await getPreparedMeals();
 
   return (
-    <Card className="max-h-[400px] w-full flex-1  flex-col flex justify-start items-start overflow-y-auto p-4 ">
+    <Card className="min-h-[400px] w-full flex-1  flex-col flex  justify-start items-start overflow-auto p-4 ">
       <CardHeader className="text-2xl font-bold py-4 px-2">
         Your Prepared Meals
       </CardHeader>
