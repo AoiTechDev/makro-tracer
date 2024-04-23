@@ -1,9 +1,9 @@
 'use client'
-import { changeName } from "@/app/settings/actions";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import React, { useRef } from "react";
 import ChangeButton from "./ChangeButton";
+import { changeName } from "@/actions/settins";
 
 const NameForm = () => {
 const ref = useRef<HTMLFormElement>(null)

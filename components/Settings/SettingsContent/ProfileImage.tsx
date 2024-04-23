@@ -10,13 +10,13 @@ import {
 } from "@/components/ui/popover";
 import SVGPencil from "./SVGPencil";
 import { Card } from "@/components/ui/card";
-import { getSignedURL } from "@/app/settings/actions";
-import { Button } from "@/components/ui/button";
 import { useUserStore } from "@/store/store";
 
 import UserAvatar from "@/components/reusable/UserAvatar";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { resizeFile } from "@/lib/utils";
+import { getSignedURL } from "@/actions/settins";
+import { Button } from "@/components/ui/button";
 
 type AvatarInput = {
   file: File | undefined

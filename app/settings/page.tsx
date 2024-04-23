@@ -1,3 +1,4 @@
+import { getUserInfo } from "@/actions/settins";
 import SettingsContent from "@/components/Settings/SettingsContent/SettingsContent";
 import TopProfileInfo from "@/components/Settings/TopProfileInfo";
 
@@ -7,7 +8,7 @@ import { getServerSession } from "next-auth";
 
 import { redirect } from "next/navigation";
 import React from "react";
-import { getUserInfo } from "./actions";
+
 
 const page = async () => {
   const session = await getServerSession();

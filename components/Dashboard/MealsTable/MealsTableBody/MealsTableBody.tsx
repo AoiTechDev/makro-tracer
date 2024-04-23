@@ -2,7 +2,7 @@ import React from "react";
 import { TableBody } from "@/components/ui/table";
 import { getMeals } from "@/lib/getMeals/getMeals";
 
-import MealsTableRow from "./MealsTableRow/MealsTableRow";
+import MealsTableRow from "./MealsTableRow";
 
 
 const MealsTableBody = async () => {

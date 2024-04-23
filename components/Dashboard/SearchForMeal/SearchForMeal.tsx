@@ -7,8 +7,8 @@ import { useForm } from "react-hook-form";
 import { Session } from "next-auth";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import IngredientsList from "./IngredientsList/IngredientsList";
-import AddMealToThatDay from "./AddMealToThatDay/AddMealToThatDay";
+import IngredientsList from "./IngredientsList";
+import AddMealToThatDay from "./AddMealToThatDay";
 type FormData = {
   prompt: string;
 };

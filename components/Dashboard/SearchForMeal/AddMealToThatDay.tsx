@@ -8,7 +8,7 @@ import { NutritionAPIResponse } from "@/types/types";
 
 import React from "react";
 import { toast } from "sonner";
-import AddMealButton from "../../CreateMeal/AddMealButton";
+import AddMealButton from "../CreateMeal/AddMealButton";
 import { createMeal } from "@/actions/meals";
 
 type AddMealToThatDayProps = {

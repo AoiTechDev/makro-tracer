@@ -20,7 +20,7 @@ import { useSessionStore, useUserStore } from "@/store/store";
 
 import UserAvatar from "@/components/reusable/UserAvatar";
 import { useQuery } from "@tanstack/react-query";
-import { getUserInfo } from "@/app/settings/actions";
+import { getUserInfo } from "@/actions/settins";
 
 type ProfileProps = {
   session: Session;
