@@ -1,20 +1,11 @@
 import MealsTableBody from "@/components/Dashboard/MealsTable/MealsTableBody/MealsTableBody";
 import MobileCard from "@/components/Dashboard/MealsTable/MobileCard/MobileCard";
-import {
-  Card,
-  CardContent,
-
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { getServerSession } from "next-auth";
 
 import React from "react";
 
 const page = async () => {
-  const session = await getServerSession();
-
   return (
     <Card className="w-full">
       <CardHeader>
@@ -33,7 +24,7 @@ const page = async () => {
               <TableHead>Sugar</TableHead>
             </TableRow>
           </TableHeader>
-          <MealsTableBody session={session} />
+          <MealsTableBody />
         </Table>
       </CardContent>
       <CardContent className="flex md:hidden">
