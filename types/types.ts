@@ -1,7 +1,13 @@
-import { schema } from "@/validators/input";
+import { userAuthSchema } from "@/validators/input";
 import { z } from "zod";
 
-export type FormFields = z.infer<typeof schema>;
+export type FormFields = z.infer<typeof userAuthSchema>;
+
+export type NutritionResponse = {
+  error?: string;
+  success?: NutritionAPIResponse[];
+};
+
 
 export type NutritionAPIResponse = {
   name: string;

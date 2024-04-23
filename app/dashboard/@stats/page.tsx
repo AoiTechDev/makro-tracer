@@ -5,7 +5,7 @@ import React from "react";
 import ChartOptions from "@/components/Stats/ChartOptions";
 
 import {
-  AnimatedAxis, // any of these can be non-animated equivalents
+  AnimatedAxis,
   AnimatedLineSeries,
   XYChart,
   Tooltip,
@@ -46,7 +46,7 @@ const page = () => {
   return (
     <Card className=" min-h-[400px] flex-1 flex flex-col gap-5 justify-center items-center lg:p-4 pt-2">
       <ChartOptions />
- 
+
       <XYChart
         height={350}
         xScale={{ type: "band" }}
@@ -79,7 +79,7 @@ const page = () => {
             </div>
           )}
         />
-        <Grid numTicks={3} columns={false} strokeDasharray='6' />
+        <Grid numTicks={3} columns={false} strokeDasharray="6" />
       </XYChart>
     </Card>
   );

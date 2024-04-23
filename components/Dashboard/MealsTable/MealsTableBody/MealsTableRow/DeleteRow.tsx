@@ -1,4 +1,4 @@
-import { deleteMeal } from "@/actions/actions";
+import { deleteMeal } from "@/actions/meals";
 import { cn } from "@/lib/utils";
 import { Session } from "next-auth";
 
@@ -18,7 +18,7 @@ const DeleteRow = ({ mealid, session, className }: DeleteRowProps) => {
         className
       )}
       onClick={() =>
-        deleteMeal(session?.user?.email!, mealid).then((res) =>
+        deleteMeal( mealid).then((res) =>
           toast.success(res.message)
         )
       }

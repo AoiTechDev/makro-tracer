@@ -3,11 +3,12 @@ import React from "react";
 
 import { Session } from "next-auth";
 import { useCalendarStore } from "@/store/store";
-import { createMeal } from "@/actions/actions";
+
 import { formattedDate } from "@/lib/utils";
 import AddMealButton from "./AddMealButton";
 import FormInputs from "./FormInputs";
 import { toast } from "sonner";
+import { createMeal } from "@/actions/meals";
 
 type CreateMealFormProps = {
   session: Session;
@@ -59,7 +60,7 @@ const CreateMealForm = ({ session }: CreateMealFormProps) => {
 
   const createMealWithDate = createMeal.bind(
     null,
-    session?.user?.email!,
+
     formattedOriginalDate,
     undefined
   );

@@ -4,12 +4,12 @@ import { GetMealsResponse } from "@/lib/getMeals/getMeals";
 import { formattedDate } from "@/lib/utils";
 import { useCalendarStore, useResultStore } from "@/store/store";
 import { Session } from "next-auth";
-import React, { useEffect, useRef, useState } from "react";
-import DeleteRow from "../MealsTableBody/MealsTableRow/DeleteRow";
+import React, { useEffect, useRef } from "react";
 import { MdDelete } from "react-icons/md";
-import { deleteMeal } from "@/actions/actions";
+
 import { toast } from "sonner";
 import { IoIosArrowDown } from "react-icons/io";
+import { deleteMeal } from "@/actions/meals";
 
 type MealsTableRowProps = {
   result: GetMealsResponse;
@@ -77,7 +77,7 @@ const MobileCardContent = ({ result, session }: MealsTableRowProps) => {
                 <MdDelete
                   className=" text-xl lg:text-2xl text-red-600 cursor-pointer"
                   onClick={() =>
-                    deleteMeal(session?.user?.email!, row.mealid).then((res) =>
+                    deleteMeal( row.mealid).then((res) =>
                       toast.success(res.message)
                     )
                   }

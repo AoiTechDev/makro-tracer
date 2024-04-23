@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import CustomInput from "@/components/reusable/CustomInput";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { schema } from "@/validators/input";
+import { userAuthSchema } from "@/validators/input";
 
 
 const LoginForm = () => {
@@ -45,7 +45,7 @@ const LoginForm = () => {
     register,
     formState: { errors, isSubmitting },
   } = useForm<FormFields>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(userAuthSchema),
   });
 
   return (

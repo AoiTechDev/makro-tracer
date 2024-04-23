@@ -13,7 +13,6 @@ const AddMealButton = ({
   className?: string
 }) => {
   const status = useFormStatus();
-  console.log(status)
   return (
     <Button disabled={status.pending} className={cn("w-full flex-1", className)} name={name} >
       {status.pending ? "Saving..." :  text}

@@ -1,4 +1,5 @@
-import { getPreparedMeals } from "@/actions/actions";
+
+import { getPreparedMeals } from "@/actions/preparedMeals";
 import MealCard from "@/components/Dashboard/PreparedMeals/MealCard";
 import { Card, CardHeader } from "@/components/ui/card";
 import React from "react";

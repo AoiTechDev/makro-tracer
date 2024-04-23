@@ -1,5 +1,5 @@
 "use client";
-import { createMeal } from "@/actions/actions";
+
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { countTotalNutrition, formattedDate } from "@/lib/utils";
@@ -9,6 +9,7 @@ import { Session } from "next-auth";
 import React from "react";
 import { toast } from "sonner";
 import AddMealButton from "../../CreateMeal/AddMealButton";
+import { createMeal } from "@/actions/meals";
 
 type AddMealToThatDayProps = {
   nutrition: NutritionAPIResponse[];
@@ -22,7 +23,6 @@ const AddMealToThatDay = ({ nutrition, session }: AddMealToThatDayProps) => {
   const total = countTotalNutrition(nutrition);
   const createMealWithDate = createMeal.bind(
     null,
-    session?.user?.email!,
     formattedOriginalDate,
     total
   );

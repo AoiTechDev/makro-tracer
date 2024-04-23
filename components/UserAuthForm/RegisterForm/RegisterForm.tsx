@@ -3,7 +3,7 @@ import React from "react";
 import { FormFields } from "@/types/types";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { schema } from "@/validators/input";
+import { userAuthSchema } from "@/validators/input";
 import CustomInput from "@/components/reusable/CustomInput";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
@@ -15,7 +15,7 @@ const RegisterForm = () => {
     register,
     formState: { errors, isSubmitting },
   } = useForm<FormFields>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(userAuthSchema),
   });
   const router = useRouter();
 

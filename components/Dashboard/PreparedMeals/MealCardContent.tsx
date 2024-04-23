@@ -1,5 +1,6 @@
 "use client";
-import { addPreparedToCalendar, deletePreparedMeal } from "@/actions/actions";
+
+import { addPreparedToCalendar, deletePreparedMeal } from "@/actions/preparedMeals";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { formattedDate } from "@/lib/utils";
 import { QueryResultRow } from "@vercel/postgres";
