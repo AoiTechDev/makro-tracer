@@ -13,7 +13,6 @@ export async function POST(request: Request) {
       );
     }
 
-
     const user = await sql`
         SELECT * FROM users WHERE email=${email}
         `;
@@ -26,7 +25,7 @@ export async function POST(request: Request) {
     const userId = uuidv4();
     const hashedPassword = await hash(password, 10);
 
-    const response = await sql`
+    await sql`
         INSERT INTO users (userID, email, password)
         VALUES (${userId}, ${email}, ${hashedPassword})
         `;

@@ -1,27 +1,21 @@
 "use client";
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { GetMealsResponse } from "@/lib/getMeals/getMeals";
+
 import CalendarView from "./CalendarView";
 import TotalNutrition from "../TotalNutrition";
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
+
+import { MealResponse } from "@/types/types";
 gsap.registerPlugin(ScrollTrigger);
-const CalendarWrapper = ({ result }: { result: GetMealsResponse }) => {
+const CalendarWrapper = ({
+  result,
+}: {
+  result: MealResponse[] | undefined;
+}) => {
   const cardRef = useRef<HTMLDivElement | null>(null);
-
-  // useLayoutEffect(() => {
-  //   ScrollTrigger.create({
-  //     trigger: cardRef.current,
-  //     pin: cardRef.current,
-  //     start: "top top",
-  //     // end: '200 300',
-  //     markers: true,
-  //   });
-  // }, []);
-
-
 
   return (
     <Card ref={cardRef} className="w-full ">

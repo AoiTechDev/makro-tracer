@@ -2,9 +2,7 @@
 import React from "react";
 import ButtonWithBorder from "../Buttons/ButtonWithBorder";
 import Link from "next/link";
-import Image from "next/image";
 import { Session } from "next-auth";
-import landpageImg from "@/assets/landing-page.png";
 import { motion } from "framer-motion";
 
 type HeroProps = {

@@ -10,7 +10,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useCalendarStore } from "@/store/store";
-import { GetMealsResponse } from "@/lib/getMeals/getMeals";
 
 import { cn, formattedDate } from "@/lib/utils";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
@@ -18,13 +17,12 @@ import { Button } from "../ui/button";
 import { CalendarIcon } from "lucide-react";
 import { Calendar } from "../ui/calendar";
 import { useTotalNutrition } from "@/hooks/useTotalNutrition";
+import { MealResponse } from "@/types/types";
 
 //TODO refactor this code to be reusable
-type TotalNutritionProps = {
-  result: GetMealsResponse;
-};
 
-const TotalNutrition = ({ result }: TotalNutritionProps) => {
+
+const TotalNutrition = ({ result }: {result: MealResponse[] | undefined}) => {
   const { date, setCurrentDate } = useCalendarStore();
   const formattedOriginalDate = formattedDate(date);
 

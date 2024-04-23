@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { countTotalNutrition, formattedDate } from "@/lib/utils";
 import { useCalendarStore } from "@/store/store";
 import { NutritionAPIResponse } from "@/types/types";
-import { Session } from "next-auth";
+
 import React from "react";
 import { toast } from "sonner";
 import AddMealButton from "../../CreateMeal/AddMealButton";
@@ -13,10 +13,9 @@ import { createMeal } from "@/actions/meals";
 
 type AddMealToThatDayProps = {
   nutrition: NutritionAPIResponse[];
-  session: Session;
 };
 
-const AddMealToThatDay = ({ nutrition, session }: AddMealToThatDayProps) => {
+const AddMealToThatDay = ({ nutrition }: AddMealToThatDayProps) => {
   const { date } = useCalendarStore();
   const formattedOriginalDate = formattedDate(date);
 

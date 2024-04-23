@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { signOut } from "next-auth/react";
 import React from "react";
-import { useFormState } from "react-dom";
 
 const EmailForm = () => {
   const [error, setError] = React.useState<string>("");

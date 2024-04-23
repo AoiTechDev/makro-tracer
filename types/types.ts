@@ -1,4 +1,5 @@
 import { userAuthSchema } from "@/validators/input";
+
 import { z } from "zod";
 
 export type FormFields = z.infer<typeof userAuthSchema>;
@@ -8,6 +9,10 @@ export type NutritionResponse = {
   success?: NutritionAPIResponse[];
 };
 
+export interface GetMealsResponse {
+  success?: MealResponse[];
+  failure?: string;
+}
 
 export type NutritionAPIResponse = {
   name: string;
@@ -32,6 +37,9 @@ export interface Meal extends Nutrition {
   mealid: number;
 }
 
+export interface MealResponse extends Omit<Meal,  "date"> {
+  date: string
+}
 
 export interface AddMealsFormFields extends Nutrition {
   mealName: string;

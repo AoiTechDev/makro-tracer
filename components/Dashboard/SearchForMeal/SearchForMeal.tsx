@@ -20,7 +20,7 @@ const SearchForMeal = ({ session }: SearchForMealProps) => {
   const {
     handleSubmit,
     register,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
   } = useForm<FormData>();
 
   const onSubmit = handleSubmit(async ({ prompt }) => {
@@ -66,7 +66,7 @@ const SearchForMeal = ({ session }: SearchForMealProps) => {
         </>
       )}
       {nutrition.length > 0 && !isSubmitting ? (
-        <AddMealToThatDay nutrition={nutrition} session={session} />
+        <AddMealToThatDay nutrition={nutrition}  />
       ) : null}
     </>
   );

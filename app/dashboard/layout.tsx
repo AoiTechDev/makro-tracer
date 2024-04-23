@@ -1,6 +1,5 @@
 import React, { Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Card } from "@/components/ui/card";
 const DashboardLayout = ({
   children,
   table,

@@ -1,14 +1,12 @@
-import { GetMealsResponse } from "@/lib/getMeals/getMeals";
+
 import { formattedDate } from "@/lib/utils";
 import { useCalendarStore } from "@/store/store";
-import { Nutrition } from "@/types/types";
+import { MealResponse, Nutrition } from "@/types/types";
 import { useEffect, useState } from "react";
 
-type TotalNutritionProps = {
-    result: GetMealsResponse;
-  };
+
   
-export const useTotalNutrition = ({result}: TotalNutritionProps) => {
+export const useTotalNutrition = ({result}: {result: MealResponse[] | undefined}) => {
 
     const [totalNutrition, setTotalNutrition] = useState<Nutrition>({
         calories: 0,
@@ -22,7 +20,7 @@ export const useTotalNutrition = ({result}: TotalNutritionProps) => {
     const formattedOriginalDate = formattedDate(date);
     
     useEffect(() => {
-        if (result.success) {
+        if (result) {
         let total = {
             calories: 0,
             protein: 0,
@@ -31,7 +29,7 @@ export const useTotalNutrition = ({result}: TotalNutritionProps) => {
             sugar: 0,
         };
     
-        result.success.rows.forEach((row) => {
+        result.forEach((row) => {
             const rowDate = new Date(row.date);
             const formattedRowDate = formattedDate(rowDate);
     
@@ -48,7 +46,7 @@ export const useTotalNutrition = ({result}: TotalNutritionProps) => {
     
         setTotalNutrition(total);
         }
-    }, [result.success, date]);
+    }, [result, date]);
     
     return { totalNutrition};
 };

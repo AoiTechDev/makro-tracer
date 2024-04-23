@@ -6,7 +6,6 @@ import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
-import { signOut } from "next-auth/react";
 import { compare, hash } from "bcrypt";
 import { FieldErrors } from "@/types/types";
 const s3 = new S3Client({
@@ -58,7 +57,7 @@ export async function getSignedURL(
     SELECT * FROM users WHERE email=${session.user?.email!}
     `;
     const user = response.rows[0];
-    const avatar = await sql`
+    await sql`
     INSERT INTO users (avatar, userId)
     VALUES (${signedURL.split("?")[0]}, ${user.userid})
     ON CONFLICT (userId) DO UPDATE
@@ -201,7 +200,6 @@ export async function changePassword(
   }
 
   try {
-
     const hashedPassword = await hash(validatedPassword.data.newPassword, 10);
     await sql`
     UPDATE users SET password = ${hashedPassword} WHERE email=${session.user?.email}
@@ -213,4 +211,3 @@ export async function changePassword(
     return { error: "Failed to change password" };
   }
 }
-

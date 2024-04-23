@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 
-import { Session } from "next-auth";
+
 import { useCalendarStore } from "@/store/store";
 
 import { formattedDate } from "@/lib/utils";
@@ -10,11 +10,8 @@ import FormInputs from "./FormInputs";
 import { toast } from "sonner";
 import { createMeal } from "@/actions/meals";
 
-type CreateMealFormProps = {
-  session: Session;
-};
 
-const CreateMealForm = ({ session }: CreateMealFormProps) => {
+const CreateMealForm = () => {
   const { date } = useCalendarStore();
 
   const formattedOriginalDate = formattedDate(date);

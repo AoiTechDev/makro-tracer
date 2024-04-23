@@ -49,8 +49,8 @@ const PasswordForm = () => {
           <Input type="password" name="confirmPassword" />
           {typeof error !== "string" && error?.confirmPassword ? (
             <div className="text-red-500 text-sm flex flex-col">
-              {error.confirmPassword.map((error) => (
-                <span>{error}</span>
+              {error.confirmPassword.map((error, index) => (
+                <span key={index}>{error}</span>
               ))}
             </div>
           ) : null}

@@ -2,7 +2,6 @@ import { sql } from "@vercel/postgres";
 import { compare } from "bcrypt";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { toast } from "sonner";
 
 const handler = NextAuth({
   session: {
@@ -14,7 +13,7 @@ const handler = NextAuth({
         email: {},
         password: {},
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         //TODO validation
 
         const response = await sql`

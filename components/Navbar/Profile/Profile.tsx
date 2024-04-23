@@ -32,7 +32,7 @@ const Profile = ({ session }: ProfileProps) => {
     setUserSession(session);
   }, [userSession]);
 
-  const { name, avatar, setName, setAvatar } = useUserStore();
+  const { name, avatar, setAvatar } = useUserStore();
 
   useQuery({
     queryKey: ["user", avatar],

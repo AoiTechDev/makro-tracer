@@ -1,5 +1,5 @@
 "use client";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import React, { useState } from "react";
@@ -93,7 +93,7 @@ const ProfileImage = () => {
   const {
     handleSubmit,
  
-    formState: { errors, isSubmitting },
+    formState: {  isSubmitting },
   } = useForm<AvatarInput>({});
 
   return (

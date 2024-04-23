@@ -1,5 +1,6 @@
+import React from "react";
 import { cn } from "@/lib/utils";
-import { useSessionStore, useUserStore } from "@/store/store";
+import { useUserStore } from "@/store/store";
 import { FC, HTMLAttributes } from "react";
 import { Avatar, AvatarFallback } from "../ui/avatar";
 import UserAvatar from "../reusable/UserAvatar";
@@ -14,10 +15,6 @@ const ChatMessage: FC<ChatMessagesProps> = ({
   children,
   ...props
 }) => {
-  const { userSession } = useSessionStore();
-  const avatarFallback = `${userSession?.user?.email
-    ?.split("")[0]
-    ?.toUpperCase()}${userSession?.user?.email?.split("")[1]?.toUpperCase()}`;
   const { avatar } = useUserStore();
   return (
     <div className={cn("flex", className)} {...props}>

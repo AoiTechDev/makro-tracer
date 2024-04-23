@@ -1,5 +1,5 @@
 import { getServerSession } from "next-auth";
-import React, { useEffect } from "react";
+import React from "react";
 
 import Login from "./Login/Login";
 import Register from "./Register/Register";

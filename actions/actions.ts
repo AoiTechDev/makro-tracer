@@ -2,7 +2,6 @@
 
 import { NutritionResponse } from "@/types/types";
 
-
 export async function createCompletion(
   prompt: string
 ): Promise<NutritionResponse> {
@@ -15,7 +14,7 @@ export async function createCompletion(
     {
       headers: {
         "Content-Type": "application/json",
-        "X-Api-Key": process.env.NINJA_API_KEY || "",
+        "X-Api-Key": process.env.NINJA_API_KEY!,
       },
     }
   )
@@ -29,6 +28,3 @@ export async function createCompletion(
 
   return { success: res };
 }
-
-
-

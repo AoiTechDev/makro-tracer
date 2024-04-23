@@ -2,21 +2,16 @@
 import { TableCell, TableRow } from "@/components/ui/table";
 import { GetMealsResponse } from "@/lib/getMeals/getMeals";
 import { formattedDate } from "@/lib/utils";
-import {
-  useCalendarStore,
-  useResultStore,
+import { useCalendarStore, useResultStore } from "@/store/store";
 
-} from "@/store/store";
-import { Session } from "next-auth";
 import React, { memo, useEffect } from "react";
 import DeleteRow from "./DeleteRow";
 
 type MealsTableRowProps = {
   result: GetMealsResponse;
-  session: Session | null;
 };
 
-const MealsTableRow = memo(({ result, session }: MealsTableRowProps) => {
+const MealsTableRow = memo(({ result }: MealsTableRowProps) => {
   const { date } = useCalendarStore();
 
   const { setResult } = useResultStore();
@@ -36,21 +31,16 @@ const MealsTableRow = memo(({ result, session }: MealsTableRowProps) => {
               <TableRow key={row.mealid} className="relative group ">
                 <TableCell className="font-medium">{row.name}</TableCell>
                 <TableCell>{row.calories}</TableCell>
-                <TableCell>
-                  {row.protein} 
-                </TableCell>
-                <TableCell>
-                  {row.carbohydrates}
-                </TableCell>
-                <TableCell>
-                  {row.fat}
-                </TableCell>
-                <TableCell>
-                  {row.sugar} 
-                </TableCell>
+                <TableCell>{row.protein}</TableCell>
+                <TableCell>{row.carbohydrates}</TableCell>
+                <TableCell>{row.fat}</TableCell>
+                <TableCell>{row.sugar}</TableCell>
                 <TableCell>
                   {" "}
-                  <DeleteRow mealid={row.mealid} session={session} className="absolute  top-[50%] -translate-y-[50%] group-hover:block hidden cursor-pointer "/>
+                  <DeleteRow
+                    mealid={row.mealid}
+                    className="absolute  top-[50%] -translate-y-[50%] group-hover:block hidden cursor-pointer "
+                  />
                 </TableCell>
               </TableRow>
             )

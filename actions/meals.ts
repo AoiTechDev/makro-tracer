@@ -1,9 +1,41 @@
 "use server";
-import { Nutrition } from "@/types/types";
+import { GetMealsResponse, MealResponse, Nutrition } from "@/types/types";
 import { mealSchema } from "@/validators/input";
 import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
 import { getUser } from "./users";
+import { getServerSession } from "next-auth";
+
+
+export async function getMeals(): Promise<GetMealsResponse> {
+  const session = await getServerSession();
+  if (!session) {
+    return { failure: "Not authenticated" };
+  }
+
+  try {
+    const user = await getUser();
+
+    const meals = await sql`
+     SELECT * FROM meals WHERE userid=${user?.success?.userid}
+     `;
+
+    const mappedMeals = meals.rows.map((row) => ({
+      mealid: row.mealid,
+      name: row.name,
+      calories: parseFloat(row.calories),
+      protein: parseFloat(row.protein),
+      carbohydrates: parseFloat(row.carbohydrates),
+      fat: parseFloat(row.fat),
+      sugar: parseFloat(row.sugar),
+      date: row.date,
+    }));
+
+    return { success: mappedMeals as MealResponse[] };
+  } catch (err) {
+    return { failure: "Failed to get user" };
+  }
+}
 
 export async function createMeal(
   date: string,
