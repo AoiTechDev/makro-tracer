@@ -1,4 +1,4 @@
-import { AvatarProps, Meal } from "@/types/types";
+import { AvatarProps, Meal, MealResponse } from "@/types/types";
 import { Message } from "@/validators/message";
 import { QueryResult } from "@vercel/postgres";
 import { nanoid } from "nanoid";
@@ -48,23 +48,21 @@ export const useTotalNutritionStore = create<TotalNutrition>((set) => ({
   }) => set({ total }),
 }));
 
+
+
 type Result = {
-  result: {
-    error?: string | undefined;
-    success: QueryResult<Meal> | undefined;
-  };
-  setResult: (result: {
-    error?: string | undefined;
-    success: QueryResult<Meal>;
-  }) => void;
+  success: MealResponse[] | undefined;
+  setResult: (success: MealResponse[]) => void;
 };
 export const useResultStore = create<Result>((set) => ({
-  result: {
-    error: "",
-    success: undefined as QueryResult<Meal> | undefined,
-  },
-  setResult: (result: Result["result"]) => set({ result }),
+  success: undefined as MealResponse[] | undefined,
+
+  setResult: (success:  MealResponse[]) => set({ success }),
 }));
+
+
+
+
 
 export type Option = "protein" | "fat" | "carbohydrates" | "sugar" | "calories";
 

@@ -1,9 +1,10 @@
 import { QueryResultRow } from "@vercel/postgres";
 import React from "react";
 import MealCardContent from "./MealCardContent";
+import { MealResponse } from "@/types/types";
 
 
-const MealCard = ({ meals }: { meals: QueryResultRow[] | undefined }) => {
+const MealCard = ({ meals }: { meals: MealResponse[] | undefined }) => {
   const mealList = meals?.map((meal, index) => (
     <MealCardContent meal={meal} index={index} key={meal.mealid}/>
   ));

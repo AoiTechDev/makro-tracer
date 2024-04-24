@@ -1,7 +1,7 @@
-
 import { getPreparedMeals } from "@/actions/preparedMeals";
 import MealCard from "@/components/Dashboard/PreparedMeals/MealCard";
 import { Card, CardHeader } from "@/components/ui/card";
+import { GetMealsResponse } from "@/types/types";
 import React from "react";
 
 const page = async () => {

@@ -7,20 +7,21 @@ import { WeeklyMealData } from "@/types/types";
 
 export const useProcessWeeklyMealData = () => {
     const { date } = useCalendarStore();
-    const { result } = useResultStore();
+    const { success } = useResultStore();
     const currentWeek = getDaysInWeek(getYear(date!), getWeek(date!));
     const [daysInWeek, setDaysInWeek] = React.useState<WeeklyMealData[]>([]);
 
-    
+
   let newResult: WeeklyMealData[] = [];
-  if (result.success) {
-    newResult = [...result.success.rows];
+  if (success && Array.isArray(success)) {
+    newResult = [...success];
+  
   }
 
     useEffect(() => {
         setDaysInWeek([]);
         currentWeek.map((day) => {
-          if (!result.success) return 
+          if (!success) return 
           const tempArr: WeeklyMealData[] = [];
           let totalInit = {
             calories: 0,
@@ -28,7 +29,7 @@ export const useProcessWeeklyMealData = () => {
             carbohydrates: 0,
             fat: 0,
             sugar: 0,
-            date: new Date(),
+            date: '',
           };
     
           const matchingDay = newResult.filter(
@@ -58,7 +59,7 @@ export const useProcessWeeklyMealData = () => {
     
           setDaysInWeek((prev) => [...prev, ...tempArr]);
         });
-      }, [date, result]);
+      }, [date, success]);
 
       return {daysInWeek};
 }

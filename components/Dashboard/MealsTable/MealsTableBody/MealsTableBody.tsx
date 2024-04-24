@@ -1,8 +1,9 @@
 import React from "react";
 import { TableBody } from "@/components/ui/table";
-import { getMeals } from "@/lib/getMeals/getMeals";
+
 
 import MealsTableRow from "./MealsTableRow";
+import { getMeals } from "@/actions/meals";
 
 
 const MealsTableBody = async () => {
@@ -10,7 +11,7 @@ const MealsTableBody = async () => {
 
   return (
     <TableBody>
-      <MealsTableRow result={result}  />
+      <MealsTableRow result={result.success}  />
     </TableBody>
   );
 };

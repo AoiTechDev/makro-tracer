@@ -6,23 +6,21 @@ import { useCalendarStore, useResultStore } from "@/store/store";
 
 import React, { memo, useEffect } from "react";
 import DeleteRow from "./DeleteRow";
+import { MealResponse } from "@/types/types";
 
-type MealsTableRowProps = {
-  result: GetMealsResponse;
-};
-
-const MealsTableRow = memo(({ result }: MealsTableRowProps) => {
+const MealsTableRow = memo(({ result }: { result: MealResponse[] | undefined }) => {
   const { date } = useCalendarStore();
 
   const { setResult } = useResultStore();
+
   useEffect(() => {
-    setResult({ success: result.success!, error: result.error });
+    setResult(result!);
   }, [result]);
 
   const formattedOriginalDate = formattedDate(date);
   {
-    return result?.success
-      ? result.success.rows.map((row) => {
+    return result
+      ? result.map((row) => {
           const rowDate = new Date(row.date);
           const formattedRowDate = formattedDate(rowDate);
 

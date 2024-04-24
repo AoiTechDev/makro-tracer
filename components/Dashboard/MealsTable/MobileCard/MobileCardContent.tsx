@@ -9,17 +9,16 @@ import { MdDelete } from "react-icons/md";
 import { toast } from "sonner";
 import { IoIosArrowDown } from "react-icons/io";
 import { deleteMeal } from "@/actions/meals";
+import { MealResponse } from "@/types/types";
 
-type MealsTableRowProps = {
-  result: GetMealsResponse;
-};
 
-const MobileCardContent = ({ result }: MealsTableRowProps) => {
+const MobileCardContent = ({ result }: { result: MealResponse[] | undefined }) => {
   const { date } = useCalendarStore();
 
   const { setResult } = useResultStore();
+
   useEffect(() => {
-    setResult({ success: result.success!, error: result.error });
+    setResult(result!);
   }, [result]);
 
   const formattedOriginalDate = formattedDate(date);
@@ -39,8 +38,8 @@ const MobileCardContent = ({ result }: MealsTableRowProps) => {
     arrowRefs.current[index]?.classList.add("activeCardRotateArrow");
   };
 
-  return result.success
-    ? result.success.rows.map((row, index) => {
+  return result
+    ? result.map((row, index) => {
         const rowDate = new Date(row.date);
         const formattedRowDate = formattedDate(rowDate);
 

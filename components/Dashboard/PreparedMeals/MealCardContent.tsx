@@ -1,9 +1,13 @@
 "use client";
 
-import { addPreparedToCalendar, deletePreparedMeal } from "@/actions/preparedMeals";
+import {
+  addPreparedToCalendar,
+  deletePreparedMeal,
+} from "@/actions/preparedMeals";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { formattedDate } from "@/lib/utils";
-import { QueryResultRow } from "@vercel/postgres";
+import { MealResponse } from "@/types/types";
+
 import React, { useRef } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
@@ -14,7 +18,7 @@ const MealCardContent = ({
   meal,
   index,
 }: {
-  meal: QueryResultRow;
+  meal: MealResponse;
   index: number;
 }) => {
   const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
@@ -31,6 +35,7 @@ const MealCardContent = ({
     arrowRefs.current[index]?.classList.add("activeCardRotateArrow");
   };
   const arrowRefs = useRef<Array<HTMLDivElement | null>>([]);
+
   return (
     <Card
       key={meal.mealid}
@@ -44,13 +49,15 @@ const MealCardContent = ({
 
       <CardContent className="flex flex-col">
         <div className="flex justify-between">
-          <span>Calories:</span> <span>{Number(meal.calories).toFixed(2)} </span>
+          <span>Calories:</span>{" "}
+          <span>{Number(meal.calories).toFixed(2)} </span>
         </div>
         <div className="flex justify-between">
           <span>Protein:</span> <span>{Number(meal.protein).toFixed(2)} g</span>
         </div>
         <div className="flex justify-between">
-          <span>Carbs:</span> <span> {Number(meal.carbohydrates).toFixed(2)} g</span>
+          <span>Carbs:</span>{" "}
+          <span> {Number(meal.carbohydrates).toFixed(2)} g</span>
         </div>
         <div className="flex justify-between">
           <span>Fat:</span> <span>{Number(meal.fat).toFixed(2)} g</span>

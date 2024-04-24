@@ -37,7 +37,7 @@ export interface Meal extends Nutrition {
   mealid: number;
 }
 
-export interface MealResponse extends Omit<Meal,  "date"> {
+export interface  MealResponse extends Omit<Meal,  "date"> {
   date: string
 }
 
@@ -47,7 +47,7 @@ export interface AddMealsFormFields extends Nutrition {
 }
 
 export interface WeeklyMealData extends Nutrition {
-  date: Date;
+  date: string;
 }
 
 export type AvatarProps ={

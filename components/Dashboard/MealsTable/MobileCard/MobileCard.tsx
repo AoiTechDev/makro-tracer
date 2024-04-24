@@ -1,4 +1,4 @@
-import { getMeals } from "@/lib/getMeals/getMeals";
+import { getMeals } from "@/actions/meals";
 import React from "react";
 import MobileCardContent from "./MobileCardContent";
 
@@ -7,7 +7,7 @@ const MobileCard = async () => {
 
   return (
     <div className="w-full space-y-4 ">
-      <MobileCardContent result={result}  />
+      <MobileCardContent result={result.success}  />
     </div>
   );
 };

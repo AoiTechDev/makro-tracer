@@ -44,7 +44,7 @@ const page = () => {
   };
 
   return (
-    <Card className=" min-h-[400px] flex-1 flex flex-col gap-5 justify-center items-center lg:p-4 pt-2">
+    <Card className="mb-6 min-h-[400px] flex-1 flex flex-col gap-5 justify-center items-center lg:p-4 pt-2">
       <ChartOptions />
 
       <XYChart
@@ -62,6 +62,7 @@ const page = () => {
         />
 
         <Tooltip
+        
           snapTooltipToDatumX
           snapTooltipToDatumY
           showVerticalCrosshair
