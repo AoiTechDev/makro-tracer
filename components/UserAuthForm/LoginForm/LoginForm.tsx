@@ -35,7 +35,7 @@ const LoginForm = () => {
       }
     } else {
 
-      router.push("/");
+      router.push("/dashboard");
       router.refresh();
     }
   };

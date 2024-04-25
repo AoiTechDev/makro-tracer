@@ -15,6 +15,14 @@ const page = async () => {
           Login
         </h1>
         <LoginForm />
+        <div>
+        <p className="text-center">
+          Don't have an account?{" "}
+          <a href="/register" className="text-blue-500 hover:underline">
+            Register
+          </a>
+        </p>
+      </div>
     </>
     
   );
