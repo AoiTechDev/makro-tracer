@@ -6,6 +6,7 @@ import {
 } from "@/actions/preparedMeals";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { formattedDate } from "@/lib/utils";
+import { useCalendarStore } from "@/store/store";
 import { MealResponse } from "@/types/types";
 
 import React, { useRef } from "react";
@@ -35,7 +36,8 @@ const MealCardContent = ({
     arrowRefs.current[index]?.classList.add("activeCardRotateArrow");
   };
   const arrowRefs = useRef<Array<HTMLDivElement | null>>([]);
-
+  const {date } = useCalendarStore()
+  console.log(date)
   return (
     <Card
       key={meal.mealid}
@@ -77,7 +79,7 @@ const MealCardContent = ({
               meal.carbohydrates,
               meal.fat,
               meal.sugar,
-              formattedDate(new Date())
+              formattedDate(date)
             ).then((res) => toast.success(res.message))
           }
         />

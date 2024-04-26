@@ -15,6 +15,8 @@ export const useCalendarStore = create<CurrentCalendarDate>((set) => ({
   setCurrentDate: (date: Date | undefined) => set({ date }),
 }));
 
+
+
 type TotalNutrition = {
   total: {
     calories: number;
