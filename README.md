@@ -1,5 +1,4 @@
 # MealFulness
-(Under development)
 
 https://mealfulness.vercel.app/
 
